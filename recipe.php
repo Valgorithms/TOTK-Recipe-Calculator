@@ -1,4 +1,7 @@
 <?php
+
+//TODO: Potency should affect the efficiency of the effect type, but the data dump doesn't have that info?
+
 class Recipe {
     private ?array $ingredients; //array of Ingredient objects (max of 5)
     private ?string $cookingMethod; //Cooking Pot, Fire, Frozen, Hot Spring (Single Egg Only)
