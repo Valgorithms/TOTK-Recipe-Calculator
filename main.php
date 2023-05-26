@@ -20,7 +20,7 @@ $ingredient1 = new Ingredient(
     1, //Potency
     'ResistHot',  //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     900, //Duration
-    2 //Hitpoint Recovert (Quarters of a Heart)
+    2 //Hitpoint Recovery (Quarters of a Heart)
 );
 $ingredient2 = new Ingredient(
     'Item_Fruit_F', //Internal name
@@ -32,7 +32,7 @@ $ingredient2 = new Ingredient(
     1, //Potency
     'ResistHot',  //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     900, //Duration
-    2 //Hitpoint Recovert (Quarters of a Heart)
+    2 //Hitpoint Recovery (Quarters of a Heart)
 );
 $ingredient3 = new Ingredient(
     'Item_Fruit_F', //Internal name
@@ -44,7 +44,7 @@ $ingredient3 = new Ingredient(
     1, //Potency
     'ResistHot',  //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     900, //Duration
-    2 //Hitpoint Recovert (Quarters of a Heart)
+    2 //Hitpoint Recovery (Quarters of a Heart)
 );
 $ingredient4 = new Ingredient(
     'Item_Fruit_F', //Internal name
@@ -56,7 +56,7 @@ $ingredient4 = new Ingredient(
     1, //Potency
     'ResistHot',  //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     900, //Duration
-    2 //Hitpoint Recovert (Quarters of a Heart)
+    2 //Hitpoint Recovery (Quarters of a Heart)
 );
 $ingredient5 = new Ingredient(
     'Item_Fruit_F', //Internal name
@@ -68,7 +68,7 @@ $ingredient5 = new Ingredient(
     1, //Potency
     'ResistHot',  //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     900, //Duration
-    2 //Hitpoint Recovert (Quarters of a Heart)
+    2 //Hitpoint Recovery (Quarters of a Heart)
 );
 
 $recipe = new Recipe([$ingredient1, $ingredient2, $ingredient3, $ingredient4, $ingredient5]);
