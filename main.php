@@ -72,6 +72,8 @@ $ingredient5 = new Ingredient(
 );
 
 $recipe = new Recipe([$ingredient1, $ingredient2, $ingredient3, $ingredient4, $ingredient5]);
+var_dump($recipe);
+
 
 $calcPotencyTitle = function ($recipe)
 {
@@ -81,11 +83,6 @@ $calcPotencyTitle = function ($recipe)
     elseif ($potency >= 30) return 'Med';
     else return 'Normal';
 };
-
-var_dump($recipe);
-
-
 $result = $calcPotencyTitle($recipe);
-
 var_dump($result);
 
