@@ -10,18 +10,8 @@ require 'collection.php';
 //ARRAYS & COLLECTIONS
 require 'ingredients.php'; //$ingredients, $ingredients_collection
 
-$ingredient1 = new Ingredient(
-    'Item_Fruit_F', //Internal name
-    'Hydromelon', //Actual name
-    'Food', //Food, Elixer
-    false, //Rock Hard?
-    16, //Buying price
-    4, //Selling price
-    1, //Potency
-    'ResistHot',  //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
-    900, //Duration
-    2 //Hitpoint Recovery (Quarters of a Heart)
-);
+
+$ingredient1 = new Ingredient($ingredients_collection->get('EuenName', 'Hydromelon'));
 $ingredient2 = new Ingredient(
     'Item_Fruit_F', //Internal name
     'Hydromelon', //Actual name
@@ -73,16 +63,3 @@ $ingredient5 = new Ingredient(
 
 $recipe = new Recipe([$ingredient1, $ingredient2, $ingredient3, $ingredient4, $ingredient5]);
 var_dump($recipe);
-
-
-$calcPotencyTitle = function ($recipe)
-{
-    $potency = 0;
-    foreach ($recipe->getIngredients() as $ingredient) $potency += ($ingredient->getEffectLevel());
-    if ($potency >= 45) return 'Strong';
-    elseif ($potency >= 30) return 'Med';
-    else return 'Normal';
-};
-$result = $calcPotencyTitle($recipe);
-//var_dump($result);
-

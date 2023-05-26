@@ -9,19 +9,33 @@ class Ingredient {
     private ?int $effectLevel; //Potency
     private ?string $effectType; //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     private ?int $effectiveTime; //Duration
-    private ?int $hitPointRecovery; //Quarters of a Heart
+    private ?int $hitPointRecover; //Quarters of a Heart
 
-    public function __construct(?string $actorName, ?string $euenName, ?string $classification, ?bool $rockHard, ?int $buyingPrice, ?int $sellingPrice, ?int $effectLevel, ?string $effectType, ?int $effectiveTime, ?int $hitPointRecovery) {
-        $this->actorName = $actorName;
-        $this->euenName = $euenName;
-        $this->classification = $classification;
-        $this->rockHard = $rockHard;
-        $this->buyingPrice = $buyingPrice;
-        $this->sellingPrice = $sellingPrice;
-        $this->effectLevel = $effectLevel;
-        $this->effectType = $effectType;
-        $this->effectiveTime = $effectiveTime;
-        $this->hitPointRecovery = $hitPointRecovery;
+    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?bool $rockHard = false, ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
+        if (is_array($primary)) {
+            $array = $primary;
+            $this->actorName = $primary['ActorName'];
+            $this->euenName = $primary['EuenName'];
+            $this->classification = $primary['Classification'];
+            $this->rockHard = $primary['RockHard'];
+            $this->buyingPrice = $primary['BuyingPrice'];
+            $this->sellingPrice = $primary['SellingPrice'];
+            $this->effectLevel = $primary['EffectLevel'];
+            $this->effectType = $primary['EffectType'];
+            $this->effectiveTime = $primary['EffectiveTime'];
+            $this->hitPointRecover = $primary['HitPointRecover'];
+        } else {
+            $this->actorName = $primary;
+            $this->euenName = $euenName;
+            $this->classification = $classification;
+            $this->rockHard = $rockHard;
+            $this->buyingPrice = $buyingPrice;
+            $this->sellingPrice = $sellingPrice;
+            $this->effectLevel = $effectLevel;
+            $this->effectType = $effectType;
+            $this->effectiveTime = $effectiveTime;
+            $this->hitPointRecover = $hitPointRecover;
+        }
     }
 
     public function getactorName() {
@@ -96,11 +110,11 @@ class Ingredient {
         $this->effectiveTime = $effectiveTime;
     }    
 
-    public function getHitPointRecovery() {
-        return $this->hitPointRecovery;
+    public function gethitPointRecover() {
+        return $this->hitPointRecover;
     }
 
-    public function setHitPointRecovery(?int $hitPointRecovery) {
-        $this->hitPointRecovery = $hitPointRecovery;
+    public function sethitPointRecover(?int $hitPointRecover) {
+        $this->hitPointRecover = $hitPointRecover;
     }
 }

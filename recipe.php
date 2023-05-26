@@ -12,14 +12,14 @@ class Recipe {
     private ?int $effectLevel; //Potency, (Stamina Recovery = Potency * ~90)
     private ?string $effectType; //Buff [LifeRecover (Critical only), LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     private ?int $effectiveTime; //Duration in microseconds (?) (900 = 30 seconds for 1 item? Seems wrong)
-    private ?int $hitPointRecovery; //Quarters of a Heart
+    private ?int $hitPointRecover; //Quarters of a Heart
 
     private ?string $potency; //Normal, Med, High
     private ?int $staminaRecover = null;
     private ?int $exStaminaMaxUp = null;
     private ?int $lifeMaxUp = null;
 
-    public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecovery = 0) {
+    public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
         $this->ingredients = $ingredients;
         $cookingMethod ? ($this->cookingMethod = $cookingMethod) : ($this->cookingMethod = 'Cooking Pot');
         
@@ -31,7 +31,7 @@ class Recipe {
         $effectLevel ? $this->setEffectLevel($effectLevel) : $this->calcEffectLevel();
         $this->calcPotency();
         $effectiveTime ? $this->setEffectiveTime($effectiveTime) : $this->calcEffectiveTime();
-        $hitPointRecovery ? $this->setHitPointRecovery($hitPointRecovery) : $this->calcHitPointRecovery();
+        $hitPointRecover ? $this->sethitPointRecover($hitPointRecover) : $this->calchitPointRecover();
 
         $this->calcClassification();
     }
@@ -120,12 +120,12 @@ class Recipe {
         $this->effectiveTime = $effectiveTime;
     }
 
-    public function getHitPointRecovery() {
-        return $this->hitPointRecovery;
+    public function gethitPointRecover() {
+        return $this->hitPointRecover;
     }
 
-    private function setHitPointRecovery(int $hitPointRecovery) {
-        $this->hitPointRecovery = $hitPointRecovery;
+    private function sethitPointRecover(int $hitPointRecover) {
+        $this->hitPointRecover = $hitPointRecover;
     }
 
     public function getPotency() {
@@ -292,21 +292,21 @@ class Recipe {
         else $this->setPotency('Normal');
     }
 
-    private function calcHitPointRecovery(): void
+    private function calchitPointRecover(): void
     {
-        $hitPointRecovery = 0;
-        foreach ($this->getIngredients() as $ingredient) $hitPointRecovery += $ingredient->getHitPointRecovery();
+        $hitPointRecover = 0;
+        foreach ($this->getIngredients() as $ingredient) $hitPointRecover += $ingredient->gethitPointRecover();
 
         switch ($this->getCookingMethod()) {
             case 'Fire':
-                $this->setHitPointRecovery(intval(ceil($hitPointRecovery*1.5)));
+                $this->sethitPointRecover(intval(ceil($hitPointRecover*1.5)));
                 break;
             case 'Frozen':
-                $this->setHitPointRecovery($hitPointRecovery);
+                $this->sethitPointRecover($hitPointRecover);
                 break;
             case 'Cooking Pot':
             default:
-                $this->setHitPointRecovery($hitPointRecovery*2);
+                $this->sethitPointRecover($hitPointRecover*2);
                 break;
         }
     }
@@ -324,7 +324,7 @@ class Recipe {
                 $this->setEffectLevel(0);
                 $this->setEffectType('None');
                 $this->setEffectiveTime(0);
-                $this->setHitPointRecovery(4);
+                $this->sethitPointRecover(4);
                 $this->setPotency('Normal');
                 $this->setStaminaRecover(null);
                 $this->setExStaminaMaxUp(null);
@@ -334,7 +334,7 @@ class Recipe {
                 $this->setEffectLevel(0);
                 $this->setEffectType('None');
                 $this->setEffectiveTime(0);
-                $this->setHitPointRecovery(1);
+                $this->sethitPointRecover(1);
                 $this->setPotency('Normal'); //Normal, Med, High
                 $this->setStaminaRecover(null);
                 $this->setExStaminaMaxUp(null);
