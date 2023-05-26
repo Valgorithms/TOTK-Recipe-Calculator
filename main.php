@@ -14,6 +14,7 @@ $ingredient1 = new Ingredient(
     'Item_Fruit_F', //Internal name
     'Hydromelon', //Actual name
     'Food', //Food, Elixer
+    false, //Rock Hard?
     16, //Buying price
     4, //Selling price
     1, //Potency
@@ -25,6 +26,7 @@ $ingredient2 = new Ingredient(
     'Item_Fruit_F', //Internal name
     'Hydromelon', //Actual name
     'Food', //Food, Elixer
+    false, //Rock Hard?
     16, //Buying price
     4, //Selling price
     1, //Potency
@@ -36,6 +38,7 @@ $ingredient3 = new Ingredient(
     'Item_Fruit_F', //Internal name
     'Hydromelon', //Actual name
     'Food', //Food, Elixer
+    false, //Rock Hard?
     16, //Buying price
     4, //Selling price
     1, //Potency
@@ -47,6 +50,7 @@ $ingredient4 = new Ingredient(
     'Item_Fruit_F', //Internal name
     'Hydromelon', //Actual name
     'Food', //Food, Elixer
+    false, //Rock Hard?
     16, //Buying price
     4, //Selling price
     1, //Potency
@@ -58,6 +62,7 @@ $ingredient5 = new Ingredient(
     'Item_Fruit_F', //Internal name
     'Hydromelon', //Actual name
     'Food', //Food, Elixer
+    false, //Rock Hard?
     16, //Buying price
     4, //Selling price
     1, //Potency

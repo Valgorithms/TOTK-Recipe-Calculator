@@ -3,6 +3,7 @@ class Ingredient {
     private ?string $actorName;
     private ?string $euenName;
     private ?string $classification; //Food, Elixer
+    private ?bool $rockHard; //Rock Hard
     private ?int $buyingPrice;
     private ?int $sellingPrice;
     private ?int $effectLevel; //Potency
@@ -10,10 +11,11 @@ class Ingredient {
     private ?int $effectiveTime; //Duration
     private ?int $hitPointRecovery; //Quarters of a Heart
 
-    public function __construct(?string $actorName, ?string $euenName, ?string $classification, ?int $buyingPrice, ?int $sellingPrice, ?int $effectLevel, ?string $effectType, ?int $effectiveTime, ?int $hitPointRecovery) {
+    public function __construct(?string $actorName, ?string $euenName, ?string $classification, ?bool $rockHard, ?int $buyingPrice, ?int $sellingPrice, ?int $effectLevel, ?string $effectType, ?int $effectiveTime, ?int $hitPointRecovery) {
         $this->actorName = $actorName;
         $this->euenName = $euenName;
         $this->classification = $classification;
+        $this->rockHard = $rockHard;
         $this->buyingPrice = $buyingPrice;
         $this->sellingPrice = $sellingPrice;
         $this->effectLevel = $effectLevel;
@@ -44,6 +46,14 @@ class Ingredient {
 
     public function setclassification(?string $classification) {
         $this->classification = $classification;
+    }
+
+    public function getRockHard() {
+        return $this->rockHard;
+    }
+
+    public function setRockhard(?bool $rockHard) {
+        $this->rockHard = $rockHard;
     }
 
     public function getbuyingPrice() {

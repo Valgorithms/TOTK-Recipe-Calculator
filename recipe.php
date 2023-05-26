@@ -4,7 +4,7 @@ class Recipe {
     private ?string $cookingMethod; //Cooking Pot, Fire, Frozen, Hot Spring (Single Egg Only)
     
     private ?string $name;
-    private ?string $classification; //Food, Elixer
+    private ?string $classification; //Food, Elixer, Dubious, or Rock Hard
     private ?int $sellingPrice;
     private ?int $effectLevel; //Potency, (Stamina Recovery = Potency * ~90)
     private ?string $effectType; //Buff [LifeRecover (Critical only), LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
@@ -18,7 +18,7 @@ class Recipe {
 
     public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecovery = 0) {
         $this->ingredients = $ingredients;
-        if ($cookingMethod) $this->cookingMethod = $cookingMethod;
+        $cookingMethod ? ($this->cookingMethod = $cookingMethod) : ($this->cookingMethod = 'Cooking Pot');
         
         if ($name) $this->name = $name;
         if ($classification) $this->classification = $classification;
@@ -29,6 +29,8 @@ class Recipe {
         $this->calcPotency();
         $effectiveTime ? $this->setEffectiveTime($effectiveTime) : $this->calcEffectiveTime();
         $hitPointRecovery ? $this->setHitPointRecovery($hitPointRecovery) : $this->calcHitPointRecovery();
+
+        $this->calcClassification();
     }
 
     public function getName() {
@@ -135,7 +137,7 @@ class Recipe {
         return $this->lifeMaxUp;
     }
 
-    private function setLifeMaxUp(int $lifeMaxUp) {
+    private function setLifeMaxUp(null|int $lifeMaxUp) {
         $this->lifeMaxUp = $lifeMaxUp;
     }
 
@@ -143,7 +145,7 @@ class Recipe {
         return $this->staminaRecover;
     }
 
-    private function setStaminaRecover(int $staminaRecover) {
+    private function setStaminaRecover(null|int $staminaRecover) {
         $this->staminaRecover = $staminaRecover;
     }
 
@@ -151,7 +153,7 @@ class Recipe {
         return $this->exStaminaMaxUp;
     }
 
-    private function setExStaminaMaxUp(int $exStaminaMaxUp) {
+    private function setExStaminaMaxUp(null|int $exStaminaMaxUp) {
         $this->exStaminaMaxUp = $exStaminaMaxUp;
     }
 
@@ -302,6 +304,38 @@ class Recipe {
             case 'Cooking Pot':
             default:
                 $this->setHitPointRecovery($hitPointRecovery*2);
+                break;
+        }
+    }
+
+    private function calcClassification(): void
+    {
+        $classifications = [];
+        foreach ($this->getIngredients() as $ingredient) if (! in_array($classification = $ingredient->getClassification(), $classifications)) $classifications[] = $classification;
+        $this->setClassification($classification = $classifications[0]);
+        if (count($classifications) !== 1) $this->setClassification($classification = 'Dubious');
+        foreach ($this->getIngredients() as $ingredient) if ($ingredient->getRockHard()) { $this->setClassification($classification = 'Rock Hard'); break;}
+
+        switch ($this->getClassification()) {
+            case 'Dubious':
+                $this->setEffectLevel(0);
+                $this->setEffectType('None');
+                $this->setEffectiveTime(0);
+                $this->setHitPointRecovery(4);
+                $this->setPotency('Normal');
+                $this->setStaminaRecover(null);
+                $this->setExStaminaMaxUp(null);
+                $this->setLifeMaxUp(null);
+                break;
+            case 'Rock Hard':
+                $this->setEffectLevel(0);
+                $this->setEffectType('None');
+                $this->setEffectiveTime(0);
+                $this->setHitPointRecovery(1);
+                $this->setPotency('Normal'); //Normal, Med, High
+                $this->setStaminaRecover(null);
+                $this->setExStaminaMaxUp(null);
+                $this->setLifeMaxUp(null);
                 break;
         }
     }
