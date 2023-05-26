@@ -3,7 +3,7 @@ class Ingredient {
     private ?string $actorName;
     private ?string $euenName;
     private ?string $classification; //Food, Elixer
-    private ?bool $rockHard; //Rock Hard
+    private ?bool $rockHard; //Ingredients that make the recipe become rock hard food (e.g. Wood, Ruby, etc.)
     private ?int $buyingPrice;
     private ?int $sellingPrice;
     private ?int $effectLevel; //Potency
