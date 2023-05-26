@@ -1316,3 +1316,6 @@ $ingredients = [
         'HitPointRecover' => 1
     ]
 ];
+
+$ingredients_collection = new Collection([], 'EuenName');
+foreach ($ingredients as $array) $ingredients_collection->pushItem($array);

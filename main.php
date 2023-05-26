@@ -3,12 +3,12 @@
 //if (! $ingredients = file_get_contents('ingredients.json')) trigger_error('Fatal Error: Unable to read ingredients file', E_USER_ERROR);
 //$ingredients = json_decode($ingredients, true);
 
-//ARRAYS
-require 'ingredients.php';
 //CLASSES
 require 'ingredient.php';
 require 'recipe.php';
-
+require 'collection.php';
+//ARRAYS & COLLECTIONS
+require 'ingredients.php'; //$ingredients, $ingredients_collection
 
 $ingredient1 = new Ingredient(
     'Item_Fruit_F', //Internal name
@@ -84,5 +84,5 @@ $calcPotencyTitle = function ($recipe)
     else return 'Normal';
 };
 $result = $calcPotencyTitle($recipe);
-var_dump($result);
+//var_dump($result);
 
