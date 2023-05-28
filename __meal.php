@@ -1,7 +1,5 @@
 <?php
 
-//TODO: Potency should affect the efficiency of the effect type, but the data dump doesn't have that info?
-
 class Meal {
     private ?string $actorName = '';
     private ?string $euenName = '';
@@ -40,11 +38,11 @@ class Meal {
         $this->euenName = $euenName;
     }
 
-    public function getRecipen(): ?int {
+    public function getRecipen°(): ?int {
         return $this->recipen°;
     }
 
-    public function setRecipen(?int $recipen°): void {
+    public function setRecipen°(?int $recipen°): void {
         $this->recipen° = $recipen°;
     }
 

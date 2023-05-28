@@ -1,184 +1,184 @@
-Icon,ActorName,EUen name,Recipe n°,Recipe,BonusHeart,BonusLevel,BonusTime
-,Item_Cook_A_01,Mushroom Skewers,1,CookMushroom and CookMushroom,0,0,0
+Icon,ActorName,Euen name,Recipe n°,Recipe,BonusHeart,BonusLevel,BonusTime
+,Item_Cook_A_01,Mushroom Skewers,1,CookMushroom && CookMushroom,0,0,0
 ,Item_Cook_A_01,Mushroom Skewer,1,CookMushroom,0,0,0
 ,Item_Cook_A_01,Mushroom Skewer,1,CookMushroom,0,0,0
-,Item_Cook_A_09,Meat and Mushroom Skewer,2,CookMushroom and CookMeat,0,0,0
-,Item_Cook_A_08,Fish and Mushroom Skewer,3,CookMushroom and CookFish,0,0,0
-,Item_Cook_B_06,Meat Skewer,4,CookMeat and CookMeat,0,0,0
+,Item_Cook_A_09,Meat and Mushroom Skewer,2,CookMushroom && CookMeat,0,0,0
+,Item_Cook_A_08,Fish and Mushroom Skewer,3,CookMushroom && CookFish,0,0,0
+,Item_Cook_B_06,Meat Skewer,4,CookMeat && CookMeat,0,0,0
 ,Item_Cook_B_06,Meat Skewer,4,CookMeat,0,0,0
 ,Item_Cook_B_06,Meat Skewer,4,CookMeat,0,0,0
-,Item_Cook_B_05,Fish Skewer,5,CookFish and CookFish,0,0,0
+,Item_Cook_B_05,Fish Skewer,5,CookFish && CookFish,0,0,0
 ,Item_Cook_B_05,Fish Skewer,5,CookFish,0,0,0
 ,Item_Cook_B_05,Fish Skewer,5,CookFish,0,0,0
-,Item_Cook_B_23,Seafood Skewer,6,(Sneaky River Snail or Razorclaw Crab or Armored Crab or Bright-Eyed Crab) and CookFish,0,0,0
-,Item_Cook_B_23,Seafood Skewer,6,(Sneaky River Snail or Razorclaw Crab or Armored Crab or Bright-Eyed Crab),0,0,0
-,Item_Cook_B_23,Seafood Skewer,6,(Sneaky River Snail or Razorclaw Crab or Armored Crab or Bright-Eyed Crab),0,0,0
-,Item_Cook_B_16,Copious Meat Skewers,7,CookMeat and CookMeat and CookMeat and CookMeat,0,0,0
-,Item_Cook_B_15,Copious Seafood Skewers,8,CookFish and CookFish and CookFish and CookFish,0,0,0
-,Item_Cook_A_03,Steamed Fruit,9,CookPlant and CookMushroom,0,0,0
-,Item_Cook_Q_03,Steamed Tomatoes,10,CookPlant and Hylian Tomato,,,
-,Item_Cook_A_02,Steamed Mushrooms,11,CookPlant and CookMushroom,0,0,0
-,Item_Cook_A_05,Steamed Meat,12,CookMeat and CookPlant,0,0,0
-,Item_Cook_A_04,Steamed Fish,13,CookPlant and CookFish,0,0,0
+,Item_Cook_B_23,Seafood Skewer,6,(Sneaky River Snail || Razorclaw Crab || Armored Crab || Bright-Eyed Crab) && CookFish,0,0,0
+,Item_Cook_B_23,Seafood Skewer,6,(Sneaky River Snail || Razorclaw Crab || Armored Crab || Bright-Eyed Crab),0,0,0
+,Item_Cook_B_23,Seafood Skewer,6,(Sneaky River Snail || Razorclaw Crab || Armored Crab || Bright-Eyed Crab),0,0,0
+,Item_Cook_B_16,Copious Meat Skewers,7,CookMeat && CookMeat && CookMeat && CookMeat,0,0,0
+,Item_Cook_B_15,Copious Seafood Skewers,8,CookFish && CookFish && CookFish && CookFish,0,0,0
+,Item_Cook_A_03,Steamed Fruit,9,CookPlant && CookFruit,0,0,0
+,Item_Cook_Q_03,Steamed Tomatoes,10,CookPlant && Hylian Tomato,,,
+,Item_Cook_A_02,Steamed Mushrooms,11,CookPlant && CookMushroom,0,0,0
+,Item_Cook_A_05,Steamed Meat,12,CookMeat && CookPlant,0,0,0
+,Item_Cook_A_04,Steamed Fish,13,CookPlant && CookFish,0,0,0
 ,Item_Cook_B_21,Sautéed Peppers,14,Spicy Pepper,0,0,0
-,Item_Cook_B_22,Sautéed Nuts,15,Acorn and Chickaloo Tree Nut,0,0,0
-,Item_Cook_B_22,Sautéed Nuts,15,Acorn and Chickaloo Tree Nut,0,0,0
-,Item_Cook_B_01,Fried Wild Greens,16,CookPlant and CookPlant,0,0,0
-,Item_Cook_B_01,Fried Wild Greens,16,Stambulb and Goat Butter and Dark Clump,,,
+,Item_Cook_B_22,Sautéed Nuts,15,Acorn && Chickaloo Tree Nut,0,0,0
+,Item_Cook_B_22,Sautéed Nuts,15,Acorn && Chickaloo Tree Nut,0,0,0
+,Item_Cook_B_01,Fried Wild Greens,16,CookPlant && CookPlant,0,0,0
+,Item_Cook_B_01,Fried Wild Greens,16,Stambulb && Goat Butter && Dark Clump,,,
 ,Item_Cook_B_01,Fried Wild Greens,16,CookPlant,0,0,0
 ,Item_Cook_B_01,Fried Wild Greens,16,CookPlant,0,0,0
-,Item_Cook_B_11,Copious Fried Wild Greens,17,CookPlant and CookPlant and CookPlant and CookPlant,0,0,0
+,Item_Cook_B_11,Copious Fried Wild Greens,17,CookPlant && CookPlant && CookPlant && CookPlant,0,0,0
 ,Item_Cook_Q_06,Cooked Stambulb,18,Stambulb,,,
-,Item_Cook_Q_07,Buttered Stambulb,19,Stambulb and Goat Butter,,,
-,Item_Cook_B_13,Copious Mushroom Skewers,20,CookMushroom and CookMushroom and CookMushroom and CookMushroom,0,0,0
-,Item_Cook_P_03,Spiced Meat Skewer,21,Raw Meat and Goron Spice,0,0,0
-,Item_Cook_P_04,Prime Spiced Meat Skewer,22,Raw Prime Meat and Goron Spice,0,0,0
-,Item_Cook_P_05,Gourmet Spiced Meat Skewer,23,Raw Gourmet Meat and Goron Spice,0,0,0
-,Item_Cook_D_10,Crab Stir-Fry,24,(Razorclaw Crab or Ironshell Crab or Bright-Eyed Crab) and Goron Spice,0,0,0
-,Item_Cook_B_17,Meat and Seafood Fry,25,(Raw Meat or Raw Bird Drumstick) and CookFish,0,0,0
-,Item_Cook_B_18,Prime Meat and Seafood Fry,26,(Raw Prime Meat or Raw Bird Thigh) and CookFish,0,0,0
-,Item_Cook_B_19,Gourmet Meat and Seafood Fry,27,(Raw Gourmet Meat or Raw Whole Bird) and CookFish,0,0,0
-,Item_Cook_D_02,Salt-Grilled Greens,28,CookPlant and Rock Salt,0,0,0
-,Item_Cook_D_01,Salt-Grilled Mushrooms,29,CookMushroom and Rock Salt,0,0,0
-,Item_Cook_D_04,Salt-Grilled Meat,30,(Raw Meat or Raw Bird Drumstick) and Rock Salt,0,0,0
-,Item_Cook_D_05,Salt-Grilled Prime Meat,31,(Raw Prime Meat or Raw Bird Thigh) and Rock Salt,0,0,0
-,Item_Cook_D_06,Salt-Grilled Gourmet Meat,32,(Raw Gourmet Meat or Raw Whole Meat) and Rock Salt,0,0,0
-,Item_Cook_D_03,Salt-Grilled Fish,33,CookFish and Rock Salt,0,0,0
-,Item_Cook_D_09,Salt-Grilled Crab,34,(Razorclaw Crab or Ironshell Crab or Bright-Eyed Crab) and Rock Salt,0,0,0
-,Item_Cook_P_02,Herb Sauté,35,CookPlant and Goron Spice,0,0,0
-,Item_Cook_P_01,Fragrant Mushroom Sauté,36,CookMushroom and Goron Spice,0,0,0
-,Item_Cook_D_07,Pepper Steak,37,CookMeat and Spicy Pepper,0,0,0
-,Item_Cook_D_08,Pepper Seafood,38,CookFish and Spicy Pepper,0,0,0
-,Item_Cook_R_05,Fragrant Seafood Stew,39,CookFish and Stambulb and Oil Jar,,,
-,Item_Cook_R_06,Deep-Fried Drumstick,40,Raw Bird Drumstick and Oil Jar,,,
-,Item_Cook_R_07,Deep-Fried Thigh,41,Raw Bird Thigh and Oil Jar,,,
-,Item_Cook_R_08,Deep-Fried Bird Roast,42,Raw Whole Bird and Oil Jar,,,
-,Item_Cook_H_01,Seafood Meunière,43,CookFish and Goat Butter and Tabantha Wheat,0,0,0
-,Item_Cook_H_02,Porgy Meunière,44,(Mighty Porgy or Armored Porgy) and Goat Butter and Tabantha Wheat,0,0,0
-,Item_Cook_H_03,Salmon Meunière,45,Hearty Salmon and Goat Butter and Tabantha Wheat,0,0,0
-,Item_Cook_A_07,Fruit and Mushroom Mix,46,CookMushroom and CookFruit,0,0,0
-,Item_Cook_B_02,Simmered Fruits,47,CookFruit and CookFruit,0,0,0
+,Item_Cook_Q_07,Buttered Stambulb,19,Stambulb && Goat Butter,,,
+,Item_Cook_B_13,Copious Mushroom Skewers,20,CookMushroom && CookMushroom && CookMushroom && CookMushroom,0,0,0
+,Item_Cook_P_03,Spiced Meat Skewer,21,Raw Meat && Goron Spice,0,0,0
+,Item_Cook_P_04,Prime Spiced Meat Skewer,22,Raw Prime Meat && Goron Spice,0,0,0
+,Item_Cook_P_05,Gourmet Spiced Meat Skewer,23,Raw Gourmet Meat && Goron Spice,0,0,0
+,Item_Cook_D_10,Crab Stir-Fry,24,(Razorclaw Crab || Ironshell Crab || Bright-Eyed Crab) && Goron Spice,0,0,0
+,Item_Cook_B_17,Meat and Seafood Fry,25,(Raw Meat || Raw Bird Drumstick) && CookFish,0,0,0
+,Item_Cook_B_18,Prime Meat and Seafood Fry,26,(Raw Prime Meat || Raw Bird Thigh) && CookFish,0,0,0
+,Item_Cook_B_19,Gourmet Meat and Seafood Fry,27,(Raw Gourmet Meat || Raw Whole Bird) && CookFish,0,0,0
+,Item_Cook_D_02,Salt-Grilled Greens,28,CookPlant && Rock Salt,0,0,0
+,Item_Cook_D_01,Salt-Grilled Mushrooms,29,CookMushroom && Rock Salt,0,0,0
+,Item_Cook_D_04,Salt-Grilled Meat,30,(Raw Meat || Raw Bird Drumstick) && Rock Salt,0,0,0
+,Item_Cook_D_05,Salt-Grilled Prime Meat,31,(Raw Prime Meat || Raw Bird Thigh) && Rock Salt,0,0,0
+,Item_Cook_D_06,Salt-Grilled Gourmet Meat,32,(Raw Gourmet Meat || Raw Whole Meat) && Rock Salt,0,0,0
+,Item_Cook_D_03,Salt-Grilled Fish,33,CookFish && Rock Salt,0,0,0
+,Item_Cook_D_09,Salt-Grilled Crab,34,(Razorclaw Crab || Ironshell Crab || Bright-Eyed Crab) && Rock Salt,0,0,0
+,Item_Cook_P_02,Herb Sauté,35,CookPlant && Goron Spice,0,0,0
+,Item_Cook_P_01,Fragrant Mushroom Sauté,36,CookMushroom && Goron Spice,0,0,0
+,Item_Cook_D_07,Pepper Steak,37,CookMeat && Spicy Pepper,0,0,0
+,Item_Cook_D_08,Pepper Seafood,38,CookFish && Spicy Pepper,0,0,0
+,Item_Cook_R_05,Fragrant Seafood Stew,39,CookFish && Stambulb && Oil Jar,,,
+,Item_Cook_R_06,Deep-Fried Drumstick,40,Raw Bird Drumstick && Oil Jar,,,
+,Item_Cook_R_07,Deep-Fried Thigh,41,Raw Bird Thigh && Oil Jar,,,
+,Item_Cook_R_08,Deep-Fried Bird Roast,42,Raw Whole Bird && Oil Jar,,,
+,Item_Cook_H_01,Seafood Meunière,43,CookFish && Goat Butter && Tabantha Wheat,0,0,0
+,Item_Cook_H_02,Porgy Meunière,44,(Mighty Porgy || Armored Porgy) && Goat Butter && Tabantha Wheat,0,0,0
+,Item_Cook_H_03,Salmon Meunière,45,Hearty Salmon && Goat Butter && Tabantha Wheat,0,0,0
+,Item_Cook_A_07,Fruit and Mushroom Mix,46,CookMushroom && CookFruit,0,0,0
+,Item_Cook_B_02,Simmered Fruits,47,CookFruit && CookFruit,0,0,0
 ,Item_Cook_B_02,Simmered Fruits,47,CookFruit,0,0,0
 ,Item_Cook_B_02,Simmered Fruits,47,CookFruit,0,0,0
-,Item_Cook_B_12,Copious Simmered Fruits,48,CookFruit and CookFruit and CookFruit and CookFruit,0,0,0
+,Item_Cook_B_12,Copious Simmered Fruits,48,CookFruit && CookFruit && CookFruit && CookFruit,0,0,0
 ,Item_Cook_Q_01,Simmered Tomato,49,Hylian Tomato,0,0,0
-,Item_Cook_Q_02,Fruity Tomato Stew,50,Hylian Tomato and Fresh Milk and Rock Salt,,,
-,Item_Cook_Q_02,Fruity Tomato Stew,50,Hylian Tomato and Fresh Milk and Rock Salt,,,
-,Item_Cook_Q_04,Tomato Mushroom Stew,51,CookMushroom and Hylian Tomato,,,
-,Item_Cook_Q_05,Tomato Seafood Soup,52,CookFish and Hylian Tomato,,,
-,Item_Cook_K_07,Cream of Vegetable Soup,53,CookPlant and Rock Salt and Fresh Milk,0,0,0
-,Item_Cook_F_03,Veggie Cream Soup,54,(Fortified Pumpkin or Sun Pumpkin or Swift Carrot or Endura Carrot) and Rock Salt and Fresh Milk,0,0,0
-,Item_Cook_K_06,Cream of Mushroom Soup,55,CookMushroom and CookPlant and Rock Salt and Fresh Milk,0,0,0
-,Item_Cook_F_01,Creamy Meat Soup,56,CookMeat and CookPlant and Rock Salt and Fresh Milk,0,0,0
-,Item_Cook_F_02,Creamy Seefood Soup,57,CookFish and CookPlant and Rock Salt and Fresh Milk,0,0,0
-,Item_Cook_K_04,Snail Chowder,58,Sneaky River Snail and Tabantha Wheat and Fresh Milk and Goat Butter,,,
-,Item_Cook_F_04,Creamy Heart Soup,59,(Hearty Radish or Big Hearty Radish) and Voltfruit and Hydromelon and Fresh Milk,0,0,0
-,Item_Cook_A_14,Glazed Veggies,60,CookPlant and Courser Bee Honey,0,0,0
-,Item_Cook_A_11,Glazed Mushrooms,61,CookMushroom and Courser Bee Honey,0,0,0
-,Item_Cook_A_12,Glazed Meat,62,CookMeat and Courser Bee Honey,0,0,0
-,Item_Cook_A_13,Glazed Seefood,63,CookFish and Courser Bee Honey,0,0,0
-,Item_Cook_J_01,Curry Rice,64,Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_02,Vegetable Curry,65,(Fortified Pumpkin or Sun Pumpkin or Swift Carrot or Endura Carrot) and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_06,Meat Curry,66,Raw Meat and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_07,Prime Meat Curry,67,Raw Prime Meat and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_09,Gourmet Meat Curry,68,Raw Gourmet Meat and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_04,Poultry Curry,69,Raw Bird Drumstick and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_05,Prime Poultry Curry,70,Raw Bird Thigh and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_08,Gourmet Poultry Curry,71,Raw Whole Bird and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_J_03,Seafood Curry,72,(Mighty Porgy or Armored Porgy) and Hylian Rice and Goron Spice,0,0,0
-,Item_Cook_S_01,Cheesy Curry,73,Hylian Rice and Hateno Cheese and Goron Spice,,,
-,Item_Cook_K_08,Carrot Stew,74,(Swift Carrot or Endura Carrot) and Goat Butter and Fresh Milk and Tabantha Wheat,0,0,0
-,Item_Cook_K_03,Pumpkin Stew,75,(Fortified Pumpkin or Sun Pumpkin) and Tabantha Wheat and Fresh Milk and Goat Butter,0,0,0
-,Item_Cook_K_01,Meat Stew,76,(Raw Meat or Raw Bird Drumstick) and Tabantha Wheat and Fresh Milk and Goat Butter,0,0,0
-,Item_Cook_K_02,Prime Meat Stew,77,(Raw Prime Meat or Raw Bird Thigh) and Tabantha Wheat and Fresh Milk and Goat Butter,0,0,0
-,Item_Cook_K_05,Gourmet Meat Stew,78,(Raw Gourmet Meat or Raw Whole Bird) and Tabantha Wheat and Fresh Milk and Goat Butter,0,0,0
-,Item_Cook_B_20,Meat-Stuffed Pumpkin,79,(Fortified Pumpkin or Sun Pumpkin) and CookMeat,0,0,0
-,Item_Cook_G_13,Vegetable Risotto,80,(Fortified Pumpkin or Sun Pumpkin or Swift Carrot or Endura Carrot) and Hylian Rice and Rock Salt and Goat Butter,0,0,0
-,Item_Cook_G_12,Mushroom Risotto,81,CookMushroom and Hylian Rice and Rock Salt and Goat Butter,0,0,0
-,Item_Cook_G_14,Salmon Risotto,82,Hearty Salmon and Hylian Rice and Rock Salt and Goat Butter,0,0,0
-,Item_Cook_G_17,Crab Risotto,83,(Razorclaw Crab or Ironshell Crab or Bright-Eyed Crab) and Hylian Rice and Rock Salt and Goat Butter,0,0,0
-,Item_Cook_Q_10,Cheesy Risotto,84,(CookFish or CookMushroom or CookPlant) and Hateno Cheese and Hylian Rice and Rock Salt,,,
-,Item_Cook_E_01,Poultry Pilaf,85,Raw Bird Drumstick and Bird Egg and Hylian Rice and Goat Butter,0,0,0
-,Item_Cook_E_02,Prime Poultry Pilaf,86,Raw Bird Thigh and Bird Egg and Hylian Rice and Goat Butter,0,0,0
-,Item_Cook_E_03,Gourmet Poultry Pilaf,87,Raw Whole Bird and Bird Egg and Hylian Rice and Goat Butter,0,0,0
-,Item_Cook_N_01,Seafood Paella,88,(Mighty Porgy or Armored Porgy) and (Razorclaw Crab or Ironshell Crab) and Hylian Rice and Goat Butter and Rock Salt,,,
-,Item_Cook_G_11,Curry Pilaf,89,Goron Spice and Hylian Rice and Goat Butter,0,0,0
-,Item_Cook_E_04,Fried Egg and Rice,90,Hylian Rice and Bird Egg,0,0,0
-,Item_Cook_Q_08,Crunchy Fried Rice,91,CookMeat and Oil Jar and Hylian Rice and Bird Egg,,,
-,Item_Cook_G_10,Seafood Fried Rice,92,(Mighty Porgy or Armored Porgy) and Hylian Rice and Rock Salt,0,0,0
-,Item_Cook_G_16,Crab Omelet with Rice,93,(Razorclaw Crab or Ironshell Crab or Bright-Eyed Crab) and Bird Egg and Hylian Rice and Rock Salt,0,0,0
-,Item_Cook_G_05,Meat and Rice Bowl,94,Raw Meat and Hylian Rice and Rock Salt,0,0,0
-,Item_Cook_G_06,Prime Meat and Rice Bowl,95,Raw Prime Meat and Hylian Rice and Rock Salt,0,0,0
-,Item_Cook_G_09,Gourmet Meat and Rice Bowl,96,Raw Gourmet Meat and Hylian Rice and Rock Salt,0,0,0
-,Item_Cook_S_02,Cheesy Meat Bowl,97,Raw Meat and Hylian Rice and Hateno Cheese and Rock Salt,,,
-,Item_Cook_S_03,Prime Cheesy Meat Bowl,98,Raw Prime Meat and Hylian Rice and Hateno Cheese and Rock Salt,,,
-,Item_Cook_S_04,Gourmet Cheesy Meat Bowl,99,Raw Gourmet Meat and Hylian Rice and Hateno Cheese and Rock Salt,,,
-,Item_Cook_G_03,Veggie Rice Balls,100,CookPlant and Hylian Rice,0,0,0
-,Item_Cook_G_04,Mushroom Rice Balls,101,CookMushroom and Hylian Rice,0,0,0
-,Item_Cook_G_15,Meaty Rice Balls,102,CookMeat and Hylian Rice,0,0,0
-,Item_Cook_G_02,Seafood Rice Balls,103,CookFish and Hylian Rice,0,0,0
-,Item_Cook_R_02,Veggie Porridge,104,CookPlant and Hylian Rice and Fresh Milk,,,
-,Item_Cook_M_01,Wheat Bread,105,Tabantha Wheat and Rock Salt,0,0,0
-,Item_Cook_R_09,Melty Cheesy Bread,106,"Tabantha Wheat, Oil Jar and Hateno Cheese",,,
-,Item_Cook_R_04,Hylian Tomato Pizza,107,Hylian Tomato and Tabantha Wheat and Hateno Cheese,,,
-,Item_Cook_I_04,Meat Pie,108,CookMeat and Tabantha Wheat and Goat Butter and Rock Salt,0,0,0
-,Item_Cook_I_15,Fish Pie,109,CookFish and Tabantha Wheat and Goat Butter and Rock Salt,0,0,0
-,Item_Cook_S_10,Cheesy Tomato,110,Hylian Tomato and Hateno Cheese,,,
-,Item_Cook_R_10,Cheesy Baked Fish,111,"CookFish, Hateno Cheese and Oil Jar",,,
+,Item_Cook_Q_02,Fruity Tomato Stew,50,Hylian Tomato && Fresh Milk && Rock Salt,,,
+,Item_Cook_Q_02,Fruity Tomato Stew,50,Hylian Tomato && Fresh Milk && Rock Salt,,,
+,Item_Cook_Q_04,Tomato Mushroom Stew,51,CookMushroom && Hylian Tomato,,,
+,Item_Cook_Q_05,Tomato Seafood Soup,52,CookFish && Hylian Tomato,,,
+,Item_Cook_K_07,Cream of Vegetable Soup,53,CookPlant && Rock Salt && Fresh Milk,0,0,0
+,Item_Cook_F_03,Veggie Cream Soup,54,(Fortified Pumpkin || Sun Pumpkin || Swift Carrot || Endura Carrot) && Rock Salt && Fresh Milk,0,0,0
+,Item_Cook_K_06,Cream of Mushroom Soup,55,CookMushroom && CookPlant && Rock Salt && Fresh Milk,0,0,0
+,Item_Cook_F_01,Creamy Meat Soup,56,CookMeat && CookPlant && Rock Salt && Fresh Milk,0,0,0
+,Item_Cook_F_02,Creamy Seefood Soup,57,CookFish && CookPlant && Rock Salt && Fresh Milk,0,0,0
+,Item_Cook_K_04,Snail Chowder,58,Sneaky River Snail && Tabantha Wheat && Fresh Milk && Goat Butter,,,
+,Item_Cook_F_04,Creamy Heart Soup,59,(Hearty Radish || Big Hearty Radish) && Voltfruit && Hydromelon && Fresh Milk,0,0,0
+,Item_Cook_A_14,Glazed Veggies,60,CookPlant && Courser Bee Honey,0,0,0
+,Item_Cook_A_11,Glazed Mushrooms,61,CookMushroom && Courser Bee Honey,0,0,0
+,Item_Cook_A_12,Glazed Meat,62,CookMeat && Courser Bee Honey,0,0,0
+,Item_Cook_A_13,Glazed Seefood,63,CookFish && Courser Bee Honey,0,0,0
+,Item_Cook_J_01,Curry Rice,64,Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_02,Vegetable Curry,65,(Fortified Pumpkin || Sun Pumpkin || Swift Carrot || Endura Carrot) && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_06,Meat Curry,66,Raw Meat && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_07,Prime Meat Curry,67,Raw Prime Meat && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_09,Gourmet Meat Curry,68,Raw Gourmet Meat && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_04,Poultry Curry,69,Raw Bird Drumstick && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_05,Prime Poultry Curry,70,Raw Bird Thigh && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_08,Gourmet Poultry Curry,71,Raw Whole Bird && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_J_03,Seafood Curry,72,(Mighty Porgy || Armored Porgy) && Hylian Rice && Goron Spice,0,0,0
+,Item_Cook_S_01,Cheesy Curry,73,Hylian Rice && Hateno Cheese && Goron Spice,,,
+,Item_Cook_K_08,Carrot Stew,74,(Swift Carrot || Endura Carrot) && Goat Butter && Fresh Milk && Tabantha Wheat,0,0,0
+,Item_Cook_K_03,Pumpkin Stew,75,(Fortified Pumpkin || Sun Pumpkin) && Tabantha Wheat && Fresh Milk && Goat Butter,0,0,0
+,Item_Cook_K_01,Meat Stew,76,(Raw Meat || Raw Bird Drumstick) && Tabantha Wheat && Fresh Milk && Goat Butter,0,0,0
+,Item_Cook_K_02,Prime Meat Stew,77,(Raw Prime Meat || Raw Bird Thigh) && Tabantha Wheat && Fresh Milk && Goat Butter,0,0,0
+,Item_Cook_K_05,Gourmet Meat Stew,78,(Raw Gourmet Meat || Raw Whole Bird) && Tabantha Wheat && Fresh Milk && Goat Butter,0,0,0
+,Item_Cook_B_20,Meat-Stuffed Pumpkin,79,(Fortified Pumpkin || Sun Pumpkin) && CookMeat,0,0,0
+,Item_Cook_G_13,Vegetable Risotto,80,(Fortified Pumpkin || Sun Pumpkin || Swift Carrot || Endura Carrot) && Hylian Rice && Rock Salt && Goat Butter,0,0,0
+,Item_Cook_G_12,Mushroom Risotto,81,CookMushroom && Hylian Rice && Rock Salt && Goat Butter,0,0,0
+,Item_Cook_G_14,Salmon Risotto,82,Hearty Salmon && Hylian Rice && Rock Salt && Goat Butter,0,0,0
+,Item_Cook_G_17,Crab Risotto,83,(Razorclaw Crab || Ironshell Crab || Bright-Eyed Crab) && Hylian Rice && Rock Salt && Goat Butter,0,0,0
+,Item_Cook_Q_10,Cheesy Risotto,84,(CookFish || CookMushroom || CookPlant) && Hateno Cheese && Hylian Rice && Rock Salt,,,
+,Item_Cook_E_01,Poultry Pilaf,85,Raw Bird Drumstick && Bird Egg && Hylian Rice && Goat Butter,0,0,0
+,Item_Cook_E_02,Prime Poultry Pilaf,86,Raw Bird Thigh && Bird Egg && Hylian Rice && Goat Butter,0,0,0
+,Item_Cook_E_03,Gourmet Poultry Pilaf,87,Raw Whole Bird && Bird Egg && Hylian Rice && Goat Butter,0,0,0
+,Item_Cook_N_01,Seafood Paella,88,(Mighty Porgy || Armored Porgy) && (Razorclaw Crab || Ironshell Crab) && Hylian Rice && Goat Butter && Rock Salt,,,
+,Item_Cook_G_11,Curry Pilaf,89,Goron Spice && Hylian Rice && Goat Butter,0,0,0
+,Item_Cook_E_04,Fried Egg and Rice,90,Hylian Rice && Bird Egg,0,0,0
+,Item_Cook_Q_08,Crunchy Fried Rice,91,CookMeat && Oil Jar && Hylian Rice && Bird Egg,,,
+,Item_Cook_G_10,Seafood Fried Rice,92,(Mighty Porgy || Armored Porgy) && Hylian Rice && Rock Salt,0,0,0
+,Item_Cook_G_16,Crab Omelet with Rice,93,(Razorclaw Crab || Ironshell Crab || Bright-Eyed Crab) && Bird Egg && Hylian Rice && Rock Salt,0,0,0
+,Item_Cook_G_05,Meat and Rice Bowl,94,Raw Meat && Hylian Rice && Rock Salt,0,0,0
+,Item_Cook_G_06,Prime Meat and Rice Bowl,95,Raw Prime Meat && Hylian Rice && Rock Salt,0,0,0
+,Item_Cook_G_09,Gourmet Meat and Rice Bowl,96,Raw Gourmet Meat && Hylian Rice && Rock Salt,0,0,0
+,Item_Cook_S_02,Cheesy Meat Bowl,97,Raw Meat && Hylian Rice && Hateno Cheese && Rock Salt,,,
+,Item_Cook_S_03,Prime Cheesy Meat Bowl,98,Raw Prime Meat && Hylian Rice && Hateno Cheese && Rock Salt,,,
+,Item_Cook_S_04,Gourmet Cheesy Meat Bowl,99,Raw Gourmet Meat && Hylian Rice && Hateno Cheese && Rock Salt,,,
+,Item_Cook_G_03,Veggie Rice Balls,100,CookPlant && Hylian Rice,0,0,0
+,Item_Cook_G_04,Mushroom Rice Balls,101,CookMushroom && Hylian Rice,0,0,0
+,Item_Cook_G_15,Meaty Rice Balls,102,CookMeat && Hylian Rice,0,0,0
+,Item_Cook_G_02,Seafood Rice Balls,103,CookFish && Hylian Rice,0,0,0
+,Item_Cook_R_02,Veggie Porridge,104,CookPlant && Hylian Rice && Fresh Milk,,,
+,Item_Cook_M_01,Wheat Bread,105,Tabantha Wheat && Rock Salt,0,0,0
+,Item_Cook_R_09,Melty Cheesy Bread,106,"Tabantha Wheat, Oil Jar && Hateno Cheese",,,
+,Item_Cook_R_04,Hylian Tomato Pizza,107,Hylian Tomato && Tabantha Wheat && Hateno Cheese,,,
+,Item_Cook_I_04,Meat Pie,108,CookMeat && Tabantha Wheat && Goat Butter && Rock Salt,0,0,0
+,Item_Cook_I_15,Fish Pie,109,CookFish && Tabantha Wheat && Goat Butter && Rock Salt,0,0,0
+,Item_Cook_S_10,Cheesy Tomato,110,Hylian Tomato && Hateno Cheese,,,
+,Item_Cook_R_10,Cheesy Baked Fish,111,"CookFish, Hateno Cheese && Oil Jar",,,
 ,Item_Cook_A_10,Omelet,112,Bird Egg,0,0,0
 ,Item_Cook_A_10,Omelet,112,Bird Egg,0,0,0
-,Item_Cook_N_03,Vegetable Omelet,113,CookPlant and Bird Egg and Goat Butter and Rock Salt,0,0,0
-,Item_Cook_N_04,Mushroom Omelet,114,CookMushroom and Bird Egg and Rock Salt and Goat Butter,0,0,0
-,Item_Cook_R_01,Cheesy Omelette,115,(CookMushroom or CookPlant) and Hateno Cheese and Bird Egg and Rock Salt,,,
-,Item_Cook_I_07,Hot Buttered Apple,116,(Apple or Golden Apple) and Goat Butter,4,0,0
-,Item_Cook_I_09,Honeyed Fruits,117,Cook Fruit and Courser Bee Honey,0,0,0
-,Item_Cook_I_08,Honeyed Apple,118,(Apple or Golden Apple) and Courser Bee Honey,0,0,0
+,Item_Cook_N_03,Vegetable Omelet,113,CookPlant && Bird Egg && Goat Butter && Rock Salt,0,0,0
+,Item_Cook_N_04,Mushroom Omelet,114,CookMushroom && Bird Egg && Rock Salt && Goat Butter,0,0,0
+,Item_Cook_R_01,Cheesy Omelette,115,(CookMushroom || CookPlant) && Hateno Cheese && Bird Egg && Rock Salt,,,
+,Item_Cook_I_07,Hot Buttered Apple,116,(Apple || Golden Apple) && Goat Butter,4,0,0
+,Item_Cook_I_09,Honeyed Fruits,117,Cook Fruit && Courser Bee Honey,0,0,0
+,Item_Cook_I_08,Honeyed Apple,118,(Apple || Golden Apple) && Courser Bee Honey,0,0,0
 ,Item_Cook_I_16,Honey Candy,119,Courser Bee Honey,-8,0,0
-,Item_Cook_I_13,Fried Bananas,120,Mighty Bananas and Tabantha Wheat and Cane Sugar,0,0,0
+,Item_Cook_I_13,Fried Bananas,120,Mighty Bananas && Tabantha Wheat && Cane Sugar,0,0,0
 ,Item_Cook_I_14,Egg Pudding,121,"Bird Egg, Fresh Milk, Cane Sugar",0,0,0
-,Item_Cook_I_10,Plain Crepe,122,Tabantha Wheat and Fresh Milk and Bird Egg and Cane Sugar,0,0,0
-,Item_Cook_I_11,Wildberry Crepe,123,Tabantha Wheat and Fresh Milk and Bird Egg and Cane Sugar and Wildberry,16,0,0
-,Item_Cook_I_17,Honey Crepe,124,Tabantha Wheat and Fresh Milk and Bird Egg and Cane Sugar and Courser Bee Honey,4,0,0
-,Item_Cook_I_12,Nutcake,125,Tabantha Wheat and Goat Butter and Cane Sugar and (Chickaloo Tree Nut or Acorn),0,0,0
-,Item_Cook_N_02,Fruitcake,126,"(Apple or Wildberry or Golden Apple) and (Apple or Wildberry or Voltfruit or Hydromelon or Palm Fruit or Mighty Bananas
-or Golden Apple) and Cane Sugar and Tabantha Wheat",4,0,0
-,Item_Cook_I_05,Carrot Cake,127,(Swift Carrot or Endura Carrot) and Tabantha Wheat and Cane Sugar and Goat Butter,0,0,0
-,Item_Cook_I_06,Pumpkin Pie,128,(Fortified Pumpkin or Sun Pumpkin) and Tabantha Wheat and Cane Sugar and Goat Butter,0,0,0
-,Item_Cook_Q_09,Cheesecake,129,Hateno Cheese and Tabantha Wheat and Cane Sugar,,,
-,Item_Cook_I_01,Fruit Pie,130,CookFruit and Tabantha Wheat and Goat Butter and Cane Sugar,0,0,0
-,Item_Cook_I_02,Apple Pie,131,(Apple or Golden Apple) and Tabantha Wheat and Goat Butter and Cane Sugar,0,0,0
+,Item_Cook_I_10,Plain Crepe,122,Tabantha Wheat && Fresh Milk && Bird Egg && Cane Sugar,0,0,0
+,Item_Cook_I_11,Wildberry Crepe,123,Tabantha Wheat && Fresh Milk && Bird Egg && Cane Sugar && Wildberry,16,0,0
+,Item_Cook_I_17,Honey Crepe,124,Tabantha Wheat && Fresh Milk && Bird Egg && Cane Sugar && Courser Bee Honey,4,0,0
+,Item_Cook_I_12,Nutcake,125,Tabantha Wheat && Goat Butter && Cane Sugar && (Chickaloo Tree Nut || Acorn),0,0,0
+,Item_Cook_N_02,Fruitcake,126,"(Apple || Wildberry || Golden Apple) && (Apple || Wildberry || Voltfruit || Hydromelon || Palm Fruit || Mighty Bananas
+or Golden Apple) && Cane Sugar && Tabantha Wheat",4,0,0
+,Item_Cook_I_05,Carrot Cake,127,(Swift Carrot || Endura Carrot) && Tabantha Wheat && Cane Sugar && Goat Butter,0,0,0
+,Item_Cook_I_06,Pumpkin Pie,128,(Fortified Pumpkin || Sun Pumpkin) && Tabantha Wheat && Cane Sugar && Goat Butter,0,0,0
+,Item_Cook_Q_09,Cheesecake,129,Hateno Cheese && Tabantha Wheat && Cane Sugar,,,
+,Item_Cook_I_01,Fruit Pie,130,CookFruit && Tabantha Wheat && Goat Butter && Cane Sugar,0,0,0
+,Item_Cook_I_02,Apple Pie,131,(Apple || Golden Apple) && Tabantha Wheat && Goat Butter && Cane Sugar,0,0,0
 ,Item_Cook_I_03,Egg Tart,132,"Bird Egg, Tabantha Wheat, Goat Butter, Cane Sugar",0,0,0
 ,Item_Cook_K_09,Milk,133,Fresh Milk,2,0,0
-,Item_Cook_R_03,Noble Pursuit,134,Palm Fruit and Hydromelon and Voltfruit and Rock Salt,,,
-,Item_Cook_L_01,Monster Stew,135,CookMeat and CookFish and Monster Extract,0,0,0
-,Item_Cook_L_02,Monster Soup,136,Tabantha Wheat and Goat Butter and Fresh Milk and Monster Extract,0,0,0
-,Item_Cook_L_05,Monster Curry,137,Hylian Rice and Goron Spice and Monster Extract,0,0,0
-,Item_Cook_L_04,Monster Rice Ball,138,Hylian Rice and Rock Salt and Monster Extract,0,0,0
-,Item_Cook_L_03,Monster Cake,139,Tabantha Wheat and Cane Sugar and Monster Extract and Goat Butter,0,0,0
-,Item_Cook_S_05,Dark Stew,140,Dark Clump and CookMeat and CookFish,,,
-,Item_Cook_S_07,Dark Soup,141,Dark Clump and Tabantha Wheat and Goat Butter and Fresh Milk,,,
-,Item_Cook_S_08,Dark Curry,142,Dark Clump and Goron Spice and Hylian Rice,,,
-,Item_Cook_S_06,Dark Rice Ball,143,Dark Clump and Rock Salt and Hylian Rice,,,
-,Item_Cook_S_09,Dark Cake,144,Dark Clump and Cane Sugar and Tabantha Wheat and Goat Butter,,,
+,Item_Cook_R_03,Noble Pursuit,134,Palm Fruit && Hydromelon && Voltfruit && Rock Salt,,,
+,Item_Cook_L_01,Monster Stew,135,CookMeat && CookFish && Monster Extract,0,0,0
+,Item_Cook_L_02,Monster Soup,136,Tabantha Wheat && Goat Butter && Fresh Milk && Monster Extract,0,0,0
+,Item_Cook_L_05,Monster Curry,137,Hylian Rice && Goron Spice && Monster Extract,0,0,0
+,Item_Cook_L_04,Monster Rice Ball,138,Hylian Rice && Rock Salt && Monster Extract,0,0,0
+,Item_Cook_L_03,Monster Cake,139,Tabantha Wheat && Cane Sugar && Monster Extract && Goat Butter,0,0,0
+,Item_Cook_S_05,Dark Stew,140,Dark Clump && CookMeat && CookFish,,,
+,Item_Cook_S_07,Dark Soup,141,Dark Clump && Tabantha Wheat && Goat Butter && Fresh Milk,,,
+,Item_Cook_S_08,Dark Curry,142,Dark Clump && Goron Spice && Hylian Rice,,,
+,Item_Cook_S_06,Dark Rice Ball,143,Dark Clump && Rock Salt && Hylian Rice,,,
+,Item_Cook_S_09,Dark Cake,144,Dark Clump && Cane Sugar && Tabantha Wheat && Goat Butter,,,
 ,Item_Cook_O_01,Dubious Food,145,CookForeign,,,
 ,Item_Cook_O_01,Dubious Food,145,CookGolem,,,
-,Item_Cook_O_01,Dubious Food,145,CookEnemy or CookInsect,0,0,0
+,Item_Cook_O_01,Dubious Food,145,CookEnemy || CookInsect,0,0,0
 ,Item_Cook_O_02,Rock-Hard Food,146,CookOre,0,0,0
-,Item_Cook_C_17_StaminaRecover,Energizing Elixir,215,CookEnemy and CookInsect (Energizing),0,0,0
-,Item_Cook_C_17_AllSpeed,Hasty Elixir,216,CookEnemy and CookInsect (Hasty),0,0,0
-,Item_Cook_C_17_ResistCold,Spicy Elixir,217,CookEnemy and CookInsect (Spicy),0,0,0
-,Item_Cook_C_17_ResistHot,Chilly Elixir,218,CookEnemy and CookInsect (Chilly),0,0,0
-,Item_Cook_C_17_ResistElectric,Electro Elixir,219,CookEnemy and CookInsect (Electro),0,0,0
-,Item_Cook_C_17_ResistBurn,Fireproof Elixir,220,CookEnemy and CookInsect (Fireproof),0,0,0
-,Item_Cook_C_17_AttackUp,Mighty Elixir,221,CookEnemy and CookInsect (Mighty),0,0,0
-,Item_Cook_C_17_DefenseUp,Tough Elixir,222,CookEnemy and CookInsect (Tough),0,0,0
-,Item_Cook_C_17_QuietnessUp,Sneaky Elixir,223,CookEnemy and CookInsect (Sneaky),0,0,0
-,Item_Cook_C_17_NotSlippy,Sticky Elixir,224,CookEnemy and CookInsect (Sticky),0,0,0
-,Item_Cook_C_17_LightEmission,Bright Elixir,225,CookEnemy and CookInsect (Bright),0,0,0
-,Item_Cook_C_17_ExStaminaMaxUp,Enduring Elixir,226,CookEnemy and CookInsect (Enduring),0,0,0
-,Item_Cook_C_17_LifeMaxUp,Hearty Elixir,227,CookEnemy and CookInsect (Hearty),0,0,0
-,Item_Cook_C_16,Fairy Tonic,228,Fairy and (CookGolem or CookForeign),-12,,
-,Item_Cook_C_16,Fairy Tonic,228,Fairy and CookOre and CookInsect and CookEnemy,-12,0,0
-,Item_Cook_C_16,Fairy Tonic,228,Fairy and CookInsect and CookEnemy,-12,0,0
-,Item_Cook_C_16,Fairy Tonic,228,Fairy and (CookOre or CookEnemy or CookInsect),-12,0,0
+,Item_Cook_C_17_StaminaRecover,Energizing Elixir,215,CookEnemy && CookInsect (Energizing),0,0,0
+,Item_Cook_C_17_AllSpeed,Hasty Elixir,216,CookEnemy && CookInsect (Hasty),0,0,0
+,Item_Cook_C_17_ResistCold,Spicy Elixir,217,CookEnemy && CookInsect (Spicy),0,0,0
+,Item_Cook_C_17_ResistHot,Chilly Elixir,218,CookEnemy && CookInsect (Chilly),0,0,0
+,Item_Cook_C_17_ResistElectric,Electro Elixir,219,CookEnemy && CookInsect (Electro),0,0,0
+,Item_Cook_C_17_ResistBurn,Fireproof Elixir,220,CookEnemy && CookInsect (Fireproof),0,0,0
+,Item_Cook_C_17_AttackUp,Mighty Elixir,221,CookEnemy && CookInsect (Mighty),0,0,0
+,Item_Cook_C_17_DefenseUp,Tough Elixir,222,CookEnemy && CookInsect (Tough),0,0,0
+,Item_Cook_C_17_QuietnessUp,Sneaky Elixir,223,CookEnemy && CookInsect (Sneaky),0,0,0
+,Item_Cook_C_17_NotSlippy,Sticky Elixir,224,CookEnemy && CookInsect (Sticky),0,0,0
+,Item_Cook_C_17_LightEmission,Bright Elixir,225,CookEnemy && CookInsect (Bright),0,0,0
+,Item_Cook_C_17_ExStaminaMaxUp,Enduring Elixir,226,CookEnemy && CookInsect (Enduring),0,0,0
+,Item_Cook_C_17_LifeMaxUp,Hearty Elixir,227,CookEnemy && CookInsect (Hearty),0,0,0
+,Item_Cook_C_16,Fairy Tonic,228,Fairy && (CookGolem || CookForeign),-12,,
+,Item_Cook_C_16,Fairy Tonic,228,Fairy && CookOre && CookInsect && CookEnemy,-12,0,0
+,Item_Cook_C_16,Fairy Tonic,228,Fairy && CookInsect && CookEnemy,-12,0,0
+,Item_Cook_C_16,Fairy Tonic,228,Fairy && (CookOre || CookEnemy || CookInsect),-12,0,0
 ,Item_Cook_C_16,Fairy Tonic,228,Fairy,-12,0,0
