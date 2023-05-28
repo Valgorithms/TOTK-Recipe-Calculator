@@ -72,4 +72,5 @@ $ingredient5 = new Ingredient(
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump($recipe);
 
-$crafter->process($recipe);
+$result = $crafter->process($recipe);
+var_dump($result);

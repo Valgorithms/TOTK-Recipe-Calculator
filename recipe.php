@@ -19,11 +19,6 @@ class Recipe {
     private ?int $exStaminaMaxUp = 0;
     private ?int $lifeMaxUp = 0;
 
-    private ?bool $hasFoodMaterial = false; //[CookFruit, CookFish, CookFruit, CookInsect, CookMeat, CookMushroom, CookPlant, Material]
-    private ?bool $hasDubiousMaterial = false; //[CookForeign, CookGolem, CookEnemy, CookInsect]
-    private ?bool $hasOreMaterial = false; //[CookOre]
-    private ?bool $hasElixirMaterial = false; //[CookEnemy, CookInsect]
-
     public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
         foreach ($ingredients as $ingredient) if ($ingredient) $this->ingredients[] = $ingredient; //Allow passing NULL to skip an ingredient slot
         $cookingMethod ? ($this->cookingMethod = $cookingMethod) : ($this->cookingMethod = 'Cooking Pot');

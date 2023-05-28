@@ -8,7 +8,22 @@ class Crafter {
     private Array $roast_chilled;
     private Collection $roast_chilled_collection;
 
-    private Recipe $recipe;
+    private ?Recipe $recipe = null;
+
+    private array $foodMaterials = ['CookFruit', 'CookFish', 'CookFruit', 'CookInsect', 'CookMeat', 'CookMushroom', 'CookPlant', 'Material'];
+    private array $dubiousMaterial = ['CookForeign', 'CookGolem', 'CookEnemy', 'CookInsect'];
+    private array $oreMaterial = ['CookOre'];
+    private array $elixirMaterial = ['CookEnemy', 'CookInsect'];
+    private array $fairyMaterial = ['Fairy'];
+
+    private ?bool $hasFoodMaterial = false;
+    private ?bool $hasDubiousMaterial = false;
+    private ?bool $hasOreMaterial = false;
+    private ?bool $hasElixirMaterial = false;
+    private ?bool $hasFairyMaterial = false;
+
+    private ?string $classification = '';
+    private ?string $modifier = '';
 
     public function __construct(Array $materials, Collection $materials_collection, Array $meals, Collection $meals_collection, Array $roast_chilled, Collection $roast_chilled_collection) {
         $this->materials = $materials;
@@ -19,7 +34,15 @@ class Crafter {
         $this->roast_chilled_collection = $roast_chilled_collection;
     }
 
-    public function process($recipe): array|collection {
+    public function process(Recipe $recipe): array|collection {
+        $this->setRecipe($recipe);
+        foreach ($this->getRecipe()->getIngredients() as $ingredient) {
+            if (in_array($ingredient->getClassification, $this->foodMaterials)) $this->hasFoodMaterial = true;
+            if (in_array($ingredient->getClassification, $this->dubiousMaterial)) $this->hasDubiousMaterial = true;
+            if (in_array($ingredient->getClassification, $this->oreMaterial)) $this->hasOreMaterial = true;
+            if (in_array($ingredient->getClassification, $this->elixirMaterial)) $this->hasElixirMaterial = true;
+            if (in_array($ingredient->getClassification, $this->fairyMaterial)) $this->hasFairyMaterial = true;
+        }
         //TODO
         return []; //Placeholder
     }
