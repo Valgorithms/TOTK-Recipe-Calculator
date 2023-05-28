@@ -3,21 +3,21 @@
 //TODO: Potency should affect the efficiency of the effect type, but the data dump doesn't have that info?
 
 class Recipe {
-    private ?array $ingredients; //array of Ingredient objects (max of 5)
-    private ?string $cookingMethod; //Cooking Pot, Fire, Frozen, Hot Spring (Single Egg Only)
+    private ?array $ingredients = []; //array of Ingredient objects (max of 5)
+    private ?string $cookingMethod = ''; //Cooking Pot, Fire, Frozen, Hot Spring (Single Egg Only)
     
-    private ?string $name;
-    private ?string $classification; //Food, Elixer, Dubious, or Rock Hard
-    private ?int $sellingPrice;
-    private ?int $effectLevel; //Potency, (Stamina Recovery = Potency * ~90)
-    private ?string $effectType; //Buff [LifeRecover (Critical only), LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
-    private ?int $effectiveTime; //Duration in microseconds (?) (900 = 30 seconds for 1 item? Seems wrong)
-    private ?int $hitPointRecover; //Quarters of a Heart
+    private ?string $name = '';
+    private ?string $classification = ''; //Food, Elixer, Dubious, or Rock Hard
+    private ?int $sellingPrice = 0;
+    private ?int $effectLevel = 0; //Potency, (Stamina Recovery = Potency * ~90)
+    private ?string $effectType = ''; //Buff [LifeRecover (Critical only), LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
+    private ?int $effectiveTime = 0; //Duration in microseconds (?) (900 = 30 seconds for 1 item? Seems wrong)
+    private ?int $hitPointRecover = 0; //Quarters of a Heart
 
-    private ?string $potency; //Normal, Med, High
-    private ?int $staminaRecover = null;
-    private ?int $exStaminaMaxUp = null;
-    private ?int $lifeMaxUp = null;
+    private ?string $potency = ''; //Normal, Med, High
+    private ?int $staminaRecover = 0;
+    private ?int $exStaminaMaxUp = 0;
+    private ?int $lifeMaxUp = 0;
 
     public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
         $this->ingredients = $ingredients;

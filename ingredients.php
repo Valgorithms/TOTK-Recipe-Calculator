@@ -2,7 +2,7 @@
 $ingredients = [
     [
         'ActorName' => 'Animal_Insect_S',
-        'EuenName' => 'Hightail Lizard',
+        'Euen name' => 'Hightail Lizard',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 10,
@@ -16,7 +16,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Animal_Insect_S',
-        'EuenName' => 'Cold Darner',
+        'Euen name' => 'Cold Darner',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 10,
@@ -30,7 +30,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Animal_Insect_T',
-        'EuenName' => 'Warm Darner',
+        'Euen name' => 'Warm Darner',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 10,
@@ -44,7 +44,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Animal_Insect_X',
-        'EuenName' => 'Fireproof Lizard',
+        'Euen name' => 'Fireproof Lizard',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 25,
@@ -58,7 +58,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'BeeHome',
-        'EuenName' => 'Courser Bee Honey',
+        'Euen name' => 'Courser Bee Honey',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -72,7 +72,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'ElectricalFruit',
-        'EuenName' => 'Shock Fruit',
+        'Euen name' => 'Shock Fruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -86,7 +86,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'FireFruit',
-        'EuenName' => 'Fire Fruit',
+        'Euen name' => 'Fire Fruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -100,7 +100,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'IceFruit',
-        'EuenName' => 'Ice Fruit',
+        'Euen name' => 'Ice Fruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -114,7 +114,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_A',
-        'EuenName' => 'Hyrule Bass',
+        'Euen name' => 'Hyrule Bass',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -128,7 +128,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_AA',
-        'EuenName' => 'Ancient Arowana',
+        'Euen name' => 'Ancient Arowana',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -142,7 +142,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_AC',
-        'EuenName' => 'Glowing Cave Fish',
+        'Euen name' => 'Glowing Cave Fish',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -156,7 +156,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_B',
-        'EuenName' => 'Hearty Bass',
+        'Euen name' => 'Hearty Bass',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 72,
@@ -170,7 +170,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_C',
-        'EuenName' => 'Chillfin Trout',
+        'Euen name' => 'Chillfin Trout',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -184,7 +184,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_D',
-        'EuenName' => 'Voltfin Trout',
+        'Euen name' => 'Voltfin Trout',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -198,7 +198,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_E',
-        'EuenName' => 'Mighty Carp',
+        'Euen name' => 'Mighty Carp',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -212,7 +212,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_F',
-        'EuenName' => 'Mighty Porgy',
+        'Euen name' => 'Mighty Porgy',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -226,7 +226,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_G',
-        'EuenName' => 'Armored Porgy',
+        'Euen name' => 'Armored Porgy',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -240,7 +240,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_H',
-        'EuenName' => 'Armored Carp',
+        'Euen name' => 'Armored Carp',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -254,7 +254,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_H',
-        'EuenName' => 'Armored Carp',
+        'Euen name' => 'Armored Carp',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 120,
@@ -268,7 +268,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_I',
-        'EuenName' => 'Hearty Salmon',
+        'Euen name' => 'Hearty Salmon',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 80,
@@ -282,7 +282,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_J',
-        'EuenName' => 'Sizzlefin Trout',
+        'Euen name' => 'Sizzlefin Trout',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -296,7 +296,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_L',
-        'EuenName' => 'Staminoka Bass',
+        'Euen name' => 'Staminoka Bass',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 72,
@@ -310,7 +310,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_M',
-        'EuenName' => 'Sneaky River Snail',
+        'Euen name' => 'Sneaky River Snail',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 24,
@@ -324,7 +324,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_X',
-        'EuenName' => 'Stealthfin Trout',
+        'Euen name' => 'Stealthfin Trout',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -338,7 +338,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_FishGet_Z',
-        'EuenName' => 'Sanke Carp',
+        'Euen name' => 'Sanke Carp',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 80,
@@ -352,7 +352,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_A',
-        'EuenName' => 'Apple',
+        'Euen name' => 'Apple',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -366,7 +366,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_B',
-        'EuenName' => 'Wildberry',
+        'Euen name' => 'Wildberry',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -380,7 +380,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_C',
-        'EuenName' => 'Voltfruit',
+        'Euen name' => 'Voltfruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -394,7 +394,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_E',
-        'EuenName' => 'Fleet-Lotus Seeds',
+        'Euen name' => 'Fleet-Lotus Seeds',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -408,7 +408,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_F',
-        'EuenName' => 'Hydromelon',
+        'Euen name' => 'Hydromelon',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -422,7 +422,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_G',
-        'EuenName' => 'Palm Fruit',
+        'Euen name' => 'Palm Fruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -436,7 +436,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_H',
-        'EuenName' => 'Mighty Bananas',
+        'Euen name' => 'Mighty Bananas',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -450,7 +450,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_I',
-        'EuenName' => 'Spicy Pepper',
+        'Euen name' => 'Spicy Pepper',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -464,7 +464,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_J',
-        'EuenName' => 'Fortified Pumpkin',
+        'Euen name' => 'Fortified Pumpkin',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -478,7 +478,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_K',
-        'EuenName' => 'Acorn',
+        'Euen name' => 'Acorn',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 8,
@@ -492,7 +492,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_L',
-        'EuenName' => 'Chickaloo Tree Nut',
+        'Euen name' => 'Chickaloo Tree Nut',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -506,7 +506,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_M',
-        'EuenName' => 'Hylian Tomato',
+        'Euen name' => 'Hylian Tomato',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -520,7 +520,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_N',
-        'EuenName' => 'Sun Pumpkin',
+        'Euen name' => 'Sun Pumpkin',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -534,7 +534,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Fruit_P',
-        'EuenName' => 'Golden Apple',
+        'Euen name' => 'Golden Apple',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -548,7 +548,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_InsectGet_K',
-        'EuenName' => 'Razorclaw Crab',
+        'Euen name' => 'Razorclaw Crab',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -562,7 +562,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_InsectGet_O',
-        'EuenName' => 'Ironshell Crab',
+        'Euen name' => 'Ironshell Crab',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -576,7 +576,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_InsectGet_Z',
-        'EuenName' => 'Bright-Eyed Crab',
+        'Euen name' => 'Bright-Eyed Crab',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -590,7 +590,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_01',
-        'EuenName' => 'Cane Sugar',
+        'Euen name' => 'Cane Sugar',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -604,7 +604,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_02',
-        'EuenName' => 'Goron Spice',
+        'Euen name' => 'Goron Spice',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -618,7 +618,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_03',
-        'EuenName' => 'Hylian Rice',
+        'Euen name' => 'Hylian Rice',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -632,7 +632,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_04',
-        'EuenName' => 'Bird Egg',
+        'Euen name' => 'Bird Egg',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -646,7 +646,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_05',
-        'EuenName' => 'Fresh Milk',
+        'Euen name' => 'Fresh Milk',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -660,7 +660,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_06',
-        'EuenName' => 'Goat Butter',
+        'Euen name' => 'Goat Butter',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -674,7 +674,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_07',
-        'EuenName' => 'Tabantha Wheat',
+        'Euen name' => 'Tabantha Wheat',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -687,7 +687,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_07',
-        'EuenName' => 'Hightail Lizard',
+        'Euen name' => 'Hightail Lizard',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 10,
@@ -701,7 +701,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_08',
-        'EuenName' => 'Monster Extract',
+        'Euen name' => 'Monster Extract',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 50,
@@ -715,7 +715,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_09',
-        'EuenName' => 'Oil Jar',
+        'Euen name' => 'Oil Jar',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -729,7 +729,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_10',
-        'EuenName' => 'Hateno Cheese',
+        'Euen name' => 'Hateno Cheese',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -743,7 +743,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Material_11',
-        'EuenName' => 'Dark Clump',
+        'Euen name' => 'Dark Clump',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -757,7 +757,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Meat_01',
-        'EuenName' => 'Raw Meat',
+        'Euen name' => 'Raw Meat',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -771,7 +771,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Meat_02',
-        'EuenName' => 'Raw Prime Meat',
+        'Euen name' => 'Raw Prime Meat',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 60,
@@ -785,7 +785,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Meat_06',
-        'EuenName' => 'Raw Bird Drumstick',
+        'Euen name' => 'Raw Bird Drumstick',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -799,7 +799,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Meat_07',
-        'EuenName' => 'Raw Bird Thigh',
+        'Euen name' => 'Raw Bird Thigh',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 60,
@@ -813,7 +813,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Meat_11',
-        'EuenName' => 'Raw Gourmet Meat',
+        'Euen name' => 'Raw Gourmet Meat',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 140,
@@ -827,7 +827,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Meat_12',
-        'EuenName' => 'Raw Whole Bird',
+        'Euen name' => 'Raw Whole Bird',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 140,
@@ -841,7 +841,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_A',
-        'EuenName' => 'Stamella Shroom',
+        'Euen name' => 'Stamella Shroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -855,7 +855,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_B',
-        'EuenName' => 'Chillshroom',
+        'Euen name' => 'Chillshroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -869,7 +869,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_C',
-        'EuenName' => 'Sunshroom',
+        'Euen name' => 'Sunshroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -883,7 +883,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_E',
-        'EuenName' => 'Hylian Shroom',
+        'Euen name' => 'Hylian Shroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -897,7 +897,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_F',
-        'EuenName' => 'Hearty Truffle',
+        'Euen name' => 'Hearty Truffle',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 80,
@@ -911,7 +911,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_H',
-        'EuenName' => 'Zapshroom',
+        'Euen name' => 'Zapshroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -925,7 +925,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_J',
-        'EuenName' => 'Silent Shroom',
+        'Euen name' => 'Silent Shroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -939,7 +939,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_L',
-        'EuenName' => 'Razorshroom',
+        'Euen name' => 'Razorshroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -953,7 +953,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_M',
-        'EuenName' => 'Ironshroom',
+        'Euen name' => 'Ironshroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -967,7 +967,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_N',
-        'EuenName' => 'Big Hearty Truffle',
+        'Euen name' => 'Big Hearty Truffle',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 100,
@@ -981,7 +981,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_O',
-        'EuenName' => 'Endura Shroom',
+        'Euen name' => 'Endura Shroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 60,
@@ -995,7 +995,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_Mushroom_P',
-        'EuenName' => 'Skyshroom',
+        'Euen name' => 'Skyshroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1009,7 +1009,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_MushroomGet_D',
-        'EuenName' => 'Rushroom',
+        'Euen name' => 'Rushroom',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1023,7 +1023,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_MushroomGet_K',
-        'EuenName' => 'Brightcap',
+        'Euen name' => 'Brightcap',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -1037,7 +1037,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_A',
-        'EuenName' => 'Hyrule Herb',
+        'Euen name' => 'Hyrule Herb',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1051,7 +1051,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_B',
-        'EuenName' => 'Hearty Radish',
+        'Euen name' => 'Hearty Radish',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 80,
@@ -1065,7 +1065,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_C',
-        'EuenName' => 'Big Hearty Radish',
+        'Euen name' => 'Big Hearty Radish',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 100,
@@ -1079,7 +1079,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_E',
-        'EuenName' => 'Cool Safflina',
+        'Euen name' => 'Cool Safflina',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1093,7 +1093,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_F',
-        'EuenName' => 'Warm Safflina',
+        'Euen name' => 'Warm Safflina',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1107,7 +1107,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_G',
-        'EuenName' => 'Mighty Thistle',
+        'Euen name' => 'Mighty Thistle',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -1121,7 +1121,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_H',
-        'EuenName' => 'Armoranth',
+        'Euen name' => 'Armoranth',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -1135,7 +1135,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_I',
-        'EuenName' => 'Blue Nightshade',
+        'Euen name' => 'Blue Nightshade',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -1149,7 +1149,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_J',
-        'EuenName' => 'Silent Princess',
+        'Euen name' => 'Silent Princess',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 30,
@@ -1163,7 +1163,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_L',
-        'EuenName' => 'Electric Safflina',
+        'Euen name' => 'Electric Safflina',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1177,7 +1177,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_M',
-        'EuenName' => 'Swift Carrot',
+        'Euen name' => 'Swift Carrot',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -1191,7 +1191,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_O',
-        'EuenName' => 'Swift Violet',
+        'Euen name' => 'Swift Violet',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 40,
@@ -1205,7 +1205,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_Q',
-        'EuenName' => 'Endura Carrot',
+        'Euen name' => 'Endura Carrot',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 80,
@@ -1219,7 +1219,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_R',
-        'EuenName' => 'Sundelion',
+        'Euen name' => 'Sundelion',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -1233,7 +1233,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_S',
-        'EuenName' => 'Stambulb',
+        'Euen name' => 'Stambulb',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 16,
@@ -1247,7 +1247,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'Item_PlantGet_U',
-        'EuenName' => 'Korok Frond',
+        'Euen name' => 'Korok Frond',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 12,
@@ -1261,7 +1261,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'LightBall_Large',
-        'EuenName' => 'Giant Brightbloom Seed',
+        'Euen name' => 'Giant Brightbloom Seed',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -1275,7 +1275,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'LightBall_Small',
-        'EuenName' => 'Brightbloom Seed',
+        'Euen name' => 'Brightbloom Seed',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 32,
@@ -1289,7 +1289,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'LightFruit',
-        'EuenName' => 'Dazzlefruit',
+        'Euen name' => 'Dazzlefruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 20,
@@ -1303,7 +1303,7 @@ $ingredients = [
     ],
     [
         'ActorName' => 'WaterFruit',
-        'EuenName' => 'Splash Fruit',
+        'Euen name' => 'Splash Fruit',
         'Classification' => '',
         'RockHard' => FALSE,
         'BuyingPrice' => 10,
@@ -1317,5 +1317,5 @@ $ingredients = [
     ]
 ];
 
-$ingredients_collection = new Collection([], 'EuenName');
+$ingredients_collection = new Collection([], 'Euen name');
 foreach ($ingredients as $array) $ingredients_collection->pushItem($array);
