@@ -8,11 +8,14 @@ require 'ingredient.php';
 require 'recipe.php';
 require 'collection.php';
 //DATA DUMP COLLECTIONS
-require 'materials.php'; //$materials_collection
-require 'roast_chilled.php'; //$roasted_chilled_collection
-require 'meals.php'; //meals_collection
-//ARRAYS & COLLECTIONS
-//require 'ingredients.php'; //$ingredients, $ingredients_collection
+require 'materials.php'; //$materials, $materials_collection
+require 'roast_chilled.php'; //$roast_chilled, $roast_chilled_collection
+require 'meals.php'; //$meals, $meals_collection
+//Final Product Crafting
+include 'crafter.php';
+
+
+$crafter = new Crafter($materials, $materials_collection, $roast_chilled, $roast_chilled_collection, $meals, $meals_collection);
 
 //var_dump($materials_collection);
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
@@ -67,4 +70,6 @@ $ingredient5 = new Ingredient(
 );*/
 
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
-var_dump($recipe);
+//var_dump($recipe);
+
+$crafter->process($recipe);

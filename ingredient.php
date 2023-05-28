@@ -15,7 +15,7 @@ class Ingredient {
     private ?int $confirmedTime = 0; //Confirmed Time in seconds
     private ?int $hitPointRecover = 0; //Quarters of a Heart
 
-    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?bool $rockHard = false, ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', ?int $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $confirmedTime = 0, ?int $hitPointRecover = 0) {
+    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?bool $rockHard = false, ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $confirmedTime = 0, ?int $hitPointRecover = 0) {
         if (is_array($primary)) {
             $this->actorName = $primary['ActorName'];
             $this->euenName = $primary['Euen name'];
@@ -25,11 +25,14 @@ class Ingredient {
             $this->buyingPrice = $primary['BuyingPrice'];
             $this->sellingPrice = $primary['SellingPrice'];
             $this->color = $primary['Color'];
-            $this->additionalDamage = $primary['AdditionalDamage'];
+
+            if (is_int($primary['AdditionalDamage'])) $this->additionalDamage = $primary['AdditionalDamage'];
+            else $this->additionalDamage = 0;
             $this->effectLevel = $primary['EffectLevel'];
             $this->effectType = $primary['EffectType'];
             $this->effectiveTime = $primary['EffectiveTime'];
-            $this->confirmedTime = $primary['ConfirmedTime'];
+            if (is_int($primary['ConfirmedTime'])) $this->confirmedTime = $primary['ConfirmedTime'];
+            else $this->confirmedTime = 0;
             $this->hitPointRecover = $primary['HitPointRecover'];
         } else {
             $this->actorName = $primary;
