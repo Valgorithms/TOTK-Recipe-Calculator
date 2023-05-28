@@ -37,11 +37,11 @@ class Crafter {
     public function process(Recipe $recipe): array|collection {
         $this->setRecipe($recipe);
         foreach ($this->getRecipe()->getIngredients() as $ingredient) {
-            if (in_array($ingredient->getClassification, $this->foodMaterials)) $this->hasFoodMaterial = true;
-            if (in_array($ingredient->getClassification, $this->dubiousMaterial)) $this->hasDubiousMaterial = true;
-            if (in_array($ingredient->getClassification, $this->oreMaterial)) $this->hasOreMaterial = true;
-            if (in_array($ingredient->getClassification, $this->elixirMaterial)) $this->hasElixirMaterial = true;
-            if (in_array($ingredient->getClassification, $this->fairyMaterial)) $this->hasFairyMaterial = true;
+            if (in_array($ingredient->getClassification(), $this->foodMaterials)) $this->hasFoodMaterial = true;
+            if (in_array($ingredient->getClassification(), $this->dubiousMaterial)) $this->hasDubiousMaterial = true;
+            if (in_array($ingredient->getClassification(), $this->oreMaterial)) $this->hasOreMaterial = true;
+            if (in_array($ingredient->getClassification(), $this->elixirMaterial)) $this->hasElixirMaterial = true;
+            if (in_array($ingredient->getClassification(), $this->fairyMaterial)) $this->hasFairyMaterial = true;
         }
         //TODO
         return []; //Placeholder
