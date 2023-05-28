@@ -2,54 +2,57 @@
 //require 'collection.php';
 $csv = array_map('str_getcsv', file('materials.csv'));
 $keys = array_shift($csv);
-$keys[] = 'Classification';
-$keys[] = 'RockHard';
+//$keys[] = 'Classification';
+//$keys[] = 'Subclassification';
+//$keys[] = 'RockHard';
+//$keys[] = 'ConfirmedTime';
 $materials = array();
 foreach ($csv as $row) {
     $lower = strtolower($row[1]); //Actor name sometimes contains classification
     $classification = 'Material';
+    $subclassification = '';
     $rock_hard = TRUE;
     switch (TRUE) {
         case str_contains($lower, 'ore'):
-            $classification = 'Ore';
+            $classification = 'CookOre';
             break;
         case str_contains($lower, 'insect'):
-            $classification = 'Insect';
+            $classification = 'CookInsect';
             $rock_hard = FALSE;
             break;
         case str_contains($lower, 'fruit'):
-            $classification = 'Fruit';
+            $classification = 'CookFruit';
             $rock_hard = FALSE;
             break;
         case str_contains($lower, 'fish'):
-            $classification = 'Fish';
+            $classification = 'CookFish';
             $rock_hard = FALSE;
             break;
         case str_contains($lower, 'meat'):
-            $classification = 'Meat';
+            $classification = 'Raw Meat';
             $rock_hard = FALSE;
             break;
         case str_contains($lower, 'mushroom'):
-            $classification = 'Mushroom';
+            $classification = 'CookMushroom';
             $rock_hard = FALSE;
             break;
         case str_contains($lower, 'plant'):
-            $classification = 'Plant';
+            $classification = 'CookPlant';
             $rock_hard = FALSE;
             break;
         case str_contains($lower, 'enemy'):
-            $classification = 'Monster';
+            $classification = 'Monster Extract';
             $rock_hard = FALSE;
             break;
     }
     $lower2 = strtolower($row[2]); //Euen name can sometimes be used to extrapolate classification, or have other exceptions
     switch (true) {
         case str_contains($lower2, 'seed'):
-            $classification = 'Fruit';
+            $classification = 'CookFruit';
             break;
         case str_contains($lower2, 'star'):
-        case str_contains($lower2, 'dragon'):
-            $classification = 'Extend Time';
+        case str_contains($lower2, 'dragon'): //Light Dragon adds 30 minutes to duration
+            $classification = 'ExtendTime';
             break;
     }
     $row[] = $classification;
