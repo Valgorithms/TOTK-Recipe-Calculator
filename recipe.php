@@ -33,7 +33,7 @@ class Recipe {
         $effectiveTime ? $this->setEffectiveTime($effectiveTime) : $this->calcEffectiveTime();
         $hitPointRecover ? $this->sethitPointRecover($hitPointRecover) : $this->calchitPointRecover();
 
-        $this->calcClassification();
+        //$this->calcClassification(); //This is wrong
     }
 
     public function getName() {
@@ -311,7 +311,13 @@ class Recipe {
         }
     }
 
-    private function calcClassification(): void
+    private function calcMeal(): void
+    {
+        //
+    }
+    
+    //This needs to be reworked to follow the the Meals csv
+    /*private function calcClassification(): void
     {
         $classifications = [];
         foreach ($this->getIngredients() as $ingredient) if (! in_array($classification = $ingredient->getClassification(), $classifications)) $classifications[] = $classification;
@@ -341,5 +347,5 @@ class Recipe {
                 $this->setLifeMaxUp(null);
                 break;
         }
-    }
+    }*/
 }
