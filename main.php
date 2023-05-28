@@ -14,8 +14,7 @@ require 'meals.php'; //meals_collection
 //ARRAYS & COLLECTIONS
 //require 'ingredients.php'; //$ingredients, $ingredients_collection
 
-var_dump($materials_collection);
-return;
+//var_dump($materials_collection);
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
 /*
 $ingredient2 = new Ingredient(
@@ -67,5 +66,5 @@ $ingredient5 = new Ingredient(
     2 //Hitpoint Recovery (Quarters of a Heart)
 );*/
 
-$recipe = new Recipe([$ingredient1/*, $ingredient2, $ingredient3, $ingredient4, $ingredient5*/]);
-//var_dump($recipe);
+$recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
+var_dump($recipe);

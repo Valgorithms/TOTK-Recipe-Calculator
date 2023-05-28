@@ -20,7 +20,7 @@ class Recipe {
     private ?int $lifeMaxUp = 0;
 
     public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
-        $this->ingredients = $ingredients;
+        foreach ($ingredients as $ingredient) if ($ingredient) $this->ingredients[] = $ingredient; //Allow passing NULL to skip an ingredient slot
         $cookingMethod ? ($this->cookingMethod = $cookingMethod) : ($this->cookingMethod = 'Cooking Pot');
         
         if ($name) $this->name = $name;
