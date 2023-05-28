@@ -14,7 +14,6 @@ class Ingredient {
     public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?bool $rockHard = false, ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
         if (is_array($primary)) {
             var_dump($primary);
-            $array = $primary;
             $this->actorName = $primary['ActorName'];
             $this->euenName = $primary['Euen name'];
             $this->classification = $primary['Classification'];
