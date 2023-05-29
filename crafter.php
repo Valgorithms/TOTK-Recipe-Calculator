@@ -34,69 +34,85 @@ class Crafter {
     {
         $this->setRecipe($recipe);
 
-        $classifications = [];
-        foreach ($this->getRecipe()->getIngredients() as $ingredient) {
-            $classifications[] = $ingredient->getEuenName();
-            $classifications[] = $ingredient->getClassification();
+        $flags = []; //This will be an array of arrays, where the key is the classification and the value is an array of ingredients that have that classification
+        $components = [];
+        $categories = [];
+        $int = 0;
+        foreach ($ingredients = $this->getRecipe()->getIngredients() as $ingredient) {
+            $flags[$ingredient->getClassification()][]=$ingredient->getEuenName();
+            $components[] = $ingredient->getEuenName();
+            $categories[] = $ingredient->getClassification();
+            $int++;
         }
-        //var_dump('CLASSIFICATIONS', $classifications);
+        //var_dump('CLASSIFICATIONS', $flags);
 
-        
-        $checkArrayValues = function ($firstArray, $conditionString) {
-            // Remove extra quotation marks from the first array
-            $cleanFirstArray = array_map(function ($value) {
-                return trim($value, "\"'");
-            }, $firstArray);
 
-            // Remove excess quotation marks and whitespace from the condition string
-            $cleanConditionString = preg_replace('/"([^"]+)"/', '$1', $conditionString);
-            $cleanConditionString = trim($cleanConditionString);
-
-            $conditions = explode("&&", $cleanConditionString);
-            $requiredValues = [];
-            foreach ($conditions as $condition) {
-                $conditionValues = explode("&&", $condition);
-                $conditionValues = array_map(function ($value) {
-                    return trim($value, "\"'");
-                }, $conditionValues);
-                $requiredValues[] = $conditionValues;
-            }
-
-            //echo "First Array: ";
-            //print_r($cleanFirstArray);
-
-            echo "Required Values: ";
-            $cleanRequiredValues = array_map(function ($values) {
-                return array_map('trim', $values);
-            }, $requiredValues);
-            var_export($cleanRequiredValues);
-
-            foreach ($requiredValues as $values) {
-                $found = false;
-                foreach ($values as $value) {
-                    if (in_array($value, $cleanFirstArray)) {
-                        $found = true;
-                        break;
-                    }
-                }
-                if (!$found) {
-                    return false;
-                }
-            }
-
-            return true;
-        };
-
-        var_dump('[CLASSIFICATIONS]', $classifications);
         $possible_meals = [];
         foreach ($this->getMeals() as $meal) {
-            $expression = $meal['Recipe'];
-            if ($checkArrayValues($classifications, $expression)) {
-                $possible_meals[] = $meal;
+            $copy = $flags;
+            var_dump("COPY", $copy);
+            $string = str_replace(['(', ')'], '', $meal['Recipe']);
+            $sections = explode('&&', $string);
+            $reqs = [];
+            foreach ($sections as $section) {
+                preg_match_all('/"([^"]+)"/', $section, $matches);
+                $reqs[] = $matches[1];
             }
+            //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
+            $valid = false;
+            foreach ($reqs as $req) {
+                $valid = false;
+                foreach ($req as $r) {
+                    foreach ($copy as $key => $arr) {
+                        if ($r == $key) {
+                            $valid = true;
+                            var_dump("[REMOVING]", $r);
+                            unset($copy[$key][array_search($r, $copy[$key])]);
+                            var_dump("NEW COPY", $copy);
+                            break;
+                        } else foreach ($arr as $values) {
+                            if ($r == $values) {
+                                $valid = true;
+                                var_dump("[REMOVING]", $r);
+                                unset($copy[$key][array_search($r, $copy[$key])]);
+                                var_dump("NEW COPY", $copy);
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (!$valid) break;
+            }
+            if ($valid) $possible_meals[] = $meal;
         }
 
-        var_dump('POSSIBLE MEALS', $possible_meals);
+        //We got a good list to work from! Now we need to figure out which one is the correct one.
+        foreach ($possible_meals as $meal) {
+            //Count the number of strings that appear inside of the array of arrays inside of $flags
+            $string = str_replace(['(', ')'], '', $meal['Recipe']);
+            $sections = explode('&&', $string);
+            $reqs = [];
+            foreach ($sections as $section) {
+                preg_match_all('/"([^"]+)"/', $section, $matches);
+                $reqs[] = $matches[1];
+            }
+            $count = 0;
+            foreach ($reqs as $req) {
+                foreach ($req as $r) {
+                    foreach ($flags as $key => $arr) {
+                        if ($r == $key) {
+                            $count++;
+                            break;
+                        } else foreach ($arr as $values) {
+                            if ($r == $values) {
+                                $count++;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
 
         return $possible_meals;
     }
