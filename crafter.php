@@ -190,7 +190,18 @@ class Crafter {
             }
         }
 
-        return $possible_meals;
+        //return $possible_meals;
+        //Let's try to find the best match
+        echo '[REORDERING]' . PHP_EOL;
+        $ordered = [];
+        foreach ($possible_meals as $meal)
+        {
+            $parsedRecipe = $parsedRecipe($meal['Recipe']); //  Uncaught Error: Array callback has to contain indices 0 and 1 in D:\GitHub\TOTK Recipe Calculator\crafter.php:199
+            $count = count($parsedRecipe['required']) + count($parsedRecipe['optional']);
+            $ordered[$count][] = $meal;
+        }
+        krsort($ordered); //Sort $ordered by descending key
+        return array_shift($ordered); //Return the first element of $ordered
     }
 
     public function getMaterials(): Array {
