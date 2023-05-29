@@ -44,46 +44,113 @@ class Crafter {
             $categories[] = $ingredient->getClassification();
             $int++;
         }
-        //var_dump('CLASSIFICATIONS', $flags);
+        var_dump('[COMPONENTS]', $components);
+        var_dump('[CATEGORIES]', $categories);
+        var_dump('[FLAGS]', $flags);
 
 
         $possible_meals = [];
         foreach ($this->getMeals() as $meal) {
-            $copy = $flags;
-            var_dump("COPY", $copy);
-            $string = str_replace(['(', ')'], '', $meal['Recipe']);
-            $sections = explode('&&', $string);
-            $reqs = [];
-            foreach ($sections as $section) {
-                preg_match_all('/"([^"]+)"/', $section, $matches);
-                $reqs[] = $matches[1];
-            }
+            $components_copy = $components;
+            $categories_copy = $categories;
+            var_dump('[MEAL]', $meal);
+            $parsedRecipe = function ($meal)
+            {
+                $required = [];
+                $optional = [];
+        
+                $meal = str_replace('"','', $meal); // get rid of quotes
+        
+                // get the optionals first
+                if (preg_match_all('/\([^\)]+\)/', $meal, $matches))
+                {
+                    foreach ($matches[0] as $match)
+                    {
+                        $match = substr($match,1,-1); // remove the ()
+                        $items = [];
+                        foreach(explode('||', $match) as $item)
+                        {
+                            if (strlen(trim($item)))
+                                $items[] = trim($item);
+                        }
+                        $optional[] = $items;
+                    }
+                    
+                    $meal = preg_replace('/\([^\)]+\)/', '', $meal);
+                }
+                
+                // Required should be remaining
+                foreach(explode('&&', $meal) as $item)
+                {
+                    if (strlen(trim($item)))
+                        $required[] = trim($item);
+                }
+        
+                return ['required' => $required, 'optional' => $optional];
+            };
+            var_dump('[PARSED RECIPE]', $parsedRecipe = $parsedRecipe($meal['Recipe']));
+
             //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
             $valid = false;
-            foreach ($reqs as $req) {
+            if ($parsedRecipe['required']) {
                 $valid = false;
-                foreach ($req as $r) {
-                    foreach ($copy as $key => $arr) {
-                        if ($r == $key) {
-                            $valid = true;
-                            var_dump("[REMOVING]", $r);
-                            unset($copy[$key][array_search($r, $copy[$key])]);
-                            var_dump("NEW COPY", $copy);
-                            break;
-                        } else foreach ($arr as $values) {
-                            if ($r == $values) {
+                foreach ($parsedRecipe['required'] as $req) {
+                    if (in_array($req, $components_copy)) {
+                        $valid = true;
+                        $key = array_search($req, $components_copy);
+                        var_dump('Found a component match!', $req);
+                        unset($components_copy[$key]);
+                        unset($categories_copy[$key]);
+                    } else {
+                        foreach ($categories_copy as $key => $category) {
+                            if ($category == $req) {
                                 $valid = true;
-                                var_dump("[REMOVING]", $r);
-                                unset($copy[$key][array_search($r, $copy[$key])]);
-                                var_dump("NEW COPY", $copy);
-                                break;
+                                var_dump('Found a category match!', $req);
+                                unset($components_copy[$key]);
+                                unset($categories_copy[$key]);
                             }
                         }
                     }
                 }
-                if (!$valid) break;
+                if (!$valid) {
+                    var_dump($meal['Euen name'] . ' is not a valid recipe!');
+                    var_dump('[Remaining components]', $components_copy);
+                    var_dump('[Remaining categories]', $categories_copy);
+                    continue;
+                }
             }
-            if ($valid) $possible_meals[] = $meal;
+            if ($parsedRecipe['optional']) {
+                $valid = false;
+                foreach (array_values($parsedRecipe['optional']) as $req) {
+                    if (in_array($req, $components_copy)) {
+                        $valid = true;
+                        $key = array_search($req, $components_copy);
+                        var_dump('Found a component match!', $req);
+                        unset($components_copy[$key]);
+                        unset($categories_copy[$key]);
+                    } else {
+                        foreach ($categories_copy as $key => $category) {
+                            if ($category == $req) {
+                                $valid = true;
+                                var_dump('Found a category match!', $req);
+                                unset($components_copy[$key]);
+                                unset($categories_copy[$key]);
+                            }
+                        }
+                    }
+                }
+                if (!$valid) {
+                    var_dump($meal['Euen name'] . ' is not a valid recipe!');
+                    var_dump('[Remaining components]', $components_copy);
+                    var_dump('[Remaining categories]', $categories_copy);
+                    continue;
+                }
+            }
+            
+            if ($valid) {
+                var_dump($meal['Euen name'] . ' is a valid recipe!');
+                $possible_meals[] = $meal;
+            }
         }
 
         //We got a good list to work from! Now we need to figure out which one is the correct one.

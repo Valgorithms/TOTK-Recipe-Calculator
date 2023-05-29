@@ -77,10 +77,10 @@ $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Rock Salt
 */
 
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', "Fortified Pumpkin"));
-$ingredient3 = new Ingredient($materials_collection->get('Euen name', "Rock Salt"));
-$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
-$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
-$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Raw Bird Thigh"));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Rock Salt"));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', "Raw Bird Thigh"));
 
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump($recipe);
