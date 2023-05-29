@@ -121,20 +121,22 @@ class Crafter {
             }
             if ($parsedRecipe['optional']) {
                 $valid = false;
-                foreach (array_values($parsedRecipe['optional']) as $req) {
-                    if (in_array($req, $components_copy)) {
-                        $valid = true;
-                        $key = array_search($req, $components_copy);
-                        var_dump('Found a component match!', $req);
-                        unset($components_copy[$key]);
-                        unset($categories_copy[$key]);
-                    } else {
-                        foreach ($categories_copy as $key => $category) {
-                            if ($category == $req) {
-                                $valid = true;
-                                var_dump('Found a category match!', $req);
-                                unset($components_copy[$key]);
-                                unset($categories_copy[$key]);
+                foreach (array_values($parsedRecipe['optional']) as $opt) {
+                    foreach ($opt as $o) {
+                        if (in_array($o, $components_copy)) {
+                            $valid = true;
+                            $key = array_search($o, $components_copy);
+                            var_dump('Found a component match!', $o);
+                            unset($components_copy[$key]);
+                            unset($categories_copy[$key]);
+                        } else {
+                            foreach ($categories_copy as $key => $category) {
+                                if ($category == $o) {
+                                    $valid = true;
+                                    var_dump('Found a category match!', $o);
+                                    unset($components_copy[$key]);
+                                    unset($categories_copy[$key]);
+                                }
                             }
                         }
                     }
