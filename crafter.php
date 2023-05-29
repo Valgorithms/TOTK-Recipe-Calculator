@@ -88,13 +88,13 @@ class Crafter {
         
                 return ['required' => $required, 'optional' => $optional];
             };
-            var_dump('[PARSED RECIPE]', $parsedRecipe = $parsedRecipe($meal['Recipe']));
+            var_dump('[PARSED RECIPE]', $parsed = $parsedRecipe($meal['Recipe']));
 
             //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
             $valid = false;
-            if ($parsedRecipe['required']) {
+            if ($parsed['required']) {
                 $valid = false;
-                foreach ($parsedRecipe['required'] as $req) {
+                foreach ($parsed['required'] as $req) {
                     $valid = false;
                     if (in_array($req, $components_copy)) {
                         $valid = true;
@@ -126,9 +126,9 @@ class Crafter {
                     continue;
                 }
             }
-            if ($parsedRecipe['optional']) {
+            if ($parsed['optional']) {
                 $valid = false;
-                foreach (array_values($parsedRecipe['optional']) as $opt) {
+                foreach (array_values($parsed['optional']) as $opt) {
                     foreach ($opt as $o) {
                         if (in_array($o, $components_copy)) {
                             $valid = true;
@@ -191,17 +191,18 @@ class Crafter {
         }
 
         //return $possible_meals;
-        //Let's try to find the best match
+        //Let's try to find the best match first!
+
         echo '[REORDERING]' . PHP_EOL;
         $ordered = [];
         foreach ($possible_meals as $meal)
         {
-            $parsedRecipe = $parsedRecipe($meal['Recipe']); //  Uncaught Error: Array callback has to contain indices 0 and 1 in D:\GitHub\TOTK Recipe Calculator\crafter.php:199
-            $count = count($parsedRecipe['required']) + count($parsedRecipe['optional']);
+            $parsed = $parsedRecipe($meal['Recipe']); //  Uncaught Error: Array callback has to contain indices 0 and 1 in D:\GitHub\TOTK Recipe Calculator\crafter.php:199
+            $count = count($parsed['required']) + count($parsed['optional']);
             $ordered[$count][] = $meal;
         }
         krsort($ordered); //Sort $ordered by descending key
-        return array_shift($ordered); //Return the first element of $ordered
+        return array_shift($ordered); //Return the first element of $ordered, showing the recipes tied for the most ingredients
     }
 
     public function getMaterials(): Array {
