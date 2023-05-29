@@ -95,6 +95,7 @@ class Crafter {
             if ($parsedRecipe['required']) {
                 $valid = false;
                 foreach ($parsedRecipe['required'] as $req) {
+                    $valid = false;
                     if (in_array($req, $components_copy)) {
                         $valid = true;
                         $key = array_search($req, $components_copy);
