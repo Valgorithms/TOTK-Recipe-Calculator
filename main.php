@@ -69,14 +69,13 @@ $ingredient5 = new Ingredient(
     2 //Hitpoint Recovery (Quarters of a Heart)
 );*/
 
-/*
+/* Fruity Tomato Soup
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', "Hylian Tomato"));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Rock Salt"));
-//var_dump($meals_collection->get('Euen name', "Fruity Tomato Stew"));
 */
 
-/*
+/* Veggie Cream Soup
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', "Fortified Pumpkin"));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Rock Salt"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
@@ -84,16 +83,18 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', "Fresh Mil
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', "Raw Bird Thigh"));
 */
 
-/*
+/* Fruitcake
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', "Apple"));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Wildberry"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Cane Sugar"));
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', "Tabantha Wheat"));
 */
 
+/* Monster Curry
 $ingredient1 = new Ingredient($materials_collection->get('Euen name',"Hylian Rice"));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Goron Spice"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Monster Extract"));
+*/
 
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump($recipe);
