@@ -140,8 +140,7 @@ Icon,ActorName,Euen name,Recipe n°,Recipe,BonusHeart,BonusLevel,BonusTime
 ,Item_Cook_I_11,Wildberry Crepe,123,"""Tabantha Wheat"" && ""Fresh Milk"" && ""Bird Egg"" && ""Cane Sugar"" && ""Wildberry""",16,0,0
 ,Item_Cook_I_17,Honey Crepe,124,"""Tabantha Wheat"" && ""Fresh Milk"" && ""Bird Egg"" && ""Cane Sugar"" && ""Courser Bee Honey""",4,0,0
 ,Item_Cook_I_12,Nutcake,125,"""Tabantha Wheat"" && ""Goat Butter"" && ""Cane Sugar"" && (""Chickaloo Tree Nut"" || ""Acorn"")",0,0,0
-,Item_Cook_N_02,Fruitcake,126,"(""Apple"" || ""Wildberry"" || ""Golden Apple"") && (""Apple"" || ""Wildberry"" || ""Voltfruit"" || ""Hydromelon"" || ""Palm Fruit"" || ""Mighty Bananas""
-|| ""Golden Apple"") && ""Cane Sugar"" && ""Tabantha Wheat""",4,0,0
+,Item_Cook_N_02,Fruitcake,126,"(""Apple"" || ""Wildberry"" || ""Golden Apple"") && (""Apple"" || ""Wildberry"" || ""Voltfruit"" || ""Hydromelon"" || ""Palm Fruit"" || ""Mighty Bananas"" || ""Golden Apple"") && ""Cane Sugar"" && ""Tabantha Wheat""",4,0,0
 ,Item_Cook_I_05,Carrot Cake,127,"(""Swift Carrot"" || ""Endura Carrot"") && ""Tabantha Wheat"" && ""Cane Sugar"" && ""Goat Butter""",0,0,0
 ,Item_Cook_I_06,Pumpkin Pie,128,"(""Fortified Pumpkin"" || ""Sun Pumpkin"") && ""Tabantha Wheat"" && ""Cane Sugar"" && ""Goat Butter""",0,0,0
 ,Item_Cook_Q_09,Cheesecake,129,"""Hateno Cheese"" && ""Tabantha Wheat"" && ""Cane Sugar""",,,
