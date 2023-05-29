@@ -16,11 +16,7 @@ class Crafter {
     private array $elixirMaterial = ['CookEnemy', 'CookInsect'];
     private array $fairyMaterial = ['Fairy'];
 
-    private ?bool $hasFoodMaterial = false;
-    private ?bool $hasDubiousMaterial = false;
-    private ?bool $hasOreMaterial = false;
-    private ?bool $hasElixirMaterial = false;
-    private ?bool $hasFairyMaterial = false;
+    
 
     private ?string $classification = '';
     private ?string $modifier = '';
@@ -34,17 +30,59 @@ class Crafter {
         $this->roast_chilled_collection = $roast_chilled_collection;
     }
 
-    public function process(Recipe $recipe): array|collection {
+    public function process(Recipe $recipe): array|collection|null
+    {
         $this->setRecipe($recipe);
+
+        $classifications = [];
         foreach ($this->getRecipe()->getIngredients() as $ingredient) {
-            if (in_array($ingredient->getClassification(), $this->foodMaterials)) $this->hasFoodMaterial = true;
-            if (in_array($ingredient->getClassification(), $this->dubiousMaterial)) $this->hasDubiousMaterial = true;
-            if (in_array($ingredient->getClassification(), $this->oreMaterial)) $this->hasOreMaterial = true;
-            if (in_array($ingredient->getClassification(), $this->elixirMaterial)) $this->hasElixirMaterial = true;
-            if (in_array($ingredient->getClassification(), $this->fairyMaterial)) $this->hasFairyMaterial = true;
+            $classifications[] = $ingredient->getEuenName();
+            $classifications[] = $ingredient->getClassification();
         }
-        //TODO
-        return []; //Placeholder
+        var_dump('CLASSIFICATIONS', $classifications);
+
+        $checkArrayValues = function ($firstArray, $conditionString) {
+            $conditions = explode("||", $conditionString);
+            $requiredValues = [];
+            foreach ($conditions as $condition) {
+                if (strpos($condition, "&&") !== false) {
+                    $conditionValues = explode("&&", $condition);
+                    $conditionValues = array_map(function ($value) {
+                        return trim($value, "\"'"); // Remove extra quotation marks and symbols
+                    }, $conditionValues);
+                    $requiredValues[] = $conditionValues;
+                } else {
+                    $requiredValues[] = [trim($condition, "\"'")]; // Remove extra quotation marks and symbols
+                }
+            }
+
+            foreach ($requiredValues as $values) {
+                $found = false;
+                foreach ($values as $value) {
+                    if (in_array($value, $firstArray)) {
+                        $found = true;
+                        break;
+                    }
+                }
+                if (!$found) {
+                    return false;
+                }
+            }
+
+            return true;
+        };
+
+        $possible_meals = [];
+        foreach ($this->getMeals() as $meal) {
+            $expression = $meal['Recipe'];
+            if ($checkArrayValues($classifications, $expression)) {
+                $possible_meals[] = $meal;
+            }
+        }
+
+        var_dump('POSSIBLE MEALS', $possible_meals);
+
+        return $possible_meals;
     }
 
     public function getMaterials(): Array {

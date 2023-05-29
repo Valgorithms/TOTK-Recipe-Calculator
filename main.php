@@ -15,10 +15,10 @@ require 'meals.php'; //$meals, $meals_collection
 include 'crafter.php';
 
 
-$crafter = new Crafter($materials, $materials_collection, $roast_chilled, $roast_chilled_collection, $meals, $meals_collection);
+$crafter = new Crafter($materials, $materials_collection, $meals, $meals_collection, $roast_chilled, $roast_chilled_collection);
 
 //var_dump($materials_collection);
-$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
+//$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
 /*
 $ingredient2 = new Ingredient(
     'Item_Fruit_F', //Internal name
@@ -69,8 +69,9 @@ $ingredient5 = new Ingredient(
     2 //Hitpoint Recovery (Quarters of a Heart)
 );*/
 
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump($recipe);
 
 $result = $crafter->process($recipe);
-var_dump($result);
+//var_dump($result);
