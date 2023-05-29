@@ -44,16 +44,16 @@ class Crafter {
             $categories[] = $ingredient->getClassification();
             $int++;
         }
-        var_dump('[COMPONENTS]', $components);
-        var_dump('[CATEGORIES]', $categories);
-        var_dump('[FLAGS]', $flags);
+        //var_dump('[COMPONENTS]', $components);
+        //var_dump('[CATEGORIES]', $categories);
+        //var_dump('[FLAGS]', $flags);
 
 
         $possible_meals = [];
         foreach ($this->getMeals() as $meal) {
             $components_copy = $components;
             $categories_copy = $categories;
-            var_dump('[MEAL]', $meal);
+            //var_dump('[MEAL]', $meal);
             $parsedRecipe = function ($meal)
             {
                 $required = [];
@@ -88,7 +88,8 @@ class Crafter {
         
                 return ['required' => $required, 'optional' => $optional];
             };
-            var_dump('[PARSED RECIPE]', $parsed = $parsedRecipe($meal['Recipe']));
+            $parsed = $parsedRecipe($meal['Recipe']);
+            //var_dump('[PARSED RECIPE]', $parsed);
 
             //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
             $valid = false;
@@ -99,30 +100,30 @@ class Crafter {
                     if (in_array($req, $components_copy)) {
                         $valid = true;
                         $key = array_search($req, $components_copy);
-                        var_dump('Found a component match!', $req);
+                        //var_dump('Found a component match!', $req);
                         unset($components_copy[$key]);
                         unset($categories_copy[$key]);
                     } else {
                         foreach ($categories_copy as $key => $category) {
                             if ($category == $req) {
                                 $valid = true;
-                                var_dump('Found a category match!', $req);
+                                //var_dump('Found a category match!', $req);
                                 unset($components_copy[$key]);
                                 unset($categories_copy[$key]);
                             }
                         }
                     }
                     if (! $valid) {
-                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
-                        var_dump('[Remaining components]', $components_copy);
-                        var_dump('[Remaining categories]', $categories_copy);
+                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        //var_dump('[Remaining components]', $components_copy);
+                        //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
-                    var_dump('[Remaining components]', $components_copy);
-                    var_dump('[Remaining categories]', $categories_copy);
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
+                    //var_dump('[Remaining components]', $components_copy);
+                    //var_dump('[Remaining categories]', $categories_copy);
                     continue;
                 }
             }
@@ -133,14 +134,14 @@ class Crafter {
                         if (in_array($o, $components_copy)) {
                             $valid = true;
                             $key = array_search($o, $components_copy);
-                            var_dump('Found a component match!', $o);
+                            //var_dump('Found a component match!', $o);
                             unset($components_copy[$key]);
                             unset($categories_copy[$key]);
                         } else {
                             foreach ($categories_copy as $key => $category) {
                                 if ($category == $o) {
                                     $valid = true;
-                                    var_dump('Found a category match!', $o);
+                                    //var_dump('Found a category match!', $o);
                                     unset($components_copy[$key]);
                                     unset($categories_copy[$key]);
                                 }
@@ -149,9 +150,9 @@ class Crafter {
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
-                    var_dump('[Remaining components]', $components_copy);
-                    var_dump('[Remaining categories]', $categories_copy);
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
+                    //var_dump('[Remaining components]', $components_copy);
+                    //var_dump('[Remaining categories]', $categories_copy);
                     continue;
                 }
             }

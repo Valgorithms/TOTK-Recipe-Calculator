@@ -90,14 +90,14 @@ $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Cane Suga
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', "Tabantha Wheat"));
 */
 
-/* Monster Curry
+// Monster Curry
 $ingredient1 = new Ingredient($materials_collection->get('Euen name',"Hylian Rice"));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Goron Spice"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Monster Extract"));
-*/
+
 
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
-//var_dump($recipe);
+var_dump($recipe); //Recipe needs to be fixed to remove the hardcoded stuff like Rock Hard and Dubious Food, because we find out what the actual meal output is in the next step
 
 $result = $crafter->process($recipe);
-var_dump('POSSIBLE MEALS', $result);
+//var_dump('POSSIBLE MEAL', $meal = $result[0]);
