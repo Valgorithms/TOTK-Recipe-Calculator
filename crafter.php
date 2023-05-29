@@ -112,6 +112,12 @@ class Crafter {
                             }
                         }
                     }
+                    if (! $valid) {
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        var_dump('[Remaining components]', $components_copy);
+                        var_dump('[Remaining categories]', $categories_copy);
+                        continue 2;
+                    }
                 }
                 if (!$valid) {
                     var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
