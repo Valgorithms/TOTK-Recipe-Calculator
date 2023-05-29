@@ -1,0 +1,123 @@
+string(15) "CLASSIFICATIONS"
+array(6) {
+  [0]=>
+  string(13) "Hylian Tomato"
+  [1]=>
+  string(9) "CookFruit"
+  [2]=>
+  string(10) "Fresh Milk"
+  [3]=>
+  string(8) "Material"
+  [4]=>
+  string(9) "Rock Salt"
+  [5]=>
+  string(7) "CookOre"
+}
+string(14) "POSSIBLE MEALS"
+array(5) {
+  [0]=>
+  array(9) {
+    ["Icon"]=>
+    string(0) ""
+    ["ActorName"]=>
+    string(14) "Item_Cook_B_02"
+    ["Euen name"]=>
+    string(15) "Simmered Fruits"
+    ["Recipe n°"]=>
+    string(2) "47"
+    ["Recipe"]=>
+    string(11) ""CookFruit""
+    ["BonusHeart"]=>
+    string(1) "0"
+    ["BonusLevel"]=>
+    string(1) "0"
+    ["BonusTime"]=>
+    string(1) "0"
+    ["id"]=>
+    int(59)
+  }
+  [1]=>
+  array(9) {
+    ["Icon"]=>
+    string(0) ""
+    ["ActorName"]=>
+    string(14) "Item_Cook_B_02"
+    ["Euen name"]=>
+    string(15) "Simmered Fruits"
+    ["Recipe n°"]=>
+    string(2) "47"
+    ["Recipe"]=>
+    string(11) ""CookFruit""
+    ["BonusHeart"]=>
+    string(1) "0"
+    ["BonusLevel"]=>
+    string(1) "0"
+    ["BonusTime"]=>
+    string(1) "0"
+    ["id"]=>
+    int(60)
+  }
+  [2]=>
+  array(9) {
+    ["Icon"]=>
+    string(0) ""
+    ["ActorName"]=>
+    string(14) "Item_Cook_Q_01"
+    ["Euen name"]=>
+    string(15) "Simmered Tomato"
+    ["Recipe n°"]=>
+    string(2) "49"
+    ["Recipe"]=>
+    string(15) ""Hylian Tomato""
+    ["BonusHeart"]=>
+    string(1) "0"
+    ["BonusLevel"]=>
+    string(1) "0"
+    ["BonusTime"]=>
+    string(1) "0"
+    ["id"]=>
+    int(62)
+  }
+  [3]=>
+  array(9) {
+    ["Icon"]=>
+    string(0) ""
+    ["ActorName"]=>
+    string(14) "Item_Cook_K_09"
+    ["Euen name"]=>
+    string(4) "Milk"
+    ["Recipe n°"]=>
+    string(3) "133"
+    ["Recipe"]=>
+    string(12) ""Fresh Milk""
+    ["BonusHeart"]=>
+    string(1) "2"
+    ["BonusLevel"]=>
+    string(1) "0"
+    ["BonusTime"]=>
+    string(1) "0"
+    ["id"]=>
+    int(149)
+  }
+  [4]=>
+  array(9) {
+    ["Icon"]=>
+    string(0) ""
+    ["ActorName"]=>
+    string(14) "Item_Cook_O_02"
+    ["Euen name"]=>
+    string(14) "Rock-Hard Food"
+    ["Recipe n°"]=>
+    string(3) "146"
+    ["Recipe"]=>
+    string(9) ""CookOre""
+    ["BonusHeart"]=>
+    string(1) "0"
+    ["BonusLevel"]=>
+    string(1) "0"
+    ["BonusTime"]=>
+    string(1) "0"
+    ["id"]=>
+    int(164)
+  }
+}

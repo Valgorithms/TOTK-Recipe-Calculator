@@ -39,27 +39,42 @@ class Crafter {
             $classifications[] = $ingredient->getEuenName();
             $classifications[] = $ingredient->getClassification();
         }
-        var_dump('CLASSIFICATIONS', $classifications);
+        //var_dump('CLASSIFICATIONS', $classifications);
 
+        
         $checkArrayValues = function ($firstArray, $conditionString) {
-            $conditions = explode("||", $conditionString);
+            // Remove extra quotation marks from the first array
+            $cleanFirstArray = array_map(function ($value) {
+                return trim($value, "\"'");
+            }, $firstArray);
+
+            // Remove excess quotation marks and whitespace from the condition string
+            $cleanConditionString = preg_replace('/"([^"]+)"/', '$1', $conditionString);
+            $cleanConditionString = trim($cleanConditionString);
+
+            $conditions = explode("&&", $cleanConditionString);
             $requiredValues = [];
             foreach ($conditions as $condition) {
-                if (strpos($condition, "&&") !== false) {
-                    $conditionValues = explode("&&", $condition);
-                    $conditionValues = array_map(function ($value) {
-                        return trim($value, "\"'"); // Remove extra quotation marks and symbols
-                    }, $conditionValues);
-                    $requiredValues[] = $conditionValues;
-                } else {
-                    $requiredValues[] = [trim($condition, "\"'")]; // Remove extra quotation marks and symbols
-                }
+                $conditionValues = explode("&&", $condition);
+                $conditionValues = array_map(function ($value) {
+                    return trim($value, "\"'");
+                }, $conditionValues);
+                $requiredValues[] = $conditionValues;
             }
+
+            //echo "First Array: ";
+            //print_r($cleanFirstArray);
+
+            echo "Required Values: ";
+            $cleanRequiredValues = array_map(function ($values) {
+                return array_map('trim', $values);
+            }, $requiredValues);
+            var_export($cleanRequiredValues);
 
             foreach ($requiredValues as $values) {
                 $found = false;
                 foreach ($values as $value) {
-                    if (in_array($value, $firstArray)) {
+                    if (in_array($value, $cleanFirstArray)) {
                         $found = true;
                         break;
                     }
@@ -72,6 +87,7 @@ class Crafter {
             return true;
         };
 
+        var_dump('[CLASSIFICATIONS]', $classifications);
         $possible_meals = [];
         foreach ($this->getMeals() as $meal) {
             $expression = $meal['Recipe'];

@@ -69,7 +69,11 @@ $ingredient5 = new Ingredient(
     2 //Hitpoint Recovery (Quarters of a Heart)
 );*/
 
-$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', "Hylian Tomato"));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', "Rock Salt"));
+//var_dump($meals_collection->get('Euen name', "Fruity Tomato Stew"));
+//return;
 $recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump($recipe);
 
