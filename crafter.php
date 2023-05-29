@@ -113,7 +113,7 @@ class Crafter {
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe!');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
                     var_dump('[Remaining components]', $components_copy);
                     var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -140,7 +140,7 @@ class Crafter {
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe!');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
                     var_dump('[Remaining components]', $components_copy);
                     var_dump('[Remaining categories]', $categories_copy);
                     continue;
