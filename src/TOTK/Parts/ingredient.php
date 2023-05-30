@@ -1,4 +1,16 @@
 <?php
+
+/*
+ * This file is a part of the TOTK Recipe Calculator project.
+ *
+ * Copyright (c) 2023-present Valithor Obsidion <valzargaming@gmail.com>
+ *
+ * This file is subject to the MIT license that is bundled
+ * with this source code in the LICENSE.md file.
+ */
+
+namespace TOTK\Parts;
+
 class Ingredient {
     private ?string $actorName = '';
     private ?string $euenName = '';

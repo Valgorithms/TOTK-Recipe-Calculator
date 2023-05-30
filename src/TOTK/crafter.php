@@ -1,5 +1,18 @@
 <?php
 
+/*
+ * This file is a part of the TOTK Recipe Calculator project.
+ *
+ * Copyright (c) 2023-present Valithor Obsidion <valzargaming@gmail.com>
+ *
+ * This file is subject to the MIT license that is bundled
+ * with this source code in the LICENSE.md file.
+ */
+
+namespace TOTK;
+
+use TOTK\Helpers\Collection;
+
 class Crafter {
     private array $materials;
     private Collection $materials_collection;
@@ -9,6 +22,7 @@ class Crafter {
     private Collection $roast_chilled_collection;
 
     private ?array $ingredients = [];
+    private ?array $meal = [];
 
     private array $foodMaterials = ['CookFruit', 'CookFish', 'CookFruit', 'CookInsect', 'CookMeat', 'CookMushroom', 'CookPlant', 'Material'];
     private array $dubiousMaterial = ['CookForeign', 'CookGolem', 'CookEnemy', 'CookInsect'];
@@ -16,18 +30,52 @@ class Crafter {
     private array $elixirMaterial = ['CookEnemy', 'CookInsect'];
     private array $fairyMaterial = ['Fairy'];
 
-    
-
     private ?string $classification = '';
     private ?string $modifier = '';
 
-    public function __construct(array $materials, Collection $materials_collection, array $meals, Collection $meals_collection, array $roast_chilled, Collection $roast_chilled_collection) {
-        $this->materials = $materials;
-        $this->materials_collection = $materials_collection;
-        $this->meals = $meals;
-        $this->meals_collection = $meals_collection;
-        $this->roast_chilled = $roast_chilled;
-        $this->roast_chilled_collection = $roast_chilled_collection;
+    public function __construct(?array $materials = [], ?Collection $materials_collection = null, ?array $meals = null, ?Collection $meals_collection = null, ?array $roast_chilled = null, ?Collection $roast_chilled_collection = null) {
+        if ($materials) $this->setMaterials($materials);
+        else {
+            $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\materials.csv'));
+            $keys = array_shift($csv);
+            $materials = array();
+            foreach ($csv as $row) $materials[] = array_combine($keys, $row);
+            $this->setMaterials($materials);
+        }
+        if ($materials_collection) $this->setMaterials($materials);
+        else {
+            $materials_collection = new Collection([], $keys[2]);
+            foreach ($materials as $array) $materials_collection->pushItem($array);
+            $this->setMaterialsCollection($materials_collection);
+        } 
+        if ($meals) $this->setMeals($meals);
+        else {
+            $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\meals.csv'));
+            $keys = array_shift($csv);
+            $meals = array();
+            foreach ($csv as $row) $meals[] = array_combine($keys, $row);
+            $this->setMeals($meals);
+        }
+        if ($meals_collection) $this->setMealsCollection($meals_collection);
+        else {
+            $meals_collection = new Collection([], 'id');
+            foreach ($meals as $array) $meals_collection->pushItem($array);
+            $this->setMealsCollection($meals_collection);
+        }
+        if ($roast_chilled) $this->setRoastChilled($roast_chilled);
+        else {
+            $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\roast_chilled.csv'));
+            $keys = array_shift($csv);
+            $roast_chilled = array();
+            foreach ($csv as $row) $roast_chilled[] = array_combine($keys, $row);
+            $this->setRoastChilled($roast_chilled);
+        }
+        if ($roast_chilled_collection) $this->setRoastChilledCollection($roast_chilled_collection);
+        else {
+            $roast_chilled_collection = new Collection([], 'id');
+            foreach ($roast_chilled as $array) $roast_chilled_collection->pushItem($array);
+            $this->setRoastChilledCollection($roast_chilled_collection);
+        }
     }
 
     public function process(Array $ingredients): array|collection|null
@@ -95,7 +143,7 @@ class Crafter {
             $parsed = $parsedRecipe($meal['Recipe']);
             //var_dump('[PARSED RECIPE]', $parsed);
 
-            //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
+            //For each recipe requirement, array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
             $valid = false;
             if ($parsed['required']) {
                 $valid = false;
@@ -202,20 +250,12 @@ class Crafter {
                 $reqs[] = $matches[1];
             }
             $count = 0;
-            foreach ($reqs as $req) {
-                foreach ($req as $r) {
-                    foreach ($flags as $key => $arr) {
-                        if ($r == $key) {
-                            $count++;
-                            break;
-                        } else foreach ($arr as $values) {
-                            if ($r == $values) {
-                                $count++;
-                                break;
-                            }
-                        }
-                    }
-                }
+            foreach ($reqs as $req) foreach ($req as $r) foreach ($flags as $key => $arr) if ($r == $key) {
+                $count++;
+                break;
+            } else foreach ($arr as $values) if ($r == $values) {
+                $count++;
+                break;
             }
         }
 
@@ -225,7 +265,7 @@ class Crafter {
         $ordered = [];
         foreach ($possible_meals as $meal)
         {
-            $parsed = $parsedRecipe($meal['Recipe']); //  Uncaught Error: Array callback has to contain indices 0 and 1 in D:\GitHub\TOTK Recipe Calculator\crafter.php:199
+            $parsed = $parsedRecipe($meal['Recipe']);
             $count = count($parsed['required']) + count($parsed['optional']);
             $ordered[$count][] = $meal;
         }
@@ -254,6 +294,12 @@ class Crafter {
         else $meal['effectType'] = 'None';
         var_dump('[MODIFIER]', $modifier);
         var_dump('[EFFECTTYPE]', $effectType);
+
+        $this->setMeal($meal);
+
+        //We should have the correct meal now! We just need to figure out the stats.
+
+        //
 
         return $meal;
     }
@@ -312,5 +358,13 @@ class Crafter {
 
     public function setIngredients(array $ingredients): void {
         $this->ingredients = $ingredients;
+    }
+
+    public function setMeal(): array {
+        return $this->meal;
+    }
+
+    public function getMeal(array $meal): void {
+        $this->meal = $meal;
     }
 }

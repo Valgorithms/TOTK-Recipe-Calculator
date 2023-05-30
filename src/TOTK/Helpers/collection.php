@@ -7,8 +7,18 @@
  *
  * This file is subject to the MIT license that is bundled
  * with this source code in the LICENSE.md file.
+ */
 
-/**
+namespace TOTK\Helpers;
+
+use ArrayAccess;
+use ArrayIterator;
+use Countable;
+use IteratorAggregate;
+use JsonSerializable;
+use Traversable;
+
+ /**
  * Collection of items. Inspired by Laravel Collections.
  *
  * @since 5.0.0 No longer extends Laravel's BaseCollection

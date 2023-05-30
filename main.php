@@ -1,18 +1,24 @@
 <?php
 
-//if (! $ingredients = file_get_contents('ingredients.json')) trigger_error('Fatal Error: Unable to read ingredients file', E_USER_ERROR);
-//$ingredients = json_decode($ingredients, true);
+/*
+ * This file is a part of the TOTK Recipe Calculator project.
+ *
+ * Copyright (c) 2023-present Valithor Obsidion <valzargaming@gmail.com>
+ *
+ * This file is subject to the MIT license that is bundled
+ * with this source code in the LICENSE.md file.
+ */
 
-//CLASSES
-require 'ingredient.php';
-require 'recipe.php';
-require 'collection.php';
-//DATA DUMP COLLECTIONS
-require 'materials.php'; //$materials, $materials_collection
-require 'roast_chilled.php'; //$roast_chilled, $roast_chilled_collection
-require 'meals.php'; //$meals, $meals_collection
-//Final Product Crafting
-include 'crafter.php';
+use \TOTK\Crafter;
+use \TOTK\Parts\Ingredient;
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+set_time_limit(0);
+ignore_user_abort(1);
+ini_set('max_execution_time', 0);
+ini_set('memory_limit', '-1'); //Unlimited memory usage
+include getcwd() . '/vendor/autoload.php';
 
 
 $crafter = new Crafter($materials, $materials_collection, $meals, $meals_collection, $roast_chilled, $roast_chilled_collection);
