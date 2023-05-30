@@ -19,7 +19,7 @@ set_time_limit(0);
 ignore_user_abort(1);
 ini_set('max_execution_time', 0);
 ini_set('memory_limit', '-1'); //Unlimited memory usage
-if (! include getcwd() . '/vendor/autoload.php') {
+if (! @include getcwd() . '/vendor/autoload.php') {
     include __DIR__ . '/src/TOTK/crafter.php';
     include __DIR__ . '/src/TOTK/Helpers/collection.php';
     include __DIR__ . '/src/TOTK/Parts/ingredient.php';
@@ -28,7 +28,7 @@ if (! include getcwd() . '/vendor/autoload.php') {
 
 $crafter = new Crafter();
 
-if (! $materials_file = file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\materials.csv')) $materials_file = file(__DIR__ . '\src\TOTK\CSVs\materials.csv');
+if (! $materials_file = @file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\materials.csv')) $materials_file = file(__DIR__ . '\src\TOTK\CSVs\materials.csv');
 $csv = array_map('str_getcsv', $materials_file);
 $keys = array_shift($csv);
 $materials = array();
