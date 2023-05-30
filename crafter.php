@@ -1,14 +1,14 @@
 <?php
 
 class Crafter {
-    private Array $materials;
+    private array $materials;
     private Collection $materials_collection;
-    private Array $meals;
+    private array $meals;
     private Collection $meals_collection;
-    private Array $roast_chilled;
+    private array $roast_chilled;
     private Collection $roast_chilled_collection;
 
-    private ?Recipe $recipe = null;
+    private ?array $ingredients = [];
 
     private array $foodMaterials = ['CookFruit', 'CookFish', 'CookFruit', 'CookInsect', 'CookMeat', 'CookMushroom', 'CookPlant', 'Material'];
     private array $dubiousMaterial = ['CookForeign', 'CookGolem', 'CookEnemy', 'CookInsect'];
@@ -21,7 +21,7 @@ class Crafter {
     private ?string $classification = '';
     private ?string $modifier = '';
 
-    public function __construct(Array $materials, Collection $materials_collection, Array $meals, Collection $meals_collection, Array $roast_chilled, Collection $roast_chilled_collection) {
+    public function __construct(array $materials, Collection $materials_collection, array $meals, Collection $meals_collection, array $roast_chilled, Collection $roast_chilled_collection) {
         $this->materials = $materials;
         $this->materials_collection = $materials_collection;
         $this->meals = $meals;
@@ -30,15 +30,16 @@ class Crafter {
         $this->roast_chilled_collection = $roast_chilled_collection;
     }
 
-    public function process(Recipe $recipe): array|collection|null
+    public function process(Array $ingredients): array|collection|null
     {
-        $this->setRecipe($recipe);
+        $this->setIngredients($ingredients);
 
         $flags = []; //This will be an array of arrays, where the key is the classification and the value is an array of ingredients that have that classification
         $components = [];
         $categories = [];
         $int = 0;
-        foreach ($ingredients = $this->getRecipe()->getIngredients() as $ingredient) {
+        foreach ($ingredients as $ingredient) if ($ingredient) {
+            var_dump('[INGREDIENT]', $ingredient);
             $flags[$ingredient->getClassification()][]=$ingredient->getEuenName();
             $components[] = $ingredient->getEuenName();
             $categories[] = $ingredient->getClassification();
@@ -254,11 +255,11 @@ class Crafter {
         $this->roast_chilled_collection = $roast_chilled_collection;
     }
 
-    public function getRecipe(): Recipe {
-        return $this->recipe;
+    public function getIngredients(): array {
+        return $this->ingredients;
     }
 
-    public function setRecipe(Recipe $recipe): void {
-        $this->recipe = $recipe;
+    public function setIngredients(array $ingredients): void {
+        $this->ingredients = $ingredients;
     }
 }

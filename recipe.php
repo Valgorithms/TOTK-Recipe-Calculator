@@ -5,6 +5,7 @@
 class Recipe {
     private ?array $ingredients = []; //array of Ingredient objects (max of 5)
     private ?string $cookingMethod = ''; //Cooking Pot, Fire, Frozen, Hot Spring (Single Egg Only)
+    private ?array $meal = [];
     
     private ?string $name = '';
     private ?string $classification = ''; //Food, Elixer, Dubious, or Rock Hard
@@ -19,7 +20,8 @@ class Recipe {
     private ?int $exStaminaMaxUp = 0;
     private ?int $lifeMaxUp = 0;
 
-    public function __construct(array $ingredients, ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
+    public function __construct(array $meal, array $ingredients = [], ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
+        $this->meal = $meal;
         foreach ($ingredients as $ingredient) if ($ingredient) $this->ingredients[] = $ingredient; //Allow passing NULL to skip an ingredient slot
         $cookingMethod ? ($this->cookingMethod = $cookingMethod) : ($this->cookingMethod = 'Cooking Pot');
         

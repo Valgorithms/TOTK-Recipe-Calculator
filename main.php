@@ -95,9 +95,11 @@ $ingredient1 = new Ingredient($materials_collection->get('Euen name',"Hylian Ric
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Goron Spice"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Monster Extract"));
 
+$ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL];
+//var_dump('[INGREDIENTS]', $ingredients);
 
-$recipe = new Recipe([$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
-var_dump($recipe); //Recipe needs to be fixed to remove the hardcoded stuff like Rock Hard and Dubious Food, because we find out what the actual meal output is in the next step
+var_dump('[MEAL]', $meal = $crafter->process($ingredients));
 
-$result = $crafter->process($recipe);
+$recipe = new Recipe($meal, $ingredients);
+var_dump('[RECIPE]', $recipe); //Recipe needs to be fixed to remove the hardcoded stuff like Rock Hard and Dubious Food, because we find out what the actual meal output is in the next step
 //var_dump('POSSIBLE MEAL', $meal = $result[0]);
