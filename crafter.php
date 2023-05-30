@@ -124,14 +124,14 @@ class Crafter {
                         unset($categories_copy[$key]);
                     }
                     if (! $valid) {
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -166,14 +166,14 @@ class Crafter {
                         }
                     }
                     if (! $valid) {
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $opt);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -229,12 +229,15 @@ class Crafter {
 
         //Generic meals should never be preferred, so push them to the end
         $meals = array_shift($ordered);
+        $found = false;
         foreach ($meals as $key => $meal) {
             if (strpos($meal['Recipe'], 'Cook') !== false) {
                 unset($meals[$key]);
                 $meals[] = $meal;
-            }
+            } else $found = true;
         }
+        if (!$found) $meals = array_reverse($meals);
+
         return $meals; //Return the first element of $ordered, showing the recipes tied for the most ingredients
     }
 
