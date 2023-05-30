@@ -36,12 +36,14 @@ class Crafter {
 
         $flags = []; //This will be an array of arrays, where the key is the classification and the value is an array of ingredients that have that classification
         $components = [];
+        $modifiers = [];
         $categories = [];
         $int = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
             var_dump('[INGREDIENT]', $ingredient);
             $flags[$ingredient->getClassification()][]=$ingredient->getEuenName();
             $components[] = $ingredient->getEuenName();
+            $modifiers[] = $ingredient->getModifier();
             $categories[] = $ingredient->getClassification();
             $int++;
         }
@@ -53,6 +55,7 @@ class Crafter {
         $possible_meals = [];
         foreach ($this->getMeals() as $meal) {
             $components_copy = $components;
+            $modifiers_copy = $modifiers;
             $categories_copy = $categories;
             //var_dump('[MEAL]', $meal);
             $parsedRecipe = function ($meal)
@@ -103,16 +106,22 @@ class Crafter {
                         $key = array_search($req, $components_copy);
                         //var_dump('Found a component match!', $req);
                         unset($components_copy[$key]);
+                        unset($modifiers_copy[$key]);
                         unset($categories_copy[$key]);
-                    } else {
-                        foreach ($categories_copy as $key => $category) {
-                            if ($category == $req) {
-                                $valid = true;
-                                //var_dump('Found a category match!', $req);
-                                unset($components_copy[$key]);
-                                unset($categories_copy[$key]);
-                            }
-                        }
+                    } elseif(in_array($req, $modifiers_copy)) {
+                        $valid = true;
+                        $key = array_search($req, $modifiers_copy);
+                        //var_dump('Found a Category match!', $req);
+                        unset($components_copy[$key]);
+                        unset($modifiers_copy[$key]);
+                        unset($categories_copy[$key]);
+                    } elseif(in_array($req, $categories_copy)) {
+                        $valid = true;
+                        $key = array_search($req, $categories_copy);
+                        //var_dump('Found a Category match!', $req);
+                        unset($components_copy[$key]);
+                        unset($modifiers_copy[$key]);
+                        unset($categories_copy[$key]);
                     }
                     if (! $valid) {
                         //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
@@ -137,16 +146,22 @@ class Crafter {
                             $key = array_search($o, $components_copy);
                             //var_dump('Found a component match!', $o);
                             unset($components_copy[$key]);
+                            unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
-                        } else {
-                            foreach ($categories_copy as $key => $category) {
-                                if ($category == $o) {
-                                    $valid = true;
-                                    //var_dump('Found a category match!', $o);
-                                    unset($components_copy[$key]);
-                                    unset($categories_copy[$key]);
-                                }
-                            }
+                        } elseif (in_array($o, $modifiers_copy)) {
+                            $valid = true;
+                            $key = array_search($o, $modifiers_copy);
+                            //var_dump('Found a modifier match!', $o);
+                            unset($components_copy[$key]);
+                            unset($modifiers_copy[$key]);
+                            unset($categories_copy[$key]);
+                        } elseif (in_array($o, $categories_copy)) {
+                            $valid = true;
+                            $key = array_search($o, $categories_copy);
+                            //var_dump('Found a category match!', $o);
+                            unset($components_copy[$key]);
+                            unset($modifiers_copy[$key]);
+                            unset($categories_copy[$key]);
                         }
                     }
                 }

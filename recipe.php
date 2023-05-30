@@ -22,7 +22,7 @@ class Recipe {
 
     public function __construct(array $meal, array $ingredients = [], ?string $cookingMethod = '', ?string $name = '', ?string $classification = '', ?int $sellingPrice = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $hitPointRecover = 0) {
         $this->meal = $meal;
-        foreach ($ingredients as $ingredient) if ($ingredient) $this->ingredients[] = $ingredient; //Allow passing NULL to skip an ingredient slot
+        $this->setIngredients($ingredients); //Allow passing NULL to skip an ingredient slot
         $cookingMethod ? ($this->cookingMethod = $cookingMethod) : ($this->cookingMethod = 'Cooking Pot');
         
         if ($name) $this->name = $name;
@@ -68,11 +68,9 @@ class Recipe {
 
     private function setIngredients(array $ingredients) {
         foreach ($ingredients as $ingredient) {
-            if (!($ingredient instanceof Ingredient)) {
-                throw new Exception("Invalid ingredient type.");
-            }
+            if (!($ingredient instanceof Ingredient)) continue;
+            $this->addIngredient($ingredient);
         }
-        $this->ingredients = $ingredients;
     }
 
     public function addIngredient(Ingredient $ingredient) {
@@ -166,6 +164,7 @@ class Recipe {
     {
         $dur = 0;
         foreach ($this->getIngredients() as $ingredient) $dur += $ingredient->getEffectiveTime()+300; //Add 30 seconds for each ingredient in the dish (?)
+        if ($dur > 1800) $dur = 1800; //Max duration is 30 minutes
         $this->setEffectiveTime($dur);
     }
     
