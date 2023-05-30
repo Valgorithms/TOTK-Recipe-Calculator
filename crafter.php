@@ -241,13 +241,19 @@ class Crafter {
                 $meals[] = $meal;
             } else $found = true;
         }
-        if (!$found) $meal = array_reverse($meals)[0];
-        else $meal = $meals[0];
+        if (!$found) $meal = array_shift($meals);
+        else $meal = array_shift($meals);
 
         //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
         $modifier = [];
+        $effectType = [];
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getModifier() && $search = str_replace(['CookInsect (', ')'], '', $ingredient->getModifier())) if (!in_array($search, $modifier)) $modifier[] = $search;
+        foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getEffectType() && $search = $ingredient->getEffectType()) if ($search != 'None' && !in_array($search, $effectType)) $effectType[] = $search;
         if (count($modifier) == 1) $meal['Euen name'] = $modifier[0] . " " . $meal['Euen name'];
+        if (count($effectType) == 1) $meal['effectType'] = $effectType[0];
+        else $meal['effectType'] = 'None';
+        var_dump('[MODIFIER]', $modifier);
+        var_dump('[EFFECTTYPE]', $effectType);
 
         return $meal;
     }

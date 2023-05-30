@@ -75,7 +75,7 @@ $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Fresh Mil
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
 */
 
-/* Veggie Cream Soup
+/* Tough Veggie Cream Soup
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Fortified Pumpkin'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
@@ -99,7 +99,7 @@ $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Fairy'));
 */
 
 
-/* Salmon Meunière
+/* Hearty Salmon Meunière
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hearty Salmon'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Goat Butter'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Tabantha Wheat'));
@@ -107,7 +107,7 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fairy'));
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Endura Carrot'));
 */
 
-/*Salmon Risotto
+/* Salmon Risotto
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Razorclaw Crab'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Hylian Rice'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
@@ -144,6 +144,7 @@ $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Apple'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Wildberry'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Cane Sugar'));
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Tabantha Wheat'));
+
 
 
 $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL];
