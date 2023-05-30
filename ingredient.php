@@ -77,7 +77,7 @@ class Ingredient {
     }
 
     public function getModifier() {
-        return $this->modifier;
+        return trim(str_replace(['CookInsect (', ')'], '', $this->modifier));
     }
 
     public function setModifier(?string $modifier) {
@@ -162,5 +162,9 @@ class Ingredient {
 
     public function setHitPointRecover(?int $hitPointRecover) {
         $this->hitPointRecover = $hitPointRecover;
+    }
+
+    public function __toString() {
+        return $this->getEuenName();
     }
 }

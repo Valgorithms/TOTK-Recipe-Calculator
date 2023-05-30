@@ -307,7 +307,12 @@ class Recipe {
                 break;
             case 'Cooking Pot':
             default:
-                $this->sethitPointRecover($hitPointRecover*2);
+                $hitPointRecover *= 2;
+                if ($hitPointRecover >= 30) {
+                    $this->sethitPointRecover(30);
+                    //If >=30, full restore instead
+                }
+                else $this->sethitPointRecover($hitPointRecover);
                 break;
         }
     }
@@ -349,4 +354,8 @@ class Recipe {
                 break;
         }
     }*/
+
+    public function __toString() {
+        return $this->getName();
+    }
 }

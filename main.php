@@ -90,16 +90,40 @@ $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Cane Suga
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', "Tabantha Wheat"));
 */
 
-// Monster Curry
-$ingredient1 = new Ingredient($materials_collection->get('Euen name',"Hylian Rice"));
+/* Monster Curry
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', "Hylian Rice"));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', "Goron Spice"));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', "Monster Extract"));
+*/
+
+/*
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', "Endura CarrotFruitcake"));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Goat Butter"));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', "Fresh Milk"));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', "Tabantha Wheat"));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', "Fairy"));
+*/
+
+/* Salmon Meunière
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', "Hearty Salmon"));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Goat Butter"));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', "Tabantha Wheat"));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', "Fairy"));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', "Endura Carrot"));
+*/
+
+//Salmon Risotto
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', "Razorclaw Crab"));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Hylian Rice"));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', "Rock Salt"));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', "Goat Butter"));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', "Hearty Salmon"));
 
 $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL];
 //var_dump('[INGREDIENTS]', $ingredients);
 
 var_dump('[MEAL]', $meal = $crafter->process($ingredients));
 
-$recipe = new Recipe($meal, $ingredients);
+//$recipe = new Recipe($meal, $ingredients);
 //var_dump('[RECIPE]', $recipe); //Recipe needs to be fixed to remove the hardcoded stuff like Rock Hard and Dubious Food, because we find out what the actual meal output is in the next step
 //var_dump('POSSIBLE MEAL', $meal = $result[0]);

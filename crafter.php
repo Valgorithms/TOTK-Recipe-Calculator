@@ -40,7 +40,7 @@ class Crafter {
         $categories = [];
         $int = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
-            var_dump('[INGREDIENT]', $ingredient);
+            //var_dump('[INGREDIENT]', $ingredient);
             $flags[$ingredient->getClassification()][]=$ingredient->getEuenName();
             $components[] = $ingredient->getEuenName();
             $modifiers[] = $ingredient->getModifier();
@@ -93,7 +93,7 @@ class Crafter {
                 return ['required' => $required, 'optional' => $optional];
             };
             $parsed = $parsedRecipe($meal['Recipe']);
-            //var_dump('[PARSED RECIPE]', $parsed);
+            var_dump('[PARSED RECIPE]', $parsed);
 
             //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
             $valid = false;
@@ -209,8 +209,7 @@ class Crafter {
 
         //return $possible_meals;
         //Let's try to find the best match first!
-
-        echo '[REORDERING]' . PHP_EOL;
+        
         $ordered = [];
         foreach ($possible_meals as $meal)
         {
@@ -218,8 +217,18 @@ class Crafter {
             $count = count($parsed['required']) + count($parsed['optional']);
             $ordered[$count][] = $meal;
         }
-        krsort($ordered); //Sort $ordered by descending key
-        return array_shift($ordered); //Return the first element of $ordered, showing the recipes tied for the most ingredients
+        krsort($ordered);
+        //var_dump('[REORDERED]', $ordered); //Sort $ordered by descending key
+
+        //Generic meals should never be preferred, so push them to the end
+        $meals = array_shift($ordered);
+        foreach ($meals as $key => $meal) {
+            if (strpos($meal['Recipe'], 'Cook') !== false) {
+                unset($meals[$key]);
+                $meals[] = $meal;
+            }
+        }
+        return $meal; //Return the first element of $ordered, showing the recipes tied for the most ingredients
     }
 
     public function getMaterials(): Array {
