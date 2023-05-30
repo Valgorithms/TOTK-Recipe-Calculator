@@ -93,7 +93,7 @@ class Crafter {
                 return ['required' => $required, 'optional' => $optional];
             };
             $parsed = $parsedRecipe($meal['Recipe']);
-            var_dump('[PARSED RECIPE]', $parsed);
+            //var_dump('[PARSED RECIPE]', $parsed);
 
             //For each array of arrays inside of $reqs, check if at least one ingredient or category is in the recipe, and if it is then remove it from the classifications array and move on to the next array of arrays
             $valid = false;
@@ -104,14 +104,14 @@ class Crafter {
                     if (in_array($req, $components_copy)) {
                         $valid = true;
                         $key = array_search($req, $components_copy);
-                        //var_dump('Found a component match!', $req);
+                        //var_dump('Found a Component match!', $req);
                         unset($components_copy[$key]);
                         unset($modifiers_copy[$key]);
                         unset($categories_copy[$key]);
                     } elseif(in_array($req, $modifiers_copy)) {
                         $valid = true;
                         $key = array_search($req, $modifiers_copy);
-                        //var_dump('Found a Category match!', $req);
+                        //var_dump('Found a Modifier match!', $req);
                         unset($components_copy[$key]);
                         unset($modifiers_copy[$key]);
                         unset($categories_copy[$key]);
@@ -140,29 +140,36 @@ class Crafter {
             if ($parsed['optional']) {
                 $valid = false;
                 foreach (array_values($parsed['optional']) as $opt) {
+                    $valid = false;
                     foreach ($opt as $o) {
                         if (in_array($o, $components_copy)) {
                             $valid = true;
                             $key = array_search($o, $components_copy);
-                            //var_dump('Found a component match!', $o);
+                            //var_dump('Found an optional Component match!', $o);
                             unset($components_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
                         } elseif (in_array($o, $modifiers_copy)) {
                             $valid = true;
                             $key = array_search($o, $modifiers_copy);
-                            //var_dump('Found a modifier match!', $o);
+                            //var_dump('Found an optional Modifier match!', $o);
                             unset($components_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
                         } elseif (in_array($o, $categories_copy)) {
                             $valid = true;
                             $key = array_search($o, $categories_copy);
-                            //var_dump('Found a category match!', $o);
+                            //var_dump('Found an optional Category match!', $o);
                             unset($components_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
                         }
+                    }
+                    if (! $valid) {
+                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        //var_dump('[Remaining components]', $components_copy);
+                        //var_dump('[Remaining categories]', $categories_copy);
+                        continue 2;
                     }
                 }
                 if (!$valid) {
@@ -228,7 +235,7 @@ class Crafter {
                 $meals[] = $meal;
             }
         }
-        return $meal; //Return the first element of $ordered, showing the recipes tied for the most ingredients
+        return $meals; //Return the first element of $ordered, showing the recipes tied for the most ingredients
     }
 
     public function getMaterials(): Array {
