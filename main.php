@@ -28,7 +28,7 @@ if (! include getcwd() . '/vendor/autoload.php') {
 
 $crafter = new Crafter();
 
-if (! $materials_file = file(__DIR__ . '\src\TOTK\CSVs\materials.csv')) $materials_file = file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\materials.csv');
+if (! $materials_file = file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\materials.csv')) $materials_file = file(__DIR__ . '\src\TOTK\CSVs\materials.csv');
 $csv = array_map('str_getcsv', $materials_file);
 $keys = array_shift($csv);
 $materials = array();
