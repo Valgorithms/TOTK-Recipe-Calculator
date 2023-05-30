@@ -302,8 +302,8 @@ class Crafter {
         if (count($modifier) == 1) $meal['Euen name'] = $modifier[0] . " " . $meal['Euen name'];
         if (count($effectType) == 1) $meal['effectType'] = $effectType[0];
         else $meal['effectType'] = 'None';
-        var_dump('[MODIFIER]', $modifier);
-        var_dump('[EFFECTTYPE]', $effectType);
+        //var_dump('[MODIFIER]', $modifier);
+        //var_dump('[EFFECTTYPE]', $effectType);
 
         $this->setMeal($meal);
 
