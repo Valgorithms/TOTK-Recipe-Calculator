@@ -147,9 +147,9 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Tabantha 
 
 
 $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL];
-var_dump('[INGREDIENTS]', $ingredients);
+//var_dump('[INGREDIENTS]', $ingredients);
 
-var_dump('[MEAL]', $meal = $crafter->process($ingredients)[0]);
+var_dump('[MEAL]', $meal = $crafter->process($ingredients));
 
 //$recipe = new Recipe($meal, $ingredients);
 //var_dump('[RECIPE]', $recipe); //Recipe needs to be fixed to remove the hardcoded stuff like Rock Hard and Dubious Food, because we find out what the actual meal output is by using the crafter->process() method

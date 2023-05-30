@@ -124,14 +124,14 @@ class Crafter {
                         unset($categories_copy[$key]);
                     }
                     if (! $valid) {
-                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -142,7 +142,7 @@ class Crafter {
                 foreach (array_values($parsed['optional']) as $opt) {
                     $valid = false;
                     foreach ($opt as $o) {
-                        echo '[o] ' . $o . PHP_EOL;
+                        //echo '[o] ' . $o . PHP_EOL;
                         if (in_array($o, $components_copy)) {
                             $valid = true;
                             $key = array_search($o, $components_copy);
@@ -170,15 +170,15 @@ class Crafter {
                         }
                     }
                     if (! $valid) {
-                        var_dump('[OPTIONAL]', $parsed['optional']);
-                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
+                        //var_dump('[OPTIONAL]', $parsed['optional']);
+                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -186,7 +186,7 @@ class Crafter {
             }
             
             if ($valid) {
-                var_dump($meal['Euen name'] . ' is a valid recipe!');
+                //var_dump($meal['Euen name'] . ' is a valid recipe!');
                 $possible_meals[] = $meal;
             }
         }
@@ -241,9 +241,15 @@ class Crafter {
                 $meals[] = $meal;
             } else $found = true;
         }
-        if (!$found) $meals = array_reverse($meals);
+        if (!$found) $meal = array_reverse($meals)[0];
+        else $meal = $meals[0];
 
-        return $meals; //Return the first element of $ordered, showing the recipes tied for the most ingredients
+        //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
+        $modifier = [];
+        foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getModifier() && $search = str_replace(['CookInsect (', ')'], '', $ingredient->getModifier())) if (!in_array($search, $modifier)) $modifier[] = $search;
+        if (count($modifier) == 1) $meal['Euen name'] = $modifier[0] . " " . $meal['Euen name'];
+
+        return $meal;
     }
 
     public function getMaterials(): Array {
