@@ -52,8 +52,13 @@ class Crafter {
         else {
             $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\meals.csv'));
             $keys = array_shift($csv);
+            $keys[] = 'id';
             $meals = array();
-            foreach ($csv as $row) $meals[] = array_combine($keys, $row);
+            $id = 0;
+            foreach ($csv as $row) {
+                $row[] = $id++;
+                $meals[] = array_combine($keys, $row);
+            }
             $this->setMeals($meals);
         }
         if ($meals_collection) $this->setMealsCollection($meals_collection);
@@ -66,8 +71,13 @@ class Crafter {
         else {
             $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\roast_chilled.csv'));
             $keys = array_shift($csv);
+            $keys[] = 'id';
             $roast_chilled = array();
-            foreach ($csv as $row) $roast_chilled[] = array_combine($keys, $row);
+            $id = 0;
+            foreach ($csv as $row) {
+                $row[] = $id++;
+                $roast_chilled[] = array_combine($keys, $row);
+            }
             $this->setRoastChilled($roast_chilled);
         }
         if ($roast_chilled_collection) $this->setRoastChilledCollection($roast_chilled_collection);
