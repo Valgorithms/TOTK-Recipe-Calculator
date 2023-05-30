@@ -142,6 +142,7 @@ class Crafter {
                 foreach (array_values($parsed['optional']) as $opt) {
                     $valid = false;
                     foreach ($opt as $o) {
+                        echo '[o] ' . $o . PHP_EOL;
                         if (in_array($o, $components_copy)) {
                             $valid = true;
                             $key = array_search($o, $components_copy);
@@ -149,6 +150,7 @@ class Crafter {
                             unset($components_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
+                            continue 2;
                         } elseif (in_array($o, $modifiers_copy)) {
                             $valid = true;
                             $key = array_search($o, $modifiers_copy);
@@ -156,6 +158,7 @@ class Crafter {
                             unset($components_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
+                            continue 2;
                         } elseif (in_array($o, $categories_copy)) {
                             $valid = true;
                             $key = array_search($o, $categories_copy);
@@ -163,6 +166,7 @@ class Crafter {
                             unset($components_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
+                            continue 2;
                         }
                     }
                     if (! $valid) {
