@@ -307,10 +307,13 @@ class Crafter {
         //var_dump('[MODIFIER]', $modifier);
         //var_dump('[EFFECTTYPE]', $effectType);
 
+        var_dump('[MEAL]', $meal);
         $this->setMeal($meal);
-        $final = [];
+        $output = [];
 
         //We should have the correct meal now! We just need to figure out the stats.
+        $output['Meal'] = $meal;
+        foreach ($ingredients as $ingredient) if ($ingredient) $output['Ingredients'][] = $ingredient;
         $hp = 0;
         switch ($this->getCookingMethod()) {
             case 'Fire':
@@ -319,20 +322,29 @@ class Crafter {
             case 'Cooking Pot':
             default:
                 foreach ($ingredients as $ingredient) if ($ingredient) $hp += $ingredient->getHitPointRecover();
-                $hp = ($hp * 2) + $meal['HPBonusHeart'];
+                $hp = ($hp * 2) + $meal['BonusHeart'];
                 break;
         }
+        $effectiveTime = 0;
+        $lifeMaxUp = 0;
+        $staminaRecover = 0;
+        $crit = 0;
+        foreach ($ingredients as $ingredient) if ($ingredient) {
+            $hp += $ingredient->getBoostHitPointRecover();
+            $effectiveTime += $ingredient->getBoostEffectiveTime();
+            $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
+            $staminaRecover += $ingredient->getBoostStaminaLevel();
+            $crit += $ingredient->getBoostSuccessRate();
+        }
+        if ($crit > 100) $crit = 100;
 
-        $crit_chance = 0;
-        foreach ($ingredients as $ingredient) if ($ingredient) $crit_chance += $ingredient->getBoostSuccessRate();
-        if ($crit_chance > 100) $crit_chance = 100;
-        
-        $final['Meal'] = $meal;
-        $final['Ingredients'] = $ingredients;
-        $final['HitPointRecover'] = $hp;
-        $final['Critical Chance'] = $crit_chance;
-        //BoostSuccessRate = crit chance
-        return $final;
+        $output['HitPointRepair'] = 0;
+        $output['EffectiveTime'] = $effectiveTime;
+        $output['HitPointRecover'] = $hp;
+        $output['LifeMaxUp'] = $lifeMaxUp;
+        $output['StaminaRecover'] = $staminaRecover;
+        $output['CriticalChance'] = $crit;
+        return $output;
     }
 
     public function getCookingMethod(): string {

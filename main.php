@@ -35,7 +35,6 @@ $materials = array();
 foreach ($csv as $row) $materials[] = array_combine($keys, $row);
 $materials_collection = new Collection([], $keys[2]);
 foreach ($materials as $array) $materials_collection->pushItem($array);
-var_dump($materials_collection);
 
 //var_dump($materials_collection);
 //$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
@@ -170,7 +169,7 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Tabantha 
 $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL];
 //var_dump('[INGREDIENTS]', $ingredients);
 
-var_dump('[MEAL]', $meal = $crafter->process($ingredients));
+var_dump('[OUTPUT]', $output = $crafter->process($ingredients));
 
 //$recipe = new Recipe($meal, $ingredients);
 //var_dump('[RECIPE]', $recipe); //Recipe needs to be fixed to remove the hardcoded stuff like Rock Hard and Dubious Food, because we find out what the actual meal output is by using the crafter->process() method

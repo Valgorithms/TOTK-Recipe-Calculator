@@ -23,11 +23,15 @@ class Ingredient {
     private ?int $additionalDamage = 0; //For weapon fusing mechanics
     private ?int $effectLevel = 0; //Potency
     private ?string $effectType = ''; //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
-    private ?int $effectiveTime = 0; //Duration
+    private ?int $effectiveTime = 0; //Duration?
     private ?int $confirmedTime = 0; //Confirmed Time in seconds
     
     private ?int $hitPointRecover = 0; //Quarters of a Heart
-    private ?int $boostSuccessRate = 0; //Crit chance
+    private ?int $boostEffectiveTime = 0; //Crit chance
+    private ?int $boostHitPointRecover = 0; //
+    private ?int $boostMaxHeartLevel = 0; //
+    private ?int $boostStaminaLevel = 0; //
+    private ?int $boostSuccessRate = 0; //
 
     public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?bool $rockHard = false, ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $confirmedTime = 0, ?int $hitPointRecover = 0) {
         if (is_array($primary)) {
@@ -178,8 +182,40 @@ class Ingredient {
         $this->hitPointRecover = $hitPointRecover;
     }
 
+    public function getBoostEffectiveTime() {
+        return $this->boostEffectiveTime;
+    }
+
+    public function setBoostEffectiveTime(?int $boostEffectiveTime) {
+        $this->boostEffectiveTime = $boostEffectiveTime;
+    }
+
+    public function getBoostHitPointRecover() {
+        return $this->boostHitPointRecover;
+    }
+
+    public function setBoostHitPointRecover(?int $boostHitPointRecover) {
+        $this->boostHitPointRecover = $boostHitPointRecover;
+    }
+    
+    public function getBoostMaxHeartLevel() {
+        return $this->boostMaxHeartLevel;
+    }
+
+    public function setBoostMaxHeartLevel(?int $boostMaxHeartLevel) {
+        $this->boostMaxHeartLevel = $boostMaxHeartLevel;
+    }
+    
     public function getBoostSuccessRate() {
         return $this->boostSuccessRate;
+    }
+
+    public function setBoostStaminaLevel(?int $boostStaminaLevel) {
+        $this->boostStaminaLevel = $boostStaminaLevel;
+    }
+    
+    public function getBoostStaminaLevel() {
+        return $this->boostStaminaLevel;
     }
 
     public function setBoostSuccessRate(?int $boostSuccessRate) {
