@@ -308,9 +308,10 @@ class Crafter {
         $this->setMeal($meal);
 
         //We should have the correct meal now! We just need to figure out the stats.
-
-        //
-
+        $hp = 0;
+        foreach ($ingredients as $ingredient) if ($ingredient) $hp += $ingredient->getHitPointRecover();
+        $hp = ($hp * 2) + $meal['HPBonusHeart'];
+        $meal['HitPointRecover'] = $hp;
         return $meal;
     }
 
