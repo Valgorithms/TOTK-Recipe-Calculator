@@ -25,7 +25,9 @@ class Ingredient {
     private ?string $effectType = ''; //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
     private ?int $effectiveTime = 0; //Duration
     private ?int $confirmedTime = 0; //Confirmed Time in seconds
+    
     private ?int $hitPointRecover = 0; //Quarters of a Heart
+    private ?int $boostSuccessRate = 0; //Crit chance
 
     public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?bool $rockHard = false, ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $effectiveTime = 0, ?int $confirmedTime = 0, ?int $hitPointRecover = 0) {
         if (is_array($primary)) {
@@ -174,6 +176,14 @@ class Ingredient {
 
     public function setHitPointRecover(?int $hitPointRecover) {
         $this->hitPointRecover = $hitPointRecover;
+    }
+
+    public function getBoostSuccessRate() {
+        return $this->boostSuccessRate;
+    }
+
+    public function setBoostSuccessRate(?int $boostSuccessRate) {
+        $this->boostSuccessRate = $boostSuccessRate;
     }
 
     public function __toString() {

@@ -308,6 +308,7 @@ class Crafter {
         //var_dump('[EFFECTTYPE]', $effectType);
 
         $this->setMeal($meal);
+        $final = [];
 
         //We should have the correct meal now! We just need to figure out the stats.
         $hp = 0;
@@ -321,8 +322,17 @@ class Crafter {
                 $hp = ($hp * 2) + $meal['HPBonusHeart'];
                 break;
         }
-        $meal['HitPointRecover'] = $hp;
-        return $meal;
+
+        $crit_chance = 0;
+        foreach ($ingredients as $ingredient) if ($ingredient) $crit_chance += $ingredient->getBoostSuccessRate();
+        if ($crit_chance > 100) $crit_chance = 100;
+        
+        $final['Meal'] = $meal;
+        $final['Ingredients'] = $ingredients;
+        $final['HitPointRecover'] = $hp;
+        $final['Critical Chance'] = $crit_chance;
+        //BoostSuccessRate = crit chance
+        return $final;
     }
 
     public function getCookingMethod(): string {

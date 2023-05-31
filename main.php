@@ -35,6 +35,7 @@ $materials = array();
 foreach ($csv as $row) $materials[] = array_combine($keys, $row);
 $materials_collection = new Collection([], $keys[2]);
 foreach ($materials as $array) $materials_collection->pushItem($array);
+var_dump($materials_collection);
 
 //var_dump($materials_collection);
 //$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hydromelon'));
