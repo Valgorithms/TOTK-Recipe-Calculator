@@ -14,6 +14,7 @@ namespace TOTK;
 use TOTK\Helpers\Collection;
 
 class Crafter {
+    private string $cooking_method = 'Cooking Pot';
     private array $materials;
     private Collection $materials_collection;
     private array $meals;
@@ -33,7 +34,8 @@ class Crafter {
     private ?string $classification = '';
     private ?string $modifier = '';
 
-    public function __construct(?array $materials = [], ?Collection $materials_collection = null, ?array $meals = null, ?Collection $meals_collection = null, ?array $roast_chilled = null, ?Collection $roast_chilled_collection = null) {
+    public function __construct(?string $cooking_method = 'Cooking Pot', ?array $materials = [], ?Collection $materials_collection = null, ?array $meals = null, ?Collection $meals_collection = null, ?array $roast_chilled = null, ?Collection $roast_chilled_collection = null) {
+        $this->setCookingMethod($cooking_method);
         if ($materials) $this->setMaterials($materials);
         else {
             $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\materials.csv'));
@@ -309,10 +311,26 @@ class Crafter {
 
         //We should have the correct meal now! We just need to figure out the stats.
         $hp = 0;
-        foreach ($ingredients as $ingredient) if ($ingredient) $hp += $ingredient->getHitPointRecover();
-        $hp = ($hp * 2) + $meal['HPBonusHeart'];
+        switch ($this->getCookingMethod()) {
+            case 'Fire':
+                $hp = intval(ceil(array_shift($ingredients)->getHitPointRecover() * 1.5));
+                break;
+            case 'Cooking Pot':
+            default:
+                foreach ($ingredients as $ingredient) if ($ingredient) $hp += $ingredient->getHitPointRecover();
+                $hp = ($hp * 2) + $meal['HPBonusHeart'];
+                break;
+        }
         $meal['HitPointRecover'] = $hp;
         return $meal;
+    }
+
+    public function getCookingMethod(): string {
+        return $this->cooking_method;
+    }
+
+    public function setCookingMethod(string $cooking_method): void {
+        $this->cooking_method = $cooking_method;
     }
 
     public function getMaterials(): Array {
