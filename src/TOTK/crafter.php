@@ -325,24 +325,115 @@ class Crafter {
                 $hp = ($hp * 2) + $meal['BonusHeart'];
                 break;
         }
+        $effectType = $meal['effectType'];
+        $effectLevel = 0;
+        $staminaRecover = 0;
         $effectiveTime = 0;
         $lifeMaxUp = 0;
-        $staminaRecover = 0;
+        $exStamina = 0;
         $crit = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
+            $effectLevel += $ingredient->getEffectLevel();
             $hp += $ingredient->getBoostHitPointRecover();
             $effectiveTime += $ingredient->getBoostEffectiveTime();
             $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
-            $staminaRecover += $ingredient->getBoostStaminaLevel();
+            //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
             $crit += $ingredient->getBoostSuccessRate();
         }
+        if ($effectType == 'StaminaRecover') switch ($effectLevel) {
+            case 1:
+                $staminaRecover = 80;
+                break;
+            case 2:
+                $staminaRecover = 160;
+                break;
+            case 3:
+                $staminaRecover = 280;
+                break;
+            case 4:
+                $staminaRecover = 360;
+                break;
+            case 5:
+                $staminaRecover = 520;
+                break;
+            case 6:
+                $staminaRecover = 560;
+                break;
+            case 7:
+                $staminaRecover = 640;
+                break;
+            case 8:
+                $staminaRecover = 800;
+                break;
+            case 9:
+                $staminaRecover = 880;
+                break;
+            case 10:
+                $staminaRecover = 1000;
+                break;
+            case ($effectLevel >= 11):
+                $staminaRecover = 1080;
+                break;
+            case 0:
+            default:
+                $staminaRecover = 0;
+                break;
+        }
+        if ($effectType == 'ExStaminaMaxUp') switch ($effectLevel) {
+            case 1:
+            case 2:
+            case 3:
+                $exStamina = 280;
+                break;
+            case 4:
+            case 5:
+                $exStamina = 520;
+                break;
+            case 6:
+            case 7:
+                $exStamina = 640;
+                break;
+            case 8:
+            case 9:
+                $exStamina = 880;
+                break;
+            case 10:
+            case 11:
+                $exStamina = 1080;
+                break;
+            case 12:
+            case 13:
+                $exStamina = 1080;
+                break;
+            case 14:
+            case 15:
+                $exStamina = 1080;
+                break;
+            case 16:
+            case 17:
+                $exStamina = 1080;
+                break;
+            case 18:
+            case 19:
+                $exStamina = 1080;
+                break;
+            case ($effectLevel >= 20):
+                $exStamina = 1080;
+                break;
+            case 0:
+            default:
+                $exStamina = 0;
+                break;
+        }
         if ($crit > 100) $crit = 100;
-
+        $output['EffectType'] = $effectType;
+        $output['EffectLevel'] = $staminaRecover;
         $output['HitPointRepair'] = 0;
         $output['EffectiveTime'] = $effectiveTime;
         $output['HitPointRecover'] = $hp;
         $output['LifeMaxUp'] = $lifeMaxUp;
         $output['StaminaRecover'] = $staminaRecover;
+        $output['ExStamina'] = $exStamina;
         $output['CriticalChance'] = $crit;
         return $output;
     }

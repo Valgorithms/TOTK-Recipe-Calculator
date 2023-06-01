@@ -192,9 +192,6 @@ class Recipe {
                 break;
             case 'StaminaRecover':
                 switch ($effectLevel = $this->getEffectLevel()) {
-                    case 0:
-                        $this->setStaminaRecover(0);
-                        break;
                     case 1:
                         $this->setStaminaRecover(80);
                         break;
@@ -228,6 +225,7 @@ class Recipe {
                     case ($effectLevel >= 11):
                         $this->setStaminaRecover(1080);
                         break;
+                    case 0:
                     default:
                         $this->setStaminaRecover(0);
                         break;
@@ -235,9 +233,6 @@ class Recipe {
                 break;
             case 'ExStaminaMaxUp':
                 switch ($effectLevel = $this->getEffectLevel()) {
-                    case 0:
-                        $this->setExStaminaMaxUp(0);
-                        break;
                     case 1:
                     case 2:
                     case 3:
@@ -278,10 +273,10 @@ class Recipe {
                     case ($effectLevel >= 20):
                         $this->setExStaminaMaxUp(1080);
                         break;
+                    case 0:
                     default:
                         $this->setExStaminaMaxUp(0);
                         break;
-                    break;
                 }
             default:
                 //
