@@ -328,14 +328,14 @@ class Crafter {
         $effectType = $meal['effectType'];
         $effectLevel = 0;
         $staminaRecover = 0;
-        $effectiveTime = 0;
+        $confirmedTime = 0;
         $lifeMaxUp = 0;
         $exStamina = 0;
         $crit = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
             $effectLevel += $ingredient->getEffectLevel();
             $hp += $ingredient->getBoostHitPointRecover();
-            $effectiveTime += $ingredient->getBoostEffectiveTime();
+            $confirmedTime += 30;
             $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
             //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
             $crit += $ingredient->getBoostSuccessRate();
@@ -427,9 +427,9 @@ class Crafter {
         }
         if ($crit > 100) $crit = 100;
         $output['EffectType'] = $effectType;
-        $output['EffectLevel'] = $staminaRecover;
+        $output['EffectLevel'] = $effectLevel;
         $output['HitPointRepair'] = 0;
-        $output['EffectiveTime'] = $effectiveTime;
+        $output['ConfirmedTime'] = $confirmedTime; //Actual duration for effect types
         $output['HitPointRecover'] = $hp;
         $output['LifeMaxUp'] = $lifeMaxUp;
         $output['StaminaRecover'] = $staminaRecover;

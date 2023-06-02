@@ -94,13 +94,12 @@ $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Fresh Mil
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
 */
 
-/* Tough Veggie Cream Soup
+// Tough Veggie Cream Soup
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Fortified Pumpkin'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Raw Bird Thigh'));
-*/
 
 
 /* Monster Curry
@@ -118,13 +117,14 @@ $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Fairy'));
 */
 
 
-/* Hearty Salmon Meunière
+/* Salmon Meunière
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hearty Salmon'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Goat Butter'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Tabantha Wheat'));
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fairy'));
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Endura Carrot'));
 */
+
 
 /* Salmon Risotto
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Razorclaw Crab'));
@@ -158,15 +158,16 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Hylian Ri
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Goat Butter'));
 */
 
-// Fruitcake (Test failed, Array to string conversion) (Patched by adding 'continue 2' inside of 'foreach ($opt as $o)' for parsed['optional']
+/* Fruitcake (Test failed, Array to string conversion) (Patched by adding 'continue 2' inside of 'foreach ($opt as $o)' for parsed['optional']
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Apple'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Wildberry'));
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Cane Sugar'));
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Tabantha Wheat'));
+*/
 
 
 
-$ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL];
+var_dump('[INGREDIENTS]', $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump('[INGREDIENTS]', $ingredients);
 
 var_dump('[OUTPUT]', $output = $crafter->process($ingredients));
