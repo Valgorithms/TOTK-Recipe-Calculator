@@ -161,21 +161,22 @@ Icon,ActorName,Euen name,Recipe n°,Recipe,BonusHeart,BonusLevel,BonusTime
 ,Item_Cook_S_09,Dark Cake,144,"""Dark Clump"" && ""Cane Sugar"" && ""Tabantha Wheat"" && ""Goat Butter""",,,
 ,Item_Cook_O_01,Dubious Food,145,"""CookForeign""",,,
 ,Item_Cook_O_01,Dubious Food,145,"""CookGolem""",,,
-,Item_Cook_O_01,Dubious Food,145,"""CookEnemy"" || ""CookInsect""",0,0,0
+,Item_Cook_O_01,Dubious Food,145,"""CookEnemy""",0,0,0
+,Item_Cook_O_01,Dubious Food,145,"""CookInsect""",0,0,0
 ,Item_Cook_O_02,Rock-Hard Food,146,"""CookOre""",0,0,0
-,Item_Cook_C_17_StaminaRecover,Energizing Elixir,215,"""CookEnemy"" && ""CookInsect (Energizing)""",0,0,0
-,Item_Cook_C_17_AllSpeed,Hasty Elixir,216,"""CookEnemy"" && ""CookInsect (Hasty)""",0,0,0
-,Item_Cook_C_17_ResistCold,Spicy Elixir,217,"""CookEnemy"" && ""CookInsect (Spicy)""",0,0,0
-,Item_Cook_C_17_ResistHot,Chilly Elixir,218,"""CookEnemy"" && ""CookInsect (Chilly)""",0,0,0
-,Item_Cook_C_17_ResistElectric,Electro Elixir,219,"""CookEnemy"" && ""CookInsect (Electro)""",0,0,0
-,Item_Cook_C_17_ResistBurn,Fireproof Elixir,220,"""CookEnemy"" && ""CookInsect (Fireproof)""",0,0,0
-,Item_Cook_C_17_AttackUp,Mighty Elixir,221,"""CookEnemy"" && ""CookInsect (Mighty)""",0,0,0
-,Item_Cook_C_17_DefenseUp,Tough Elixir,222,"""CookEnemy"" && ""CookInsect (Tough)""",0,0,0
-,Item_Cook_C_17_QuietnessUp,Sneaky Elixir,223,"""CookEnemy"" && ""CookInsect (Sneaky)""",0,0,0
-,Item_Cook_C_17_NotSlippy,Sticky Elixir,224,"""CookEnemy"" && ""CookInsect (Sticky)""",0,0,0
-,Item_Cook_C_17_LightEmission,Bright Elixir,225,"""CookEnemy"" && ""CookInsect (Bright)""",0,0,0
-,Item_Cook_C_17_ExStaminaMaxUp,Enduring Elixir,226,"""CookEnemy"" && ""CookInsect (Enduring)""",0,0,0
-,Item_Cook_C_17_LifeMaxUp,Hearty Elixir,227,"""CookEnemy"" && ""CookInsect (Hearty)""",0,0,0
+,Item_Cook_C_17_StaminaRecover,Energizing Elixir,215,"""CookEnemy"" && ""CookInsect [Energizing]""",0,0,0
+,Item_Cook_C_17_AllSpeed,Hasty Elixir,216,"""CookEnemy"" && ""CookInsect [Hasty]""",0,0,0
+,Item_Cook_C_17_ResistCold,Spicy Elixir,217,"""CookEnemy"" && ""CookInsect [Spicy]""",0,0,0
+,Item_Cook_C_17_ResistHot,Chilly Elixir,218,"""CookEnemy"" && ""CookInsect [Chilly]""",0,0,0
+,Item_Cook_C_17_ResistElectric,Electro Elixir,219,"""CookEnemy"" && ""CookInsect [Electro]""",0,0,0
+,Item_Cook_C_17_ResistBurn,Fireproof Elixir,220,"""CookEnemy"" && ""CookInsect [Fireproof]""",0,0,0
+,Item_Cook_C_17_AttackUp,Mighty Elixir,221,"""CookEnemy"" && ""CookInsect [Mighty]""",0,0,0
+,Item_Cook_C_17_DefenseUp,Tough Elixir,222,"""CookEnemy"" && ""CookInsect [Tough]""",0,0,0
+,Item_Cook_C_17_QuietnessUp,Sneaky Elixir,223,"""CookEnemy"" && ""CookInsect [Sneaky]""",0,0,0
+,Item_Cook_C_17_NotSlippy,Sticky Elixir,224,"""CookEnemy"" && ""CookInsect [Sticky]""",0,0,0
+,Item_Cook_C_17_LightEmission,Bright Elixir,225,"""CookEnemy"" && ""CookInsect [Bright]""",0,0,0
+,Item_Cook_C_17_ExStaminaMaxUp,Enduring Elixir,226,"""CookEnemy"" && ""CookInsect [Enduring]""",0,0,0
+,Item_Cook_C_17_LifeMaxUp,Hearty Elixir,227,"""CookEnemy"" && ""CookInsect [Hearty]""",0,0,0
 ,Item_Cook_C_16,Fairy Tonic,228,"""Fairy"" && (""CookGolem"" || ""CookForeign"")",-12,,
 ,Item_Cook_C_16,Fairy Tonic,228,"""Fairy"" && ""CookOre"" && ""CookInsect"" && ""CookEnemy""",-12,0,0
 ,Item_Cook_C_16,Fairy Tonic,228,"""Fairy"" && ""CookInsect"" && ""CookEnemy""",-12,0,0

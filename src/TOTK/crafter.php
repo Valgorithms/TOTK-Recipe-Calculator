@@ -21,9 +21,13 @@ class Crafter {
     private Collection $meals_collection;
     private array $roast_chilled;
     private Collection $roast_chilled_collection;
+    private array $status_effects;
+    private Collection $status_effects_collection;
 
     private ?array $ingredients = [];
     private ?array $meal = [];
+
+    private ?array $crit_materials = []; //These are the materials that ALWAYS crit, regardless of stats
 
     private array $foodMaterials = ['CookFruit', 'CookFish', 'CookFruit', 'CookInsect', 'CookMeat', 'CookMushroom', 'CookPlant', 'Material'];
     private array $dubiousMaterial = ['CookForeign', 'CookGolem', 'CookEnemy', 'CookInsect'];
@@ -34,7 +38,7 @@ class Crafter {
     private ?string $classification = '';
     private ?string $modifier = '';
 
-    public function __construct(?string $cooking_method = 'Cooking Pot', ?array $materials = [], ?Collection $materials_collection = null, ?array $meals = null, ?Collection $meals_collection = null, ?array $roast_chilled = null, ?Collection $roast_chilled_collection = null) {
+    public function __construct(?string $cooking_method = 'Cooking Pot', ?array $materials = [], ?Collection $materials_collection = null, ?array $meals = null, ?Collection $meals_collection = null, ?array $roast_chilled = null, ?Collection $roast_chilled_collection = null, ?array $status_effects = null, ?Collection $status_effects_collection = null) {
         $this->setCookingMethod($cooking_method);
         if ($materials) $this->setMaterials($materials);
         else {
@@ -88,6 +92,25 @@ class Crafter {
             foreach ($roast_chilled as $array) $roast_chilled_collection->pushItem($array);
             $this->setRoastChilledCollection($roast_chilled_collection);
         }
+        if ($status_effects) $this->setStatusEffects($status_effects);
+        else {
+            $csv = array_map('str_getcsv', file(__DIR__ . '\CSVs\status_effects.csv'));
+            $keys = array_shift($csv);
+            $keys[] = 'id';
+            $status_effects = array();
+            $id = 0;
+            foreach ($csv as $row) {
+                $row[] = $id++;
+                $status_effects[] = array_combine($keys, $row);
+            }
+            $this->setStatusEffects($status_effects);
+        }
+        if ($status_effects_collection) $this->setStatusEffectsCollection($status_effects_collection);
+        else {
+            $status_effects_collection = new Collection([], 'id');
+            foreach ($status_effects as $array) $status_effects_collection->pushItem($array);
+            $this->setStatusEffectsCollection($status_effects_collection);
+        }
     }
 
     public function process(Array $ingredients): array|collection|null
@@ -96,6 +119,7 @@ class Crafter {
 
         $flags = []; //This will be an array of arrays, where the key is the classification and the value is an array of ingredients that have that classification
         $components = [];
+        $insect_modifiers = [];
         $modifiers = [];
         $categories = [];
         $int = 0;
@@ -103,6 +127,7 @@ class Crafter {
             //var_dump('[INGREDIENT]', $ingredient);
             $flags[$ingredient->getClassification()][]=$ingredient->getEuenName();
             $components[] = $ingredient->getEuenName();
+            $insect_modifiers[] = $ingredient->getInsectModifier();
             $modifiers[] = $ingredient->getModifier();
             $categories[] = $ingredient->getClassification();
             $int++;
@@ -115,6 +140,7 @@ class Crafter {
         $possible_meals = [];
         foreach ($this->getMeals() as $meal) {
             $components_copy = $components;
+            $insect_modifiers_copy = $insect_modifiers;
             $modifiers_copy = $modifiers;
             $categories_copy = $categories;
             //var_dump('[MEAL]', $meal);
@@ -126,7 +152,7 @@ class Crafter {
                 $meal = str_replace('"','', $meal); // get rid of quotes
         
                 // get the optionals first
-                if (preg_match_all('/\([^\)]+\)/', $meal, $matches))
+                if (preg_match_all('/\(([^)]+)\)/', $meal, $matches))
                 {
                     foreach ($matches[0] as $match)
                     {
@@ -140,7 +166,7 @@ class Crafter {
                         $optional[] = $items;
                     }
                     
-                    $meal = preg_replace('/\([^\)]+\)/', '', $meal);
+                    $meal = preg_replace('/\(([^)]+)\)/', '', $meal);
                 }
                 
                 // Required should be remaining
@@ -166,6 +192,15 @@ class Crafter {
                         $key = array_search($req, $components_copy);
                         //var_dump('Found a Component match!', $req);
                         unset($components_copy[$key]);
+                        unset($insect_modifiers_copy[$key]);
+                        unset($modifiers_copy[$key]);
+                        unset($categories_copy[$key]);
+                    } elseif (in_array($req, $insect_modifiers_copy)) {
+                        $valid = true;
+                        $key = array_search($req, $insect_modifiers_copy);
+                        //var_dump('Found an optional Modifier match!', $o);
+                        unset($components_copy[$key]);
+                        unset($insect_modifiers_copy[$key]);
                         unset($modifiers_copy[$key]);
                         unset($categories_copy[$key]);
                     } elseif(in_array($req, $modifiers_copy)) {
@@ -173,6 +208,7 @@ class Crafter {
                         $key = array_search($req, $modifiers_copy);
                         //var_dump('Found a Modifier match!', $req);
                         unset($components_copy[$key]);
+                        unset($insect_modifiers_copy[$key]);
                         unset($modifiers_copy[$key]);
                         unset($categories_copy[$key]);
                     } elseif(in_array($req, $categories_copy)) {
@@ -180,20 +216,25 @@ class Crafter {
                         $key = array_search($req, $categories_copy);
                         //var_dump('Found a Category match!', $req);
                         unset($components_copy[$key]);
+                        unset($insect_modifiers_copy[$key]);
                         unset($modifiers_copy[$key]);
                         unset($categories_copy[$key]);
                     }
                     if (! $valid) {
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
-                        //var_dump('[Remaining components]', $components_copy);
-                        //var_dump('[Remaining categories]', $categories_copy);
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        var_dump('[Remaining components]', $components_copy);
+                        var_dump('[Remaining insects]', $insect_modifiers_copy);
+                        var_dump('[Remaining modifiers]', $modifiers_copy);
+                        var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
-                    //var_dump('[Remaining components]', $components_copy);
-                    //var_dump('[Remaining categories]', $categories_copy);
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
+                    var_dump('[Remaining components]', $components_copy);
+                    var_dump('[Remaining insects]', $insect_modifiers_copy);
+                    var_dump('[Remaining modifiers]', $modifiers_copy);
+                    var_dump('[Remaining categories]', $categories_copy);
                     continue;
                 }
             }
@@ -208,6 +249,16 @@ class Crafter {
                             $key = array_search($o, $components_copy);
                             //var_dump('Found an optional Component match!', $o);
                             unset($components_copy[$key]);
+                            unset($insect_modifiers_copy[$key]);
+                            unset($modifiers_copy[$key]);
+                            unset($categories_copy[$key]);
+                            continue 2;
+                        } elseif (in_array($o, $insect_modifiers_copy)) {
+                            $valid = true;
+                            $key = array_search($o, $insect_modifiers_copy);
+                            //var_dump('Found an optional Modifier match!', $o);
+                            unset($components_copy[$key]);
+                            unset($insect_modifiers_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
                             continue 2;
@@ -216,6 +267,7 @@ class Crafter {
                             $key = array_search($o, $modifiers_copy);
                             //var_dump('Found an optional Modifier match!', $o);
                             unset($components_copy[$key]);
+                            unset($insect_modifiers_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
                             continue 2;
@@ -224,6 +276,7 @@ class Crafter {
                             $key = array_search($o, $categories_copy);
                             //var_dump('Found an optional Category match!', $o);
                             unset($components_copy[$key]);
+                            unset($insect_modifiers_copy[$key]);
                             unset($modifiers_copy[$key]);
                             unset($categories_copy[$key]);
                             continue 2;
@@ -231,14 +284,14 @@ class Crafter {
                     }
                     if (! $valid) {
                         //var_dump('[OPTIONAL]', $parsed['optional']);
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -287,22 +340,31 @@ class Crafter {
         //Generic meals should never be preferred, so push them to the end
         $meals = array_shift($ordered);
         $found = false;
-        foreach ($meals as $key => $meal) {
-            if (strpos($meal['Recipe'], 'Cook') !== false) {
-                unset($meals[$key]);
-                $meals[] = $meal;
-            } else $found = true;
-        }
-        if (!$found) $meal = array_shift($meals);
-        else $meal = array_shift($meals);
+        if ($meals) {
+            foreach ($meals as $key => $meal) {
+                if (strpos($meal['Recipe'], 'Cook') !== false) {
+                    unset($meals[$key]);
+                    $meals[] = $meal;
+                } else $found = true;
+            }
+            if (!$found) $meal = array_shift($meals);
+            else $meal = array_shift($meals);
+        } else $meal = null;
 
         //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
         $modifier = [];
+        $insect_modifier = [];
         $effectType = [];
-        foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getModifier() && $search = str_replace(['CookInsect (', ')'], '', $ingredient->getModifier())) if (!in_array($search, $modifier)) $modifier[] = $search;
+        foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getInsectModifier() && $search = $ingredient->getModifier()) if (!in_array($search, $insect_modifier)) $insect_modifier[] = $search;
+        foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getModifier() && $search = $ingredient->getModifier()) if (!in_array($search, $modifier)) $modifier[] = $search;
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getEffectType() && $search = $ingredient->getEffectType()) if ($search != 'None' && !in_array($search, $effectType)) $effectType[] = $search;
-        if (count($modifier) == 1) $meal['Euen name'] = $modifier[0] . " " . $meal['Euen name'];
-        if (count($effectType) == 1) $meal['effectType'] = $effectType[0];
+        if(isset($meal['Euen name']))
+            if (!(str_contains($meal['Euen name'], 'Elixir')) && !(str_contains($meal['Euen name'], 'Tonic')))
+                if (count($modifier) == 1)
+                    $meal['Euen name'] = $modifier[0] . ' ' . $meal['Euen name'];
+        if(isset($meal['effectType']))
+            if (count($effectType) == 1)
+                $meal['effectType'] = $effectType[0];
         else $meal['effectType'] = 'None';
         //var_dump('[MODIFIER]', $modifier);
         //var_dump('[EFFECTTYPE]', $effectType);
@@ -322,24 +384,29 @@ class Crafter {
             case 'Cooking Pot':
             default:
                 foreach ($ingredients as $ingredient) if ($ingredient) $hp += $ingredient->getHitPointRecover();
-                $hp = ($hp * 2) + $meal['BonusHeart'];
+                $hp = ($hp * 2);
+                if (isset($meal['BonusHeart'])) $hp += $meal['BonusHeart'];
                 break;
         }
-        $effectType = $meal['effectType'];
+        if (isset($meal['effectType'])) $effectType = $meal['effectType']; else $effectType = 'None';
         $effectLevel = 0;
         $staminaRecover = 0;
         $confirmedTime = 0;
         $lifeMaxUp = 0;
         $exStamina = 0;
+        $hprepair = 0; //Dunno how to calculate this yet, or if it's just a status effect
         $crit = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
             $effectLevel += $ingredient->getEffectLevel();
             $hp += $ingredient->getBoostHitPointRecover();
-            $confirmedTime += 30;
             $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
             //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
             $crit += $ingredient->getBoostSuccessRate();
         }
+        if ($effectTypeItem = $this->status_effects_collection->get('EffectType', $effectType)) foreach ($ingredients as $ingredient) if ($ingredient) {
+            $confirmedTime += $effectTypeItem['BaseTime'];
+        }
+        //$confirmedTime += 0; //This value depends on the effectType, so we need to caluclate that first and then add it from that csv
         if ($effectType == 'StaminaRecover') switch ($effectLevel) {
             case 1:
                 $staminaRecover = 80;
@@ -426,15 +493,16 @@ class Crafter {
                 break;
         }
         if ($crit > 100) $crit = 100;
-        $output['EffectType'] = $effectType;
-        $output['EffectLevel'] = $effectLevel;
-        $output['HitPointRepair'] = 0;
-        $output['ConfirmedTime'] = $confirmedTime; //Actual duration for effect types
-        $output['HitPointRecover'] = $hp;
-        $output['LifeMaxUp'] = $lifeMaxUp;
-        $output['StaminaRecover'] = $staminaRecover;
-        $output['ExStamina'] = $exStamina;
-        $output['CriticalChance'] = $crit;
+        if (isset($meal['Euen name'])) $output['Meal Name'] = $meal['Euen name']; else $output['Meal Name'] = '';
+        if ($effectType) $output['EffectType'] = $effectType;
+        if ($effectLevel) $output['EffectLevel'] = $effectLevel;
+        if ($hprepair) $output['HitPointRepair'] = $hprepair;
+        if ($confirmedTime) $output['ConfirmedTime'] = $confirmedTime; //Actual duration for effect types
+        if ($hp)  $output['HitPointRecover'] = $hp;
+        if ($lifeMaxUp) $output['LifeMaxUp'] = $lifeMaxUp;
+        if ($staminaRecover) $output['StaminaRecover'] = $staminaRecover;
+        if ($exStamina) $output['ExStamina'] = $exStamina;
+        if ($crit) $output['CriticalChance'] = $crit;
         return $output;
     }
 
@@ -492,6 +560,22 @@ class Crafter {
 
     public function setRoastChilledCollection(Collection $roast_chilled_collection): void {
         $this->roast_chilled_collection = $roast_chilled_collection;
+    }
+
+    public function getStatusEffects(): Array {
+        return $this->status_effects;
+    }
+
+    public function setStatusEffects(Array $status_effects): void {
+        $this->status_effects = $status_effects;
+    }
+
+    public function getStatusEffectsCollection(): Collection {
+        return $this->status_effects_collection;
+    }
+
+    public function setStatusEffectsCollection(Collection $status_effects_collection): void {
+        $this->status_effects_collection = $status_effects_collection;
     }
 
     public function getIngredients(): array {

@@ -1,0 +1,23 @@
+EffectType,Euen name,Modifier,BaseTime,Med Potency Threshold,High Potency Threshold,MinLv,MaxLv,Priority,Rate,SuperSuccessAddVolume
+LifeRecover,Hearts,,0,,,1,160,13,2,12
+LifeMaxUp,Extra Hearts,Hearty,0,0,0,4,108,3,1,4
+StaminaRecover,Stamina Recovery,Energizing,0,,,1,15,2,"1,4",2
+ExStaminaMaxUp,Extra Stamina,Enduring,0,0,0,1,20,1,"0,5",2
+ResistHot,Heat Resistance,Chilly,150,0,6,1,2,8,"0,35",1
+ResistCold,Cold Resistance,Spicy,150,0,6,1,2,7,"0,35",1
+ResistElectric,Shock Resistance,Electro,150,0,0,1,3,9,"0,5",1
+AllSpeed,Speed Up,Hasty,60,5,7,1,3,5,"0,45",1
+AttackUp,Attack Up,Mighty,50,0,0,1,3,10,"0,45",1
+DefenseUp,Defense Up,Tough,50,5,7,1,3,11,"0,45",1
+QuietnessUp,Stealth Up,Sneaky,120,0,0,1,3,12,"0,35",1
+ResistBurn,Flame Guard,Fireproof,150,0,7,1,2,4,"0,3",1
+LifeRepair,Gloom Recovery,Sunny,0,0,0,4,108,3,1,8
+LightEmission,Glow,Bright,120,0,0,1,3,1,"0,45",1
+NotSlippy,Slip Resistance,Sticky,120,0,0,1,3,5,"0,45",1
+SwimSpeedUp,Swim Speed Up,Rapid,120,0,6,1,3,5,"0,35",1
+AttackUpCold,Cold Weather Attack,Biting,60,0,6,1,3,5,"0,35",1
+AttackUpHot,Hot Weather Attack,Scorching,60,0,6,1,3,5,"0,35",1
+AttackUpThunderstorm,Stormy Weather Attack,Stormy,60,0,6,1,3,5,"0,35",1
+MiasmaGuard,Gloom Resistance,Warding,150,2,3,1,3,5,1,1
+TwiceJump,,,60,,,1,2,10,"1,8",1
+EmergencyAvoid,Fairy??,,60,,,1,2,10,"1,8",1

@@ -94,14 +94,6 @@ $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Fresh Mil
 $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
 */
 
-// Tough Veggie Cream Soup
-$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Fortified Pumpkin'));
-$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
-$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
-$ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
-$ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Raw Bird Thigh'));
-
-
 /* Monster Curry
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hylian Rice'));
 $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Goron Spice'));
@@ -165,7 +157,32 @@ $ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Cane Suga
 $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Tabantha Wheat'));
 */
 
+/* Tough Veggie Cream Soup
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Fortified Pumpkin'));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Raw Bird Thigh'));
+*/
 
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Bokoblin Fang'));
+var_dump('[INGREDIENT 2]', $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Energetic Rhino Beetle')));
+
+
+if (! $meals_csv = @file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\meals.csv')) $meals_csv = file(__DIR__ . '\src\TOTK\CSVs\meals.csv');
+$csv = array_map('str_getcsv', $meals_csv);
+$keys = array_shift($csv);
+$keys[] = 'id';
+$meals = array();
+$id = 0;
+foreach ($csv as $row) {
+    $row[] = $id++;
+    $meals[] = array_combine($keys, $row);
+}
+$meals_collection = new Collection([], 'id');
+foreach ($meals as $array) $meals_collection->pushItem($array);
+
+var_dump('[MEAL]', $meals_collection->get('Euen name', 'Energizing Elixir'));
 
 var_dump('[INGREDIENTS]', $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump('[INGREDIENTS]', $ingredients);
