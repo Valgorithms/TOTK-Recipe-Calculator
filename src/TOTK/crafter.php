@@ -396,6 +396,7 @@ class Crafter {
         }
         if (isset($meal['effectType'])) $effectType = $meal['effectType']; else $effectType = 'None';
         $effectLevel = 0;
+        $tier = ''; //NYI
         $staminaRecover = 0;
         $confirmedTime = 0;
         $lifeMaxUp = 0;
@@ -403,14 +404,28 @@ class Crafter {
         $hprepair = 0; //Dunno how to calculate this yet, or if it's just a status effect
         $crit = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
-            $effectLevel += $ingredient->getEffectLevel();
+            if ($ingredient->getEffectType() == $meal['effectType']) $effectLevel += $ingredient->getEffectLevel();
             $hp += $ingredient->getBoostHitPointRecover();
             $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
             //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
             $crit += $ingredient->getBoostSuccessRate();
+            if ($ingredient->getAlwaysCrits()) $crit = 100;
         }
+        //Calculate tier
+        $status_effect = $this->getStatusEffectsCollection()->get('EffectType', $effectType);
+        if ($status_effect['Med Potency Threshold'])
+            if ($effectLevel >= $status_effect['Med Potency Threshold'])
+                $tier = 'Med';
+        if ($status_effect['High Potency Threshold'])
+            if ($effectLevel >= $status_effect['High Potency Threshold'])
+                $tier = 'High';
+        if ($tier) $output['Tier'] = $tier;
+        //Calculate duration
         if ($effectTypeItem = $this->status_effects_collection->get('EffectType', $effectType)) foreach ($ingredients as $ingredient) if ($ingredient) {
-            $confirmedTime += $effectTypeItem['BaseTime'];
+            $confirmedTime += $effectTypeItem['BaseTime']; //Effects have their own base time
+            if ($ingredient->getConfirmedTime()) $confirmedTime += $ingredient->getConfirmedTime(); //Some materials boost the duration
+            if ($ingredient->getBoostEffectiveTime()) $confirmedTime += $ingredient->getBoostEffectiveTime() + 30; //Some materials boost the duration, and if they do they also add an extra 30 seconds on top of that
+            if ($ingredient->getSeasoning()) $ingredient->getSeasoningBoost() ? $confirmedTime += $ingredient->getSeasoningBoost() : $confirmedTime += array_rand([60, 600, 1800]) ; $confirmedTime += $ingredient->getBoostEffectiveTime() + 30; //Some materials boost the duration, and if they do they also add an extra 30 seconds on top of that
         }
         //$confirmedTime += 0; //This value depends on the effectType, so we need to caluclate that first and then add it from that csv
         if ($effectType == 'StaminaRecover') switch ($effectLevel) {

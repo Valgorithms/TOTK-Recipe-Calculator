@@ -23,7 +23,11 @@ class Ingredient {
     private ?int $additionalDamage = 0; //For weapon fusing mechanics
     private ?int $effectLevel = 0; //Potency
     private ?string $effectType = ''; //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
+    
+    private ?bool $seasoning = false;
+    private ?int $seasoningBoost = 0;
     private ?bool $alwaysCrits = false;
+    private ?int $confirmedTime = 0; //Seconds, some parts always boost duration by a flat amount
     
     private ?int $hitPointRecover = 0; //Quarters of a Heart
     private ?int $boostEffectiveTime = 0; //Crit chance
@@ -32,7 +36,7 @@ class Ingredient {
     private ?int $boostStaminaLevel = 0; //
     private ?int $boostSuccessRate = 0; //
 
-    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?bool $alwaysCrits = false, ?int $hitPointRecover = 0) {
+    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?bool $seasoning = false, ?int $seasoningBoost = 0, ?bool $alwaysCrits = false, ?int $confirmedTime = 0, ?int $hitPointRecover = 0, ?int $boostEffectiveTime = 0) {
         if (is_array($primary)) {
             $this->actorName = $primary['ActorName'];
             $this->euenName = $primary['Euen name'];
@@ -47,8 +51,12 @@ class Ingredient {
             else $this->additionalDamage = 0;
             $this->effectLevel = $primary['EffectLevel'];
             $this->effectType = $primary['EffectType'];
-            $this->alwaysCrits = $primary['AlwaysCrits'];
-            $this->hitPointRecover = $primary['HitPointRecover'];
+            $this->seasoning = boolval($primary['Seasoning']);
+            $this->seasoningBoost = boolval($primary['seasoningBoost']);
+            $this->alwaysCrits = boolval($primary['AlwaysCrits']);
+            $this->confirmedTime = intval($primary['ConfirmedTime']);
+            $this->hitPointRecover = intval($primary['HitPointRecover']);
+            $this->boostEffectiveTime = intval($primary['BoostEffectiveTime']);
         } else {
             $this->actorName = $primary;
             $this->euenName = $euenName;
@@ -60,8 +68,12 @@ class Ingredient {
             $this->additionalDamage = $additionalDamage;
             $this->effectLevel = $effectLevel;
             $this->effectType = $effectType;
+            $this->seasoning = $seasoning;
+            $this->seasoningBoost = $seasoningBoost;
             $this->alwaysCrits = $alwaysCrits;
+            $this->confirmedTime = $confirmedTime;
             $this->hitPointRecover = $hitPointRecover;
+            $this->boostEffectiveTime = $boostEffectiveTime;
         }
     }
 
@@ -153,12 +165,36 @@ class Ingredient {
         $this->effectType = $effectType;
     }
 
+    public function getSeasoning() {
+        return $this->seasoning;
+    }
+
+    public function setSeasoning(?bool $seasoning) {
+        $this->seasoning = $seasoning;
+    }
+
+    public function getSeasoningBoost() {
+        return $this->seasoningBoost;
+    }
+
+    public function setSeasoningBoost(?int $seasoningBoost) {
+        $this->seasoningBoost = $seasoningBoost;
+    }
+    
     public function getAlwaysCrits() {
         return $this->alwaysCrits;
     }
 
     public function setAlwaysCrits(?bool $alwaysCrits) {
         $this->alwaysCrits = $alwaysCrits;
+    }
+
+    public function getConfirmedTime() {
+        return $this->confirmedTime;
+    }
+
+    public function setConfirmedTime(?bool $confirmedTime) {
+        $this->confirmedTime = $confirmedTime;
     }
 
     public function getHitPointRecover() {
