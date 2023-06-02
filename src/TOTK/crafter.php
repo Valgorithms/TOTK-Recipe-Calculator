@@ -367,8 +367,10 @@ class Crafter {
         if(isset($meal['effectType'])) {
             if (count($effectType) == 1)
                 $meal['effectType'] = $effectType[0];
-            if (str_contains($meal['Euen name'], 'Elixir'))
+            if (str_contains($meal['Euen name'], 'Elixir')) //Elixirs ALWAYS have an effect type
                 $meal['effectType'] = $this->getStatusEffectsCollection()->get('Modifier', explode(' ', $meal['Euen name'])[0])['EffectType'];
+            if (str_contains($meal['Euen name'], 'Tonic')) //Fairy Tonics NEVER have an effect type
+                $meal['effectType'] = 'None';
         }
         //var_dump('[MODIFIER]', $modifier);
         //var_dump('[EFFECTTYPE]', $effectType);
