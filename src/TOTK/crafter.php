@@ -107,7 +107,7 @@ class Crafter {
         }
         if ($status_effects_collection) $this->setStatusEffectsCollection($status_effects_collection);
         else {
-            $status_effects_collection = new Collection([], 'id');
+            $status_effects_collection = new Collection([], 'EffectType');
             foreach ($status_effects as $array) $status_effects_collection->pushItem($array);
             $this->setStatusEffectsCollection($status_effects_collection);
         }
@@ -359,13 +359,17 @@ class Crafter {
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getModifier() && $search = $ingredient->getModifier()) if (!in_array($search, $modifier)) $modifier[] = $search;
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getEffectType() && $search = $ingredient->getEffectType()) if ($search != 'None' && !in_array($search, $effectType)) $effectType[] = $search;
         if(isset($meal['Euen name']))
-            if (!(str_contains($meal['Euen name'], 'Elixir')) && !(str_contains($meal['Euen name'], 'Tonic')))
+            if (!(str_contains($meal['Euen name'], 'Elixir')) && !(str_contains($meal['Euen name'], 'Tonic'))) {
                 if (count($modifier) == 1)
                     $meal['Euen name'] = $modifier[0] . ' ' . $meal['Euen name'];
-        if(isset($meal['effectType']))
+            }
+        $meal['effectType'] = 'None';
+        if(isset($meal['effectType'])) {
             if (count($effectType) == 1)
                 $meal['effectType'] = $effectType[0];
-        else $meal['effectType'] = 'None';
+            if (str_contains($meal['Euen name'], 'Elixir'))
+                $meal['effectType'] = $this->getStatusEffectsCollection()->get('Modifier', explode(' ', $meal['Euen name'])[0])['EffectType'];
+        }
         //var_dump('[MODIFIER]', $modifier);
         //var_dump('[EFFECTTYPE]', $effectType);
 
