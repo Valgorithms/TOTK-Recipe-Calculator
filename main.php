@@ -165,8 +165,32 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fresh Mil
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Raw Bird Thigh'));
 */
 
+/* Energizing Elixir
 $ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Bokoblin Fang'));
-var_dump('[INGREDIENT 2]', $ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Energetic Rhino Beetle')));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Energetic Rhino Beetle'));
+var_dump('[INGREDIENT 2]', $ingredient2);
+*/
+
+/* Warding Simmered Fruits (Test failed, results in High tier but is actually Low tier) (Patched by only adding potency if the ingredient shares an effectType with the meal)
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Dazzlefruit'));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Dazzlefruit'));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Dark Clump'));
+*/
+
+/*
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Mighty Bananas'));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Rock Salt'));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Raw Bird Thigh'));
+*/
+
+
+$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Mighty Porgy'));
+$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Mighty Bananas'));
+$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Mighty Thistle'));
+$ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Mighty Thistle'));
+$ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
 
 
 if (! $meals_csv = @file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\meals.csv')) $meals_csv = file(__DIR__ . '\src\TOTK\CSVs\meals.csv');
