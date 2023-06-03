@@ -37,48 +37,43 @@ class Ingredient {
     private ?int $boostSuccessRate = 0; //
 
     public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?bool $seasoning = false, ?int $seasoningBoost = 0, ?bool $alwaysCrits = false, ?int $confirmedTime = 0, ?int $hitPointRecover = 0, ?int $boostEffectiveTime = 0) {
-        try{
-            if (is_array($primary)) {
-                $this->actorName = $primary['ActorName'];
-                $this->euenName = $primary['Euen name'];
-                $this->classification = $primary['Classification'];
-                $this->modifier = $primary['Modifier'];
-                if (str_contains($primary['Modifier'], 'CookInsect')) $this->insect_modifier = $primary['Modifier'];
-                $this->buyingPrice = $primary['BuyingPrice'];
-                $this->sellingPrice = $primary['SellingPrice'];
-                $this->color = $primary['Color'];
+        if (is_array($primary)) {
+            $this->actorName = $primary['ActorName'];
+            $this->euenName = $primary['Euen name'];
+            $this->classification = $primary['Classification'];
+            $this->modifier = $primary['Modifier'];
+            if (str_contains($primary['Modifier'], 'CookInsect')) $this->insect_modifier = $primary['Modifier'];
+            $this->buyingPrice = $primary['BuyingPrice'];
+            $this->sellingPrice = $primary['SellingPrice'];
+            $this->color = $primary['Color'];
 
-                if (is_int($primary['AdditionalDamage'])) $this->additionalDamage = $primary['AdditionalDamage'];
-                else $this->additionalDamage = 0;
-                $this->effectLevel = $primary['EffectLevel'];
-                $this->effectType = $primary['EffectType'];
-                $this->seasoning = boolval($primary['Seasoning']);
-                $this->seasoningBoost = boolval($primary['SeasoningBoost']);
-                $this->alwaysCrits = boolval($primary['AlwaysCrits']);
-                $this->confirmedTime = intval($primary['ConfirmedTime']);
-                $this->hitPointRecover = intval($primary['HitPointRecover']);
-                $this->boostEffectiveTime = intval($primary['BoostEffectiveTime']);
-            } else {
-                $this->actorName = $primary;
-                $this->euenName = $euenName;
-                $this->classification = $classification;
-                $this->modifier = $modifier;
-                $this->buyingPrice = $buyingPrice;
-                $this->sellingPrice = $sellingPrice;
-                $this->color = $color;
-                $this->additionalDamage = $additionalDamage;
-                $this->effectLevel = $effectLevel;
-                $this->effectType = $effectType;
-                $this->seasoning = $seasoning;
-                $this->seasoningBoost = $seasoningBoost;
-                $this->alwaysCrits = $alwaysCrits;
-                $this->confirmedTime = $confirmedTime;
-                $this->hitPointRecover = $hitPointRecover;
-                $this->boostEffectiveTime = $boostEffectiveTime;
-            }
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-            return null;
+            if (is_int($primary['AdditionalDamage'])) $this->additionalDamage = $primary['AdditionalDamage'];
+            else $this->additionalDamage = 0;
+            $this->effectLevel = $primary['EffectLevel'];
+            $this->effectType = $primary['EffectType'];
+            $this->seasoning = boolval($primary['Seasoning']);
+            $this->seasoningBoost = boolval($primary['SeasoningBoost']);
+            $this->alwaysCrits = boolval($primary['AlwaysCrits']);
+            $this->confirmedTime = intval($primary['ConfirmedTime']);
+            $this->hitPointRecover = intval($primary['HitPointRecover']);
+            $this->boostEffectiveTime = intval($primary['BoostEffectiveTime']);
+        } else {
+            $this->actorName = $primary;
+            $this->euenName = $euenName;
+            $this->classification = $classification;
+            $this->modifier = $modifier;
+            $this->buyingPrice = $buyingPrice;
+            $this->sellingPrice = $sellingPrice;
+            $this->color = $color;
+            $this->additionalDamage = $additionalDamage;
+            $this->effectLevel = $effectLevel;
+            $this->effectType = $effectType;
+            $this->seasoning = $seasoning;
+            $this->seasoningBoost = $seasoningBoost;
+            $this->alwaysCrits = $alwaysCrits;
+            $this->confirmedTime = $confirmedTime;
+            $this->hitPointRecover = $hitPointRecover;
+            $this->boostEffectiveTime = $boostEffectiveTime;
         }
     }
 
