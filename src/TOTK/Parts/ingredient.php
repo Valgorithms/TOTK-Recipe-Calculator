@@ -52,7 +52,7 @@ class Ingredient {
             $this->effectLevel = $primary['EffectLevel'];
             $this->effectType = $primary['EffectType'];
             $this->seasoning = boolval($primary['Seasoning']);
-            $this->seasoningBoost = boolval($primary['seasoningBoost']);
+            $this->seasoningBoost = boolval($primary['SeasoningBoost']);
             $this->alwaysCrits = boolval($primary['AlwaysCrits']);
             $this->confirmedTime = intval($primary['ConfirmedTime']);
             $this->hitPointRecover = intval($primary['HitPointRecover']);
