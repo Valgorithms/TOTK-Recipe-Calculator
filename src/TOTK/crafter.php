@@ -578,7 +578,12 @@ class Crafter {
         if (isset($meal['effectType'])) if ($meal['effectType']) if (in_array($meal['effectType'], ['None', 'ExStaminaMaxUp', 'StaminaRecover', 'LifeMaxUp', 'LifeRepair', 'LifeRecover'])) $confirmedTime = 0;
         if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'LifeMaxUp') $hp = 120;
         if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'ExStaminaMaxUp') $staminaRecover = 1080;
-        if (isset($meal['Euen name'])) if (($meal['Euen name'] === 'Dubious Food') || ($meal['Euen name'] === 'Rock-Hard Food')) $crit = 0;
+        if (isset($meal['Euen name'])) {
+            if (($meal['Euen name'] === 'Dubious Food') || ($meal['Euen name'] === 'Rock-Hard Food')) {
+                $crit = 0;
+                if ($hp == 0) $hp = 1;
+            }
+        }
 
 
         if (isset($meal['Euen name'])) $output['Meal Name'] = $meal['Euen name']; else $output['Meal Name'] = '';
