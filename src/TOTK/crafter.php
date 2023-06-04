@@ -322,11 +322,24 @@ class Crafter {
         krsort($ordered);
         //var_dump('[REORDERED]', $ordered); //Sort $ordered by descending key
 
-        //Generic meals should never be preferred, so push them to the end of the list
+        //If an recipe would require CookOre or CookEnemy it should occur sooner in the $ordered list
+        if (isset($ordered[1])) {
+            $ordered1copy = $ordered[1];
+            $ordered1sorted = [];
+            foreach ($ordered1copy as $item) {
+                //var_dump('Item Recipe', $item['Recipe']);
+                if ((str_contains($item['Recipe'], 'CookOre')) || (str_contains($item['Recipe'], 'CookEnemy'))) $ordered1sorted[] = $item;
+                else array_push($ordered1sorted, $item);
+            }
+            $ordered[1] = $ordered1sorted;
+        }
+        //var_dump('[RESORTED]', $ordered);
+
+        //Generic meals should never be preferred unless it would result in Dubious or Rock-Hard food, so push those to the end of the list
         $meals = array_shift($ordered);
         $found = false;
         if ($meals) {
-            foreach ($meals as $key => $meal) if (strpos($meal['Recipe'], 'Cook') !== false) {
+            foreach ($meals as $key => $meal) if (str_contains($meal['Recipe'], 'Cook') && ! str_contains($meal['Recipe'], 'Ore') && ! str_contains($meal['Recipe'], 'Enemy') ) {
                 unset($meals[$key]);
                 $meals[] = $meal;
             } else $found = true;
