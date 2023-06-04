@@ -408,7 +408,6 @@ class Crafter {
          */
         
         if (isset($meal['effectType'])) $effectType = $meal['effectType']; else $effectType = 'None';
-        $tier = ''; //NYI
         $staminaRecover = 0;
         $confirmedTime = 0;
         $hprepair = 0; //Dunno how to calculate this yet, or if it's just a status effect
@@ -431,6 +430,7 @@ class Crafter {
                 $effectLevel += $ingredient->getEffectLevel();
 
         //Takes potency, adds up all the ingredients, and then checks the thresholds
+        $tier = null;
         if ($effectType) {
             $tier = 'Low';
             $status_effect = $this->getStatusEffectsCollection()->get('EffectType', $effectType);
@@ -579,6 +579,7 @@ class Crafter {
         if (isset($meal['Euen name'])) $output['Meal Name'] = $meal['Euen name']; else $output['Meal Name'] = '';
         if ($effectType) $output['EffectType'] = $effectType;
         if ($effectLevel) $output['EffectLevel'] = $effectLevel;
+        if ($tier) $output['Tier'] = $tier;
         if ($hprepair) $output['HitPointRepair'] = $hprepair;
         if ($confirmedTime) $output['ConfirmedTime'] = $confirmedTime; //Actual duration for effect types
         if ($hp) $output['HitPointRecover'] = $hp;
