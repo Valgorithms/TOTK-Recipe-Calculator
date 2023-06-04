@@ -391,12 +391,14 @@ class Crafter {
             if ($ingredient->getBoostHitPointRecover()) $hp += $ingredient->getBoostHitPointRecover();
             if ($ingredient->getBoostMaxHeartLevel()) $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
             //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
+            /*
             if ($ingredient->getEuenName() == 'Monster Extract') {
                 //TODO: Add a note to the output that Monster Extract is adding random effects for the HP recovery
                 if (rand(0, 1)) $hp = 1;
                 else $hp += 12;
                 break;
             }
+            */
         }
         if ($hp >= 120) $hp = 120;
         if ($meal['Euen name'] == 'Dubious Food') $hp = 4;
@@ -472,12 +474,14 @@ class Crafter {
          * Monster Extract
          * 
         */
+        /*
         if ($confirmedTime) foreach ($ingredients as $ingredient) if ($ingredient) if ($ingredient->getEuenName() == 'Monster Extract') {
             //TODO: Add a note to the output that Monster Extract is setting random duration
             $rand_array = [60, 600, 1800];
             $confirmedTime = $rand_array[array_rand($rand_array)];
             break;
         }
+        */
 
         //var_dump('[CALCULATION RESULTS]', intval($confirmedTime));
 
@@ -588,6 +592,11 @@ class Crafter {
         if ($staminaRecover) $output['StaminaRecover'] = $staminaRecover;
         if ($exStamina) $output['ExStamina'] = $exStamina;
         if ($crit) $output['CriticalChance'] = $crit;
+
+        $output['hasMonsterExtract'] = false;
+        foreach ($ingredients as $ingredient) if ($ingredient)
+            if ($ingredient->getEuenName() == 'Monster Extract')
+                $output['hasMonsterExtract'] = true;
         return $output;
     }
 
