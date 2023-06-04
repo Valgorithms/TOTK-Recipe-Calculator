@@ -325,14 +325,27 @@ class Crafter {
         }
         krsort($ordered);
         //var_dump('[REORDERED]', $ordered); //Sort $ordered by descending key
-
-        //If a recipe would require CookOre or CookEnemy it should occur sooner in the $ordered list
+        
+        //If a recipe would require CookEnemy it should occur sooner in the $ordered list
         if (isset($ordered[1])) {
             $ordered1copy = $ordered[1];
             $ordered1sorted = [];
             foreach ($ordered1copy as $item) {
                 //var_dump('Item Recipe', $item['Recipe']);
-                if ((str_contains($item['Recipe'], 'CookOre')) || (str_contains($item['Recipe'], 'CookEnemy'))) array_unshift($ordered1sorted, $item);
+                if (str_contains($item['Recipe'], 'CookEnemy')) array_unshift($ordered1sorted, $item);
+                else array_push($ordered1sorted, $item);
+            }
+            var_dump('ordered1sorted', $ordered1sorted);
+            $ordered[1] = $ordered1sorted;
+        }
+
+        //If a recipe would require CookOre it should occur sooner in the $ordered list
+        if (isset($ordered[1])) {
+            $ordered1copy = $ordered[1];
+            $ordered1sorted = [];
+            foreach ($ordered1copy as $item) {
+                //var_dump('Item Recipe', $item['Recipe']);
+                if (str_contains($item['Recipe'], 'CookOre')) array_unshift($ordered1sorted, $item);
                 else array_push($ordered1sorted, $item);
             }
             var_dump('ordered1sorted', $ordered1sorted);
@@ -348,6 +361,8 @@ class Crafter {
                 else $orderedsorted[$key][] = $item;
             }
         }
+
+        
 
         var_dump('[RESORTED]', $ordered);
 
