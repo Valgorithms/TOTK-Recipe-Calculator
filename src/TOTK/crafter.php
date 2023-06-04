@@ -563,10 +563,6 @@ class Crafter {
             case ($effectLevel >= 20):
                 $exStamina = 720;
                 break;
-            case 0:
-            default:
-                $exStamina = 0;
-                break;
         }
         
         /*
