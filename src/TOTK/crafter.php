@@ -122,8 +122,6 @@ class Crafter {
         $insect_modifiers = [];
         $modifiers = [];
         $categories = [];
-        $golem = false;
-        $fairy = true;
         $int = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
             //var_dump('[INGREDIENT]', $ingredient);
@@ -132,8 +130,6 @@ class Crafter {
             $insect_modifiers[] = $ingredient->getInsectModifier();
             $modifiers[] = $ingredient->getModifier();
             $categories[] = $ingredient->getClassification();
-            if ($ingredient->getClassification() === 'CookGolem') $golem = true;
-            if ($ingredient->getEuenName() === 'Fairy') $fairy = true;
             $int++;
         }
         //var_dump('[COMPONENTS]', $components);
@@ -325,61 +321,17 @@ class Crafter {
         }
         krsort($ordered);
         //var_dump('[REORDERED]', $ordered); //Sort $ordered by descending key
-        
-        //If a recipe would require CookEnemy it should occur sooner in the $ordered list
-        if (isset($ordered[1])) {
-            $ordered1copy = $ordered[1];
-            $ordered1sorted = [];
-            foreach ($ordered1copy as $item) {
-                //var_dump('Item Recipe', $item['Recipe']);
-                if (str_contains($item['Recipe'], 'CookEnemy')) array_unshift($ordered1sorted, $item);
-                else array_push($ordered1sorted, $item);
-            }
-            var_dump('ordered1sorted', $ordered1sorted);
-            $ordered[1] = $ordered1sorted;
-        }
 
-        //If a recipe would require CookOre it should occur sooner in the $ordered list
-        if (isset($ordered[1])) {
-            $ordered1copy = $ordered[1];
-            $ordered1sorted = [];
-            foreach ($ordered1copy as $item) {
-                //var_dump('Item Recipe', $item['Recipe']);
-                if (str_contains($item['Recipe'], 'CookOre')) array_unshift($ordered1sorted, $item);
-                else array_push($ordered1sorted, $item);
-            }
-            var_dump('ordered1sorted', $ordered1sorted);
-            $ordered[1] = $ordered1sorted;
-        }
-
-        //If an ingredient contained CookGolem we should assume the resume will result in Dubious Food unless there is a fairy included in the meal
-        if ($golem && ! $fairy) {
-            $orderedcopy = $ordered;
-            $orderedsorted = [];
-            foreach ($orderedcopy as $key => $item) {
-                if (str_contains($item['Recipe'], 'CookGolem')) array_unshift($orderedsorted[$key], $item);
-                else $orderedsorted[$key][] = $item;
-            }
-        }
-
-        
-
-        var_dump('[RESORTED]', $ordered);
-
-        //Generic meals should never be preferred unless it would result in Dubious or Rock-Hard food, so push those to the end of the list
+        //Generic meals should never be preferred, so push them to the end of the list
         $meals = array_shift($ordered);
         $found = false;
         if ($meals) {
-            foreach ($meals as $key => $meal) {
-                if (str_contains($meal['Recipe'], 'Cook') && (! str_contains($meal['Recipe'], 'Ore') && ! str_contains($meal['Recipe'], 'Enemy') && ! str_contains($meal['Recipe'], 'Golem')) ) {
-                    unset($meals[$key]);
-                    $meals[] = $meal;
-                } else {
-                    unset($meals[$key]);
-                    array_unshift($meals, $meal);
-                }
-            }
-            $meal = array_shift($meals);
+            foreach ($meals as $key => $meal) if (strpos($meal['Recipe'], 'Cook') !== false) {
+                unset($meals[$key]);
+                $meals[] = $meal;
+            } else $found = true;
+            if (!$found) $meal = array_shift($meals);
+            else $meal = array_shift($meals);
         } else $meal = null;
 
         //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
@@ -448,8 +400,7 @@ class Crafter {
             */
         }
         if ($hp >= 120) $hp = 120;
-        if ($meal['Euen name'] === 'Dubious Food') $hp = 4;
-        if ($meal['Euen name'] === 'Rock-Hard Food') $hp = 1;
+        if ($meal['Euen name'] == 'Dubious Food') $hp = 4;
 
          /*
          *
@@ -627,7 +578,12 @@ class Crafter {
         if (isset($meal['effectType'])) if ($meal['effectType']) if (in_array($meal['effectType'], ['None', 'ExStaminaMaxUp', 'StaminaRecover', 'LifeMaxUp', 'LifeRepair', 'LifeRecover'])) $confirmedTime = 0;
         if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'LifeMaxUp') $hp = 120;
         if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'ExStaminaMaxUp') $staminaRecover = 1080;
-        if (isset($meal['Euen name'])) if (($meal['Euen name'] === 'Dubious Food') || ($meal['Euen name'] === 'Rock-Hard Food')) $crit = 0;
+        if (isset($meal['Euen name'])) {
+            if (($meal['Euen name'] === 'Dubious Food') || ($meal['Euen name'] === 'Rock-Hard Food')) {
+                $crit = 0;
+                if ($hp == 0) $hp = 1;
+            }
+        }
 
 
         if (isset($meal['Euen name'])) $output['Meal Name'] = $meal['Euen name']; else $output['Meal Name'] = '';
