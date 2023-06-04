@@ -431,7 +431,7 @@ class Crafter {
 
         //Takes potency, adds up all the ingredients, and then checks the thresholds
         $tier = null;
-        if ($effectType) {
+        if ($effectType && ($effectType !== 'None')) {
             $tier = 'Low';
             $status_effect = $this->getStatusEffectsCollection()->get('EffectType', $effectType);
             if (isset($status_effect['Med Potency Threshold']) && $status_effect['Med Potency Threshold'])
