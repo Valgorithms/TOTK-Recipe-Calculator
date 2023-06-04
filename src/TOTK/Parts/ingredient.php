@@ -38,13 +38,12 @@ class Ingredient {
             $this->classification = $primary['Classification'];
             $this->modifier = $primary['Modifier'];
             if (str_contains($primary['Modifier'], 'CookInsect')) $this->insect_modifier = $primary['Modifier'];
-            $this->buyingPrice = $primary['BuyingPrice'];
-            $this->sellingPrice = $primary['SellingPrice'];
+            $this->buyingPrice = intval($primary['BuyingPrice']);
+            $this->sellingPrice = intval($primary['SellingPrice']);
             $this->color = $primary['Color'];
 
-            if (is_int($primary['AdditionalDamage'])) $this->additionalDamage = $primary['AdditionalDamage'];
-            else $this->additionalDamage = 0;
-            $this->effectLevel = $primary['EffectLevel'];
+            $this->additionalDamage = intval($primary['AdditionalDamage']);
+            $this->effectLevel = intval($primary['EffectLevel']);
             $this->effectType = $primary['EffectType'];
             $this->hitPointRecover = intval($primary['HitPointRecover']);
             $this->boostEffectiveTime = intval($primary['BoostEffectiveTime']);
