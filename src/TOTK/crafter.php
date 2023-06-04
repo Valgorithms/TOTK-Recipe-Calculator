@@ -413,10 +413,9 @@ class Crafter {
         $confirmedTime = 0;
         $hprepair = 0; //Dunno how to calculate this yet, or if it's just a status effect
         $crit = 0;
-        foreach ($ingredients as $ingredient) if ($ingredient) {
-            if ($ingredient->getBoostSuccessRate()) $crit += $ingredient->getBoostSuccessRate();
-            if ($ingredient->getAlwaysCrits()) $crit = 100;
-        }
+        foreach ($ingredients as $ingredient) if ($ingredient)
+            if ($ingredient->getBoostSuccessRate())
+                $crit += $ingredient->getBoostSuccessRate();
         if ($crit > 100) $crit = 100;
         /*
          *

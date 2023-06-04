@@ -23,8 +23,6 @@ class Ingredient {
     private ?int $additionalDamage = 0; //For weapon fusing mechanics
     private ?int $effectLevel = 0; //Potency
     private ?string $effectType = ''; //Buff [LifeRecover, LifeMaxUp, StaminaRecover, ExStaminaMaxUp, ResistHot, ResistCold, ResistElectric, AllSpeed, AttackUp, DefenseUp, QuietnessUp, ResistBurn,, TwiceJump, EmergencyAvoid, LifeRepair, LightEmission, NotSlippy, SwimSpeedUp, AttackUpCold,AttackUpHot, AttackUpThunderstorm, MiasmaGuard]
-
-    private ?bool $alwaysCrits = false;
     
     private ?int $hitPointRecover = 0; //Quarters of a Heart
     private ?int $boostEffectiveTime = 0; //Crit chance
@@ -33,7 +31,7 @@ class Ingredient {
     private ?int $boostStaminaLevel = 0; //
     private ?int $boostSuccessRate = 0; //
 
-    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?bool $alwaysCrits = false, ?int $hitPointRecover = 0, ?int $boostEffectiveTime = 0) {
+    public function __construct(array|string $primary, ?string $euenName = '', ?string $classification = '', ?string $modifier = '', ?int $buyingPrice = 0, ?int $sellingPrice = 0, ?string $color = '', int|string|null $additionalDamage = 0, ?int $effectLevel = 0, ?string $effectType = '', ?int $hitPointRecover = 0, ?int $boostEffectiveTime = 0) {
         if (is_array($primary)) {
             $this->actorName = $primary['ActorName'];
             $this->euenName = $primary['Euen name'];
@@ -48,7 +46,6 @@ class Ingredient {
             else $this->additionalDamage = 0;
             $this->effectLevel = $primary['EffectLevel'];
             $this->effectType = $primary['EffectType'];
-            $this->alwaysCrits = ($primary['AlwaysCrits'] === TRUE);
             $this->hitPointRecover = intval($primary['HitPointRecover']);
             $this->boostEffectiveTime = intval($primary['BoostEffectiveTime']);
         } else {
@@ -62,7 +59,6 @@ class Ingredient {
             $this->additionalDamage = $additionalDamage;
             $this->effectLevel = $effectLevel;
             $this->effectType = $effectType;
-            $this->alwaysCrits = $alwaysCrits;
             $this->hitPointRecover = $hitPointRecover;
             $this->boostEffectiveTime = $boostEffectiveTime;
         }
@@ -154,14 +150,6 @@ class Ingredient {
 
     public function setEffectType(?string $effectType) {
         $this->effectType = $effectType;
-    }
-    
-    public function getAlwaysCrits() {
-        return $this->alwaysCrits;
-    }
-
-    public function setAlwaysCrits(?bool $alwaysCrits) {
-        $this->alwaysCrits = $alwaysCrits;
     }
 
     public function getHitPointRecover() {
