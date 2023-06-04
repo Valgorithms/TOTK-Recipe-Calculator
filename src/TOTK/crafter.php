@@ -417,6 +417,9 @@ class Crafter {
             if ($ingredient->getBoostSuccessRate())
                 $crit += $ingredient->getBoostSuccessRate();
         if ($crit > 100) $crit = 100;
+        
+        
+        
         /*
          *
          * Calculate tier
@@ -442,7 +445,7 @@ class Crafter {
         
         /*
          *
-         * Calculate duration
+         * Calculate Status Effect Duration
          *
          */
         $ingredient_names = [];
