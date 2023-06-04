@@ -300,6 +300,7 @@ class Crafter {
                 }
                 if (in_array($cat, ['CookForeign', 'CookGolem', 'CookOre'])) {
                     $valid = false;
+                    break;
                 }
             }
 
