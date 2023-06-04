@@ -183,7 +183,7 @@ Icon,ActorName,Euen name,Classification,Modifier,BuyingPrice,SellingPrice,Color,
 ,Item_InsectGet_K,Razorclaw Crab,CookInsect,CookInsect [Mighty],32,8,,,2,AttackUp,4,,,,,0,,,
 ,Item_InsectGet_O,Ironshell Crab,CookInsect,CookInsect [Mighty],32,8,,,2,DefenseUp,4,,,,,0,,,
 ,Item_InsectGet_Z,Bright-Eyed Crab,CookInsect,CookInsect [Energizing],32,8,,,2,StaminaRecover,4,,,,,0,,,
-,Item_KingScale,King's Scale,Material,,120,0,LightBlue,5,,None,0,,,,,0,,,TRUE
+,Item_KingScale,King's Scale,CookOre,,120,0,LightBlue,5,,None,0,,,,,0,,,TRUE
 ,Item_Material_01,Cane Sugar,Material,,12,3,Green,,0,None,0,50,0,0,0,30,,,
 ,Item_Material_02,Goron Spice,Material,,16,4,Crimson,,1,None,0,60,0,0,0,10,,,
 ,Item_Material_03,Hylian Rice,Material,,12,3,White,,0,None,4,30,0,0,0,0,,,
