@@ -332,9 +332,10 @@ class Crafter {
             $ordered1sorted = [];
             foreach ($ordered1copy as $item) {
                 //var_dump('Item Recipe', $item['Recipe']);
-                if ((str_contains($item['Recipe'], 'CookOre')) || (str_contains($item['Recipe'], 'CookEnemy'))) $ordered1sorted[] = $item;
+                if ((str_contains($item['Recipe'], 'CookOre')) || (str_contains($item['Recipe'], 'CookEnemy'))) array_unshift($ordered1sorted, $item);
                 else array_push($ordered1sorted, $item);
             }
+            var_dump('ordered1sorted', $ordered1sorted);
             $ordered[1] = $ordered1sorted;
         }
 
@@ -343,13 +344,13 @@ class Crafter {
             $orderedcopy = $ordered;
             $orderedsorted = [];
             foreach ($orderedcopy as $key => $item) {
-                if (str_contains($item['Recipe'], 'CookGolem')) $orderedsorted[$key][] = $item;
+                if (str_contains($item['Recipe'], 'CookGolem')) array_unshift($orderedsorted[$key], $item);
                 else array_push($orderedsorted[$key], $item);
             }
         }
         
 
-        //var_dump('[RESORTED]', $ordered);
+        var_dump('[RESORTED]', $ordered);
 
         //Generic meals should never be preferred unless it would result in Dubious or Rock-Hard food, so push those to the end of the list
         $meals = array_shift($ordered);
