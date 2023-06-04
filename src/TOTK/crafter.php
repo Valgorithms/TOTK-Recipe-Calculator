@@ -283,6 +283,27 @@ class Crafter {
                 }
             }
             
+            //Check the recipe for $meal and compare it to the list of ingredients one last time, creating a list of unused ingredients
+            //If the meal is not an Elixir and one of those ingredients is CookMonster, CookOre, CookGolem, or CookForeign, then we need to find a new meal
+            //var_dump('COMPONENTS_COPY', $components_copy);
+            //var_dump('INSECT_MODIFIERS_COPY', $insect_modifiers_copy);
+            //var_dump('MODIFIERS_COPY', $modifiers_copy);
+            var_dump('CATEGORIES_COPY', $categories_copy);
+
+            foreach ($categories_copy as $cat) {
+                if (in_array($cat, ['CookEnemy', 'CookInsect'])) {
+                    if (! str_starts_with($meal['Euen name'], 'Elixir')) {
+                        $valid = false;
+                        break;
+                    }
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                }
+                if (in_array($cat, ['CookForeign', 'CookGolem', 'CookOre'])) {
+                    $valid = false;
+                }
+            }
+
+
             if ($valid) {
                 //var_dump($meal['Euen name'] . ' is a valid recipe!');
                 $possible_meals[] = $meal;
@@ -362,6 +383,7 @@ class Crafter {
         //var_dump('[EFFECTTYPE]', $effectType);
 
         //var_dump('[MEAL]', $meal);
+        
         $this->setMeal($meal);
 
         //We should have the correct meal now! We just need to figure out the stats.
@@ -441,7 +463,6 @@ class Crafter {
             if (isset($status_effect['High Potency Threshold']) && $status_effect['High Potency Threshold'])
                 if ($effectLevel >= $status_effect['High Potency Threshold'])
                     $tier = 'High';
-            $output['Tier'] = $tier;
         }
         
         /*
@@ -572,16 +593,30 @@ class Crafter {
         
         /*
          *
-         * EffectType-specific calculations
+         * EffectType-specific calculations and invalid meal failsafes
          * 
          */
         if (isset($meal['effectType'])) if ($meal['effectType']) if (in_array($meal['effectType'], ['None', 'ExStaminaMaxUp', 'StaminaRecover', 'LifeMaxUp', 'LifeRepair', 'LifeRecover'])) $confirmedTime = 0;
         if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'LifeMaxUp') $hp = 120;
         if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'ExStaminaMaxUp') $staminaRecover = 1080;
         if (isset($meal['Euen name'])) {
+            //These might've had their names changed by EffectTypess, so we need a failsafe for them
+            if (str_contains($meal['Euen name'], 'Dubious Food')) $meal['Euen name'] = 'Dubious Food'; 
+            if (str_contains($meal['Euen name'], 'Rock-Hard Food')) $meal['Euen name'] = 'Rock-Hard Food';
+            //These meals have set properties, so we need a failsafe for them
+            var_dump('FAILSAFE MEAL NAME', $meal['Euen name']);
             if (($meal['Euen name'] === 'Dubious Food') || ($meal['Euen name'] === 'Rock-Hard Food')) {
                 $crit = 0;
-                if ($hp == 0) $hp = 1;
+                $hp = 1;
+                //Disallow all other properties
+                $effectType = null;
+                $effectLevel = null;
+                $tier = null;
+                $hprepair = null;
+                $confirmedTime = null;
+                $lifeMaxUp = null;
+                $staminaRecover = null;
+                $exStamina = null;
             }
         }
 
