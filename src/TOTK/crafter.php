@@ -345,10 +345,9 @@ class Crafter {
             $orderedsorted = [];
             foreach ($orderedcopy as $key => $item) {
                 if (str_contains($item['Recipe'], 'CookGolem')) array_unshift($orderedsorted[$key], $item);
-                else array_push($orderedsorted[$key], $item);
+                else $orderedsorted[$key][] = $item;
             }
         }
-        
 
         var_dump('[RESORTED]', $ordered);
 
@@ -356,12 +355,16 @@ class Crafter {
         $meals = array_shift($ordered);
         $found = false;
         if ($meals) {
-            foreach ($meals as $key => $meal) if (str_contains($meal['Recipe'], 'Cook') && ! str_contains($meal['Recipe'], 'Ore') && ! str_contains($meal['Recipe'], 'Enemy') && ! str_contains($meal['Recipe'], 'Golem') ) {
-                unset($meals[$key]);
-                $meals[] = $meal;
-            } else $found = true;
-            if (!$found) $meal = array_shift($meals);
-            else $meal = array_shift($meals);
+            foreach ($meals as $key => $meal) {
+                if (str_contains($meal['Recipe'], 'Cook') && (! str_contains($meal['Recipe'], 'Ore') && ! str_contains($meal['Recipe'], 'Enemy') && ! str_contains($meal['Recipe'], 'Golem')) ) {
+                    unset($meals[$key]);
+                    $meals[] = $meal;
+                } else {
+                    unset($meals[$key]);
+                    array_unshift($meals, $meal);
+                }
+            }
+            $meal = array_shift($meals);
         } else $meal = null;
 
         //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
