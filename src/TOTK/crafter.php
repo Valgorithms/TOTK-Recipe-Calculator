@@ -390,7 +390,6 @@ class Crafter {
         foreach ($ingredients as $ingredient) if ($ingredient) {
             if ($ingredient->getBoostHitPointRecover()) $hp += $ingredient->getBoostHitPointRecover();
             if ($ingredient->getBoostMaxHeartLevel()) $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
-            //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
             /*
             if ($ingredient->getEuenName() == 'Monster Extract') {
                 //TODO: Add a note to the output that Monster Extract is adding random effects for the HP recovery
@@ -585,7 +584,7 @@ class Crafter {
         if ($effectLevel) $output['EffectLevel'] = $effectLevel;
         if ($tier) $output['Tier'] = $tier;
         if ($hprepair) $output['HitPointRepair'] = $hprepair;
-        if ($confirmedTime) $output['ConfirmedTime'] = $confirmedTime; //Actual duration for effect types
+        if ($confirmedTime) $output['Duration'] = $confirmedTime;
         if ($hp) $output['HitPointRecover'] = $hp;
         if ($hp >= 120) $output['HitPointRecover'] = 'Full Restore';
         if ($lifeMaxUp) $output['LifeMaxUp'] = $lifeMaxUp;
