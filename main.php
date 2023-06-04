@@ -185,13 +185,18 @@ $ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Fresh Mil
 $ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Raw Bird Thigh'));
 */
 
+//$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Sanke Carp'));
+//$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Raw Meat'));
+//$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Monster Extract'));
 
-$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Mighty Porgy'));
-$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Mighty Bananas'));
-$ingredient3 = new Ingredient($materials_collection->get('Euen name', 'Mighty Thistle'));
-$ingredient4 = new Ingredient($materials_collection->get('Euen name', 'Mighty Thistle'));
-$ingredient5 = new Ingredient($materials_collection->get('Euen name', 'Fresh Milk'));
 
+
+//$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Hearty Salmon'));
+//$ingredient2 = new Ingredient($materials_collection->get('Euen name', 'Monster Extract'));
+
+
+//$ingredient1 = new Ingredient($materials_collection->get('Euen name', 'Mighty Porgy'));
+//$ingredient2 = new Ingredient($materials_collection->get('Euen name', "Shard of Farosh's Fang"));
 
 if (! $meals_csv = @file(__DIR__ . '\vendor\vzgcoders\totk-recipe-calculator\src\TOTK\CSVs\meals.csv')) $meals_csv = file(__DIR__ . '\src\TOTK\CSVs\meals.csv');
 $csv = array_map('str_getcsv', $meals_csv);
@@ -206,9 +211,9 @@ foreach ($csv as $row) {
 $meals_collection = new Collection([], 'id');
 foreach ($meals as $array) $meals_collection->pushItem($array);
 
-var_dump('[MEAL]', $meals_collection->get('Euen name', 'Energizing Elixir'));
+//var_dump('[MEAL]', $meals_collection->get('Euen name', 'Energizing Elixir'));
 
-var_dump('[INGREDIENTS]', $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
+//var_dump('[INGREDIENTS]', $ingredients = [$ingredient1 ?? NULL, $ingredient2 ?? NULL, $ingredient3 ?? NULL, $ingredient4 ?? NULL, $ingredient5 ?? NULL]);
 //var_dump('[INGREDIENTS]', $ingredients);
 
-var_dump('[OUTPUT]', $output = $crafter->process($ingredients));
+//var_dump('[OUTPUT]', $output = $crafter->process($ingredients));

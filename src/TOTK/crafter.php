@@ -148,34 +148,19 @@ class Crafter {
             {
                 $required = [];
                 $optional = [];
-        
                 $meal = str_replace('"','', $meal); // get rid of quotes
-        
                 // get the optionals first
-                if (preg_match_all('/\(([^)]+)\)/', $meal, $matches))
-                {
-                    foreach ($matches[0] as $match)
-                    {
+                if (preg_match_all('/\(([^)]+)\)/', $meal, $matches)) {
+                    foreach ($matches[0] as $match) {
                         $match = substr($match,1,-1); // remove the ()
                         $items = [];
-                        foreach(explode('||', $match) as $item)
-                        {
-                            if (strlen(trim($item)))
-                                $items[] = trim($item);
-                        }
+                        foreach(explode('||', $match) as $item) if (strlen(trim($item))) $items[] = trim($item);
                         $optional[] = $items;
                     }
-                    
                     $meal = preg_replace('/\(([^)]+)\)/', '', $meal);
                 }
-                
                 // Required should be remaining
-                foreach(explode('&&', $meal) as $item)
-                {
-                    if (strlen(trim($item)))
-                        $required[] = trim($item);
-                }
-        
+                foreach(explode('&&', $meal) as $item) if (strlen(trim($item))) $required[] = trim($item);
                 return ['required' => $required, 'optional' => $optional];
             };
             $parsed = $parsedRecipe($meal['Recipe']);
@@ -221,20 +206,20 @@ class Crafter {
                         unset($categories_copy[$key]);
                     }
                     if (! $valid) {
-                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
-                        var_dump('[Remaining components]', $components_copy);
-                        var_dump('[Remaining insects]', $insect_modifiers_copy);
-                        var_dump('[Remaining modifiers]', $modifiers_copy);
-                        var_dump('[Remaining categories]', $categories_copy);
+                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        //var_dump('[Remaining components]', $components_copy);
+                        //var_dump('[Remaining insects]', $insect_modifiers_copy);
+                        //var_dump('[Remaining modifiers]', $modifiers_copy);
+                        //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
-                    var_dump('[Remaining components]', $components_copy);
-                    var_dump('[Remaining insects]', $insect_modifiers_copy);
-                    var_dump('[Remaining modifiers]', $modifiers_copy);
-                    var_dump('[Remaining categories]', $categories_copy);
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
+                    //var_dump('[Remaining components]', $components_copy);
+                    //var_dump('[Remaining insects]', $insect_modifiers_copy);
+                    //var_dump('[Remaining modifiers]', $modifiers_copy);
+                    //var_dump('[Remaining categories]', $categories_copy);
                     continue;
                 }
             }
@@ -284,14 +269,14 @@ class Crafter {
                     }
                     if (! $valid) {
                         //var_dump('[OPTIONAL]', $parsed['optional']);
-                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
+                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
+                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -337,33 +322,32 @@ class Crafter {
         krsort($ordered);
         //var_dump('[REORDERED]', $ordered); //Sort $ordered by descending key
 
-        //Generic meals should never be preferred, so push them to the end
+        //Generic meals should never be preferred, so push them to the end of the list
         $meals = array_shift($ordered);
         $found = false;
         if ($meals) {
-            foreach ($meals as $key => $meal) {
-                if (strpos($meal['Recipe'], 'Cook') !== false) {
-                    unset($meals[$key]);
-                    $meals[] = $meal;
-                } else $found = true;
-            }
+            foreach ($meals as $key => $meal) if (strpos($meal['Recipe'], 'Cook') !== false) {
+                unset($meals[$key]);
+                $meals[] = $meal;
+            } else $found = true;
             if (!$found) $meal = array_shift($meals);
             else $meal = array_shift($meals);
         } else $meal = null;
 
         //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
-        $modifier = [];
         $insect_modifier = [];
+        $modifier = [];
         $effectType = [];
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getInsectModifier() && $search = $ingredient->getModifier()) if (!in_array($search, $insect_modifier)) $insect_modifier[] = $search;
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getModifier() && $search = $ingredient->getModifier()) if (!in_array($search, $modifier)) $modifier[] = $search;
         foreach ($ingredients as $ingredient) if ($ingredient && $ingredient->getEffectType() && $search = $ingredient->getEffectType()) if ($search != 'None' && !in_array($search, $effectType)) $effectType[] = $search;
+        //Set Meal's Name
         if(isset($meal['Euen name']))
-            if (!(str_contains($meal['Euen name'], 'Elixir')) && !(str_contains($meal['Euen name'], 'Tonic'))) {
+            if (!(str_contains($meal['Euen name'], 'Elixir')) && !(str_contains($meal['Euen name'], 'Tonic')))
                 if (count($modifier) == 1)
                     $meal['Euen name'] = $modifier[0] . ' ' . $meal['Euen name'];
-            }
         $meal['effectType'] = 'None';
+        //Set Meal's EffectType
         if(isset($meal['effectType'])) {
             if (count($effectType) == 1)
                 $meal['effectType'] = $effectType[0];
@@ -377,14 +361,21 @@ class Crafter {
         //var_dump('[MODIFIER]', $modifier);
         //var_dump('[EFFECTTYPE]', $effectType);
 
-        var_dump('[MEAL]', $meal);
+        //var_dump('[MEAL]', $meal);
         $this->setMeal($meal);
-        $output = [];
 
         //We should have the correct meal now! We just need to figure out the stats.
+        $output = [];
         $output['Meal'] = $meal;
         foreach ($ingredients as $ingredient) if ($ingredient) $output['Ingredients'][] = $ingredient;
+        
+        /*
+         *
+         * Calculate the HitPointRecovery for the Meal (Cooking Pot)
+         *
+         */
         $hp = 0;
+        $lifeMaxUp = 0;
         switch ($this->getCookingMethod()) {
             case 'Fire':
                 $hp = intval(ceil(array_shift($ingredients)->getHitPointRecover() * 1.5));
@@ -393,42 +384,102 @@ class Crafter {
             default:
                 foreach ($ingredients as $ingredient) if ($ingredient) $hp += $ingredient->getHitPointRecover();
                 $hp = ($hp * 2);
-                if (isset($meal['BonusHeart'])) $hp += $meal['BonusHeart'];
+                if (isset($meal['BonusHeart'])) if ($meal['BonusHeart']) $hp += $meal['BonusHeart'];
                 break;
         }
+        foreach ($ingredients as $ingredient) if ($ingredient) {
+            if ($ingredient->getBoostHitPointRecover()) $hp += $ingredient->getBoostHitPointRecover();
+            if ($ingredient->getBoostMaxHeartLevel()) $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
+            //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
+            if ($ingredient->getEuenName() == 'Monster Extract') {
+                //TODO: Add a note to the output that Monster Extract is adding random effects for the HP recovery
+                if (rand(0, 1)) $hp = 1;
+                else $hp += 12;
+                break;
+            }
+        }
+        if ($hp >= 120) $hp = 120;
+        if ($meal['Euen name'] == 'Dubious Food') $hp = 4;
+
+         /*
+         *
+         * Calculate Critical Chance
+         * 
+         */
+        
         if (isset($meal['effectType'])) $effectType = $meal['effectType']; else $effectType = 'None';
-        $effectLevel = 0;
         $tier = ''; //NYI
         $staminaRecover = 0;
         $confirmedTime = 0;
-        $lifeMaxUp = 0;
-        $exStamina = 0;
         $hprepair = 0; //Dunno how to calculate this yet, or if it's just a status effect
         $crit = 0;
         foreach ($ingredients as $ingredient) if ($ingredient) {
-            if ($ingredient->getEffectType() == $meal['effectType']) $effectLevel += $ingredient->getEffectLevel();
-            $hp += $ingredient->getBoostHitPointRecover();
-            $lifeMaxUp += $ingredient->getBoostMaxHeartLevel();
-            //$exStamina += $ingredient->getBoostStaminaLevel(); //This value isn't used
-            $crit += $ingredient->getBoostSuccessRate();
+            if ($ingredient->getBoostSuccessRate()) $crit += $ingredient->getBoostSuccessRate();
             if ($ingredient->getAlwaysCrits()) $crit = 100;
         }
-        //Calculate tier
-        $status_effect = $this->getStatusEffectsCollection()->get('EffectType', $effectType);
-        if (isset($status_effect['Med Potency Threshold']) && $status_effect['Med Potency Threshold'])
-            if ($effectLevel >= $status_effect['Med Potency Threshold'])
-                $tier = 'Med';
-        if (isset($status_effect['High Potency Threshold']) && $status_effect['High Potency Threshold'])
-            if ($effectLevel >= $status_effect['High Potency Threshold'])
-                $tier = 'High';
-        if ($tier) $output['Tier'] = $tier;
-        //Calculate duration
-        if ($effectTypeItem = $this->status_effects_collection->get('EffectType', $effectType)) foreach ($ingredients as $ingredient) if ($ingredient) {
-            $confirmedTime += $effectTypeItem['BaseTime']; //Effects have their own base time
-            if ($ingredient->getConfirmedTime()) $confirmedTime += $ingredient->getConfirmedTime(); //Some materials boost the duration
-            if ($ingredient->getBoostEffectiveTime()) $confirmedTime += $ingredient->getBoostEffectiveTime() + 30; //Some materials boost the duration, and if they do they also add an extra 30 seconds on top of that
-            if ($ingredient->getSeasoning()) $ingredient->getSeasoningBoost() ? $confirmedTime += $ingredient->getSeasoningBoost() : $confirmedTime += array_rand([60, 600, 1800]) ; $confirmedTime += $ingredient->getBoostEffectiveTime() + 30; //Some materials boost the duration, and if they do they also add an extra 30 seconds on top of that
+        if ($crit > 100) $crit = 100;
+        /*
+         *
+         * Calculate tier
+         * 
+         */
+        $effectLevel = 0;
+        foreach ($ingredients as $ingredient) if ($ingredient)
+            if ($ingredient->getEffectType() == $meal['effectType'])
+                $effectLevel += $ingredient->getEffectLevel();
+
+        //Takes potency, adds up all the ingredients, and then checks the thresholds
+        if ($effectType) {
+            $tier = 'Low';
+            $status_effect = $this->getStatusEffectsCollection()->get('EffectType', $effectType);
+            if (isset($status_effect['Med Potency Threshold']) && $status_effect['Med Potency Threshold'])
+                if ($effectLevel >= $status_effect['Med Potency Threshold'])
+                    $tier = 'Med';
+            if (isset($status_effect['High Potency Threshold']) && $status_effect['High Potency Threshold'])
+                if ($effectLevel >= $status_effect['High Potency Threshold'])
+                    $tier = 'High';
+            $output['Tier'] = $tier;
         }
+        
+        /*
+         *
+         * Calculate duration
+         *
+         */
+        $ingredient_names = [];
+        if ($effectTypeItem = $this->status_effects_collection->get('EffectType', $effectType)) foreach ($ingredients as $ingredient) if ($ingredient) {
+            //var_dump('[CALCULATION] ', 'INGREDIENT NAME', $ingredient->getEuenName());
+            //var_dump('[CALCULATION] ', 'ADDING SECONDS TO DURATION', 30);
+            $confirmedTime += 30; //All ingredients add 30 seconds to the duration
+            //var_dump('[EFFECTs] ', $ingredient->getEffectType(), $effectType);
+            if ($ingredient->getEffectType() === $effectType) {
+                //var_dump('[CALCULATION] ', 'ADDING BASETIME DURATION', intval($effectTypeItem['BaseTime']));
+                $confirmedTime += $effectTypeItem['BaseTime']; //Effects have their own base time
+            }
+            if ($ingredient->getBoostEffectiveTime()) {
+                if (! in_array($ingredient->getEuenName(), $ingredient_names)) {
+                    $confirmedTime += $ingredient->getBoostEffectiveTime(); //Some materials boost the duration
+                    //var_dump('[CALCULATION] ', 'ADDING BOOSTEFFEECTIVETIME TO DURATION',  intval($ingredient->getBoostEffectiveTime()));
+                }
+                //var_dump('[CALCULATION] ', 'TRACKING DUPLICATE INGREDIENTS',  $ingredient->getEuenName());
+                $ingredient_names[] = $ingredient->getEuenName(); //Track duplicates
+            }
+        }
+        /*
+         *
+         * Monster Extract
+         * 
+        */
+        if ($confirmedTime) foreach ($ingredients as $ingredient) if ($ingredient) if ($ingredient->getEuenName() == 'Monster Extract') {
+            //TODO: Add a note to the output that Monster Extract is setting random duration
+            $rand_array = [60, 600, 1800];
+            $confirmedTime = $rand_array[array_rand($rand_array)];
+            break;
+        }
+
+        //var_dump('[CALCULATION RESULTS]', intval($confirmedTime));
+
+        
         //$confirmedTime += 0; //This value depends on the effectType, so we need to caluclate that first and then add it from that csv
         if ($effectType == 'StaminaRecover') switch ($effectLevel) {
             case 1:
@@ -469,59 +520,71 @@ class Crafter {
                 $staminaRecover = 0;
                 break;
         }
+
+        $exStamina = 0;
         if ($effectType == 'ExStaminaMaxUp') switch ($effectLevel) {
             case 1:
             case 2:
             case 3:
-                $exStamina = 280;
+                $exStamina = 80;
                 break;
             case 4:
             case 5:
-                $exStamina = 520;
+                $exStamina = 160;
                 break;
             case 6:
             case 7:
-                $exStamina = 640;
+                $exStamina = 200;
                 break;
             case 8:
             case 9:
-                $exStamina = 880;
+                $exStamina = 280;
                 break;
             case 10:
             case 11:
-                $exStamina = 1080;
+                $exStamina = 360;
                 break;
             case 12:
             case 13:
-                $exStamina = 1080;
+                $exStamina = 440;
                 break;
             case 14:
             case 15:
-                $exStamina = 1080;
+                $exStamina = 520;
                 break;
             case 16:
             case 17:
-                $exStamina = 1080;
+                $exStamina = 560;
                 break;
             case 18:
             case 19:
-                $exStamina = 1080;
+                $exStamina = 640;
                 break;
             case ($effectLevel >= 20):
-                $exStamina = 1080;
+                $exStamina = 720;
                 break;
             case 0:
             default:
                 $exStamina = 0;
                 break;
         }
-        if ($crit > 100) $crit = 100;
+        
+        /*
+         *
+         * EffectType-specific calculations
+         * 
+         */
+        if (isset($meal['effectType'])) if ($meal['effectType']) if (in_array($meal['effectType'], ['None', 'ExStaminaMaxUp', 'StaminaRecover', 'LifeMaxUp', 'LifeRepair', 'LifeRecover'])) $confirmedTime = 0;
+        if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'LifeMaxUp') $hp = 120;
+        if (isset($meal['effectType'])) if ($meal['effectType']) if ($meal['effectType'] === 'ExStaminaMaxUp') $staminaRecover = 1080;
+
         if (isset($meal['Euen name'])) $output['Meal Name'] = $meal['Euen name']; else $output['Meal Name'] = '';
         if ($effectType) $output['EffectType'] = $effectType;
         if ($effectLevel) $output['EffectLevel'] = $effectLevel;
         if ($hprepair) $output['HitPointRepair'] = $hprepair;
         if ($confirmedTime) $output['ConfirmedTime'] = $confirmedTime; //Actual duration for effect types
-        if ($hp)  $output['HitPointRecover'] = $hp;
+        if ($hp) $output['HitPointRecover'] = $hp;
+        if ($hp >= 120) $output['HitPointRecover'] = 'Full Restore';
         if ($lifeMaxUp) $output['LifeMaxUp'] = $lifeMaxUp;
         if ($staminaRecover) $output['StaminaRecover'] = $staminaRecover;
         if ($exStamina) $output['ExStamina'] = $exStamina;
