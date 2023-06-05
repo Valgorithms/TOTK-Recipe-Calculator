@@ -428,7 +428,7 @@ class Crafter {
             */
         }
         if ($hp >= 120) $hp = 120;
-        if ($meal['Euen name'] == 'Dubious Food') $hp = 4;
+        if(isset($meal['Euen name'])) if ($meal['Euen name'] === 'Dubious Food') $hp = 4;
 
          /*
          *
