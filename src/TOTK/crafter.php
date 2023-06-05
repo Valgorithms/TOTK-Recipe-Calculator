@@ -291,19 +291,16 @@ class Crafter {
             //var_dump('CATEGORIES_COPY', $categories_copy);
 
             $seasonings = ['Star Fragment', "Shard of Light Dragon's Fang", "Light Dragon's Horn", 'Acorn', 'Chickaloo Tree Nut', 'Cane Sugar', 'Hylian Rice', 'Fresh Milk', 'Goat Butter', 'Tabantha Wheat', 'Monster Extract', 'Rock Salt'];
-            foreach ($categories_copy as $key => $cat) {
-                if (! in_array($components_copy[$key], $seasonings)) { //Seasonings are exempt from this check
-                    if (in_array($cat, ['CookEnemy', 'CookInsect'])) {
-                        if (! str_starts_with($meal['Euen name'], 'Elixir')) {
-                            $valid = false;
-                            break;
-                        }
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
-                    }
-                    if (in_array($cat, ['CookForeign', 'CookGolem', 'CookOre'])) {
+            foreach ($categories_copy as $key => $cat) if (! in_array($components_copy[$key], $seasonings)) { //Seasonings are exempt from this check
+                if (in_array($cat, ['CookEnemy', 'CookInsect'])) {
+                    if (! str_starts_with($meal['Euen name'], 'Elixir')) {
                         $valid = false;
                         break;
                     }
+                }
+                if (in_array($cat, ['CookForeign', 'CookGolem', 'CookOre'])) {
+                    $valid = false;
+                    break;
                 }
             }
 
