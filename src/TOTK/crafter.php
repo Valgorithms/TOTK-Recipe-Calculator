@@ -206,7 +206,7 @@ class Crafter {
                         unset($categories_copy[$key]);
                     }
                     if (! $valid) {
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required) ' . $req);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining insects]', $insect_modifiers_copy);
                         //var_dump('[Remaining modifiers]', $modifiers_copy);
@@ -215,7 +215,7 @@ class Crafter {
                     }
                 }
                 if (!$valid) {
-                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find required)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining insects]', $insect_modifiers_copy);
                     //var_dump('[Remaining modifiers]', $modifiers_copy);
@@ -269,14 +269,14 @@ class Crafter {
                     }
                     if (! $valid) {
                         //var_dump('[OPTIONAL]', $parsed['optional']);
-                        //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
+                        var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional) ' . $o);
                         //var_dump('[Remaining components]', $components_copy);
                         //var_dump('[Remaining categories]', $categories_copy);
                         continue 2;
                     }
                 }
                 if (!$valid) {
-                    //var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
+                    var_dump($meal['Euen name'] . ' is not a valid recipe! (Failed to find optional)');
                     //var_dump('[Remaining components]', $components_copy);
                     //var_dump('[Remaining categories]', $categories_copy);
                     continue;
@@ -306,7 +306,7 @@ class Crafter {
 
 
             if ($valid) {
-                //var_dump($meal['Euen name'] . ' is a valid recipe!');
+                var_dump($meal['Euen name'] . ' is a valid recipe!');
                 $possible_meals[] = $meal;
             }
         }
@@ -347,14 +347,19 @@ class Crafter {
         //Generic meals should never be preferred, so push them to the end of the list
         $meals = array_shift($ordered);
         $found = false;
+        /*
         if ($meals) {
             foreach ($meals as $key => $meal) if (strpos($meal['Recipe'], 'Cook') !== false) {
                 unset($meals[$key]);
                 $meals[] = $meal;
             } else $found = true;
+        }
+        */
+        if ($meals) {
             if (!$found) $meal = array_shift($meals);
             else $meal = array_shift($meals);
-        } else $meal = null;
+        } else $meal = $this->meals_collection->get('Euen name', 'Dubious Food');
+
 
         //Meals will have a modifier if an ingredient with one is used and no other conflicting modifiers are found in other ingredients
         $insect_modifier = [];
@@ -490,6 +495,7 @@ class Crafter {
                 $ingredient_names[] = $ingredient->getEuenName(); //Track duplicates
             }
         }
+        if ($confirmedTime > 1800) $confirmedTime = 1800;
         /*
          *
          * Monster Extract
